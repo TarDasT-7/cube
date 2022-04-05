@@ -74,8 +74,6 @@ use App\Http\Controllers\Admin\ProductItemController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\PlanCategoryController;
 use App\Http\Controllers\Admin\PlanDescriptionController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\ContactUsController;
@@ -86,6 +84,8 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProducerController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
 
 
 
@@ -144,6 +144,8 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('user',UserController::class);
         Route::patch('user-role-{id}',[UserController::class , 'role'])->name('user_role');
         Route::resource('producer',ProducerController::class);
+        Route::resource('category',CategoryController::class);
+        Route::resource('sub',SubCategoryController::class);
 
 
 

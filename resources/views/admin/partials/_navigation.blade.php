@@ -147,13 +147,13 @@
                 
                 <ul class="menu-content">
                     <li>
-                        <a href="{{route('product_category.index')}}">
+                        <a href="{{route('category.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">دسته اصلی</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('product_teacher.index')}}">
+                        <a href="{{route('sub.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">زیر دسته ها</span>
                         </a>

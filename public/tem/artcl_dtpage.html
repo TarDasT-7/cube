@@ -1,0 +1,937 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>مکعب</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/all.min.css">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>	
+	<div class="overlay d-none "></div>	
+	<div id="reg_lg_modal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+			   <div class="modal-content md_contentcus">
+				 <div class="modal-header md_hdcus ">
+					 <button type="button" class="close  cls_but m-auto" data-dismiss="modal">
+				   
+					   <svg class="cls_butsvg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		viewBox="0 0 384 384" style="enable-background:new 0 0 384 384;" xml:space="preserve">
+   <g>
+	   <g>
+		   <path d="M368,176c-8.832,0-16,7.168-16,16c0,88.224-71.776,160-160,160S32,280.224,32,192S103.776,32,192,32
+			   c42.952,0,83.272,16.784,113.536,47.264c6.224,6.264,16.36,6.304,22.624,0.08c6.272-6.224,6.304-16.36,0.08-22.632
+			   C291.928,20.144,243.536,0,192,0C86.128,0,0,86.128,0,192s86.128,192,192,192c105.864,0,192-86.128,192-192
+			   C384,183.168,376.832,176,368,176z"/>
+	   </g>
+   </g>
+   <g>
+	   <g>
+		   <path d="M214.624,192l36.688-36.688c6.248-6.248,6.248-16.376,0-22.624s-16.376-6.248-22.624,0L192,169.376l-36.688-36.688
+			   c-6.24-6.248-16.384-6.248-22.624,0c-6.248,6.248-6.248,16.376,0,22.624L169.376,192l-36.688,36.688
+			   c-6.248,6.248-6.248,16.376,0,22.624C135.808,254.44,139.904,256,144,256s8.192-1.56,11.312-4.688L192,214.624l36.688,36.688
+			   C231.816,254.44,235.904,256,240,256s8.184-1.56,11.312-4.688c6.248-6.248,6.248-16.376,0-22.624L214.624,192z"/>
+	   </g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   </svg>
+   
+					</button>
+				   <h4 class="modal-title w-100 txt_crm m-auto font20" > ورود به سایت </h4>
+				 </div>
+				 <div class="modal-body md_bodycus">
+				   <div class=" card-login">
+					   <div class="plogin-body">
+						   <div class="row pt-3">
+							   <div class="col-lg-12">
+								   <form id="login-form" action="" method="post" role="form" style="display: block;">
+										   <div class="form-group col-12 col-md-12 ">
+															 <div class="input-group input-group-sm">
+															 <span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
+															 <i class="fa fa-envelope txt_org"></i>
+																 </span>
+															 <input class="form-control srch_cus3 txt_dgray mr-0" type="email" placeholder="ایمیل">
+   
+															  </div>
+														   </div>
+										<div class="form-group col-12 col-md-12 ">
+															 <div class="input-group input-group-sm">
+															 <span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
+															 <i class="fa fa-lock txt_org"></i>
+																 </span>
+															 <input class="form-control srch_cus3 txt_dgray mr-0" type="password" placeholder="رمز عبور خود را وارد کنید">
+   
+															  </div>
+														   </div>
+															 
+														   <div class="form-check form-check custom-controls-stacked my-3 pr-2_5">
+															   <label class="form-check-label custom-control material-checkbox">
+																 <input class="form-check-input material-control-input" type="checkbox">
+																  <span class="material-control-description">مرا بخاطر بسپار</span>
+																 <span class="material-control-indicator"></span>
+   
+															   </label>
+															 </div>
+														   <div class="col-12 col-md-12 mg">
+																		   <a href="#" class="a_style3 forgot-password txt_gray mb-3">رمز خود را فراموش کرده اید ؟</a>
+   
+																   </div>
+														   <div class="col-md-6 mg">
+																	   <div >
+   
+																	   <a type="sumbit" href="user_profile.html" class="btn btn-raised btn_cusblgray btn-sm btn_full w-100">ورود</a>
+																	   </div>
+																   </div>
+								   </form>
+							   </div>
+						   </div>
+					   </div>
+				   </div>
+				 </div>
+			   </div>
+					</div>
+			 </div>
+   <section class="menu_secmsh container-fluid p-0">
+	<div class="row menu_navtop">
+		<div class="reglog_col col-md-4 rgl_st">
+		  <ul class="list-unstyled list-inline input-group pr-0 mb-0 rgl_ul pl-3 justify-content-start">
+			  <!-- <li class="list-group-item list-inline-item li_cartli">
+						 <a href="cart_page.html" class="txt_dgray pt-3">
+								   <svg class="cart_svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		viewBox="0 0 208.955 208.955" style="enable-background:new 0 0 208.955 208.955;" xml:space="preserve">
+   <path d="M190.85,200.227L178.135,58.626c-0.347-3.867-3.588-6.829-7.47-6.829h-26.221V39.971c0-22.04-17.93-39.971-39.969-39.971
+	   C82.437,0,64.509,17.931,64.509,39.971v11.826H38.27c-3.882,0-7.123,2.962-7.47,6.829L18.035,200.784
+	   c-0.188,2.098,0.514,4.177,1.935,5.731s3.43,2.439,5.535,2.439h157.926c0.006,0,0.014,0,0.02,0c4.143,0,7.5-3.358,7.5-7.5
+	   C190.95,201.037,190.916,200.626,190.85,200.227z M79.509,39.971c0-13.769,11.2-24.971,24.967-24.971
+	   c13.768,0,24.969,11.202,24.969,24.971v11.826H79.509V39.971z M33.709,193.955L45.127,66.797h19.382v13.412
+	   c0,4.142,3.357,7.5,7.5,7.5c4.143,0,7.5-3.358,7.5-7.5V66.797h49.936v13.412c0,4.142,3.357,7.5,7.5,7.5c4.143,0,7.5-3.358,7.5-7.5
+	   V66.797h19.364l11.418,127.158H33.709z"/>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   <g>
+   </g>
+   </svg>
+								   <span class="font10 bag_n txt_grdrk">0</span></a>
+								   </li>-->
+			  
+				 <li class="list-group-item list-inline-item li_itemst logli mr-2  dropdown">
+		   <a class="  font13 txt_crm dropdown-toggle bold  li_ast" data-toggle="dropdown" href="#">
+		   <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="user-circle" class="svg-inline--fa fa-user-circle fa-w-16 user_svg ml-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 104c-53 0-96 43-96 96s43 96 96 96 96-43 96-96-43-96-96-96zm0 144c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm0-240C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-49.7 0-95.1-18.3-130.1-48.4 14.9-23 40.4-38.6 69.6-39.5 20.8 6.4 40.6 9.6 60.5 9.6s39.7-3.1 60.5-9.6c29.2 1 54.7 16.5 69.6 39.5-35 30.1-80.4 48.4-130.1 48.4zm162.7-84.1c-24.4-31.4-62.1-51.9-105.1-51.9-10.2 0-26 9.6-57.6 9.6-31.5 0-47.4-9.6-57.6-9.6-42.9 0-80.6 20.5-105.1 51.9C61.9 339.2 48 299.2 48 256c0-110.3 89.7-200 200-200s200 89.7 200 200c0 43.2-13.9 83.2-37.3 115.9z"></path></svg> حساب کاربری </a>
+		   <div class="dropdown-menu row ">
+		<a class="dropdown-item txt_grdrk" data-toggle="modal" data-target="#reg_lg_modal" href="#" >ورود بحساب کاربری </a>
+					   <a class="dropdown-item txt_grdrk" href="register.html">عضویت</a>
+			   </div>
+		 </li>
+				  <li class="list-group-item list-inline-item li_sclli">
+					   <a href="#" class="txt_crm"><i class="fab fa-fw fa-instagram font24 pt-1"></i></a>
+					   </li>
+				<li class="list-group-item list-inline-item li_sclli ">
+							   <a href="#" class="txt_crm"><i class="fab fa-fw fa-telegram font24 pt-1"></i></a>
+						   </li>
+				<li class="list-group-item list-inline-item li_sclli ">
+							   <a href="#" class="txt_crm"><i class="fab fa-fw  font24 pt-1 fa-whatsapp"></i></a>
+						   </li>
+   
+   
+	   </ul>
+		 </div>
+		<div class="reglog_col col-md-4 text-center">
+			<div class="row justify-content-center">
+				<div class="col-md-3 m-autoz">
+					 <a class="top_navlogo " href="index.html"><img class="logo" src="img/mokaablg.png"></a>
+				</div>
+				<div class="col-md-8 m-autoz">
+				<h4 class="text-center txt_org bbj mb-0 font35">کانون رشد خلاق مکعب</h4>
+				</div>
+			</div>
+		</div>
+		<div class="reglog_col col-md-4 rgl_st">
+		<ul class="list-unstyled list-inline input-group mb-0 rgl_ul pr-0 justify-content-end">
+			<li class="list-group-item list-inline-item li_itemst srch_col font13 pl-0">
+					   <div class="input-group">
+						 <input type="text" class="form-control srch" placeholder="جستجو" aria-label="search" aria-describedby="basic-addon1">
+								<div class="input-group-append">
+						   <span class="input-group-text " id="basic-addon1"><i class="fa fa-search txt_crm"></i></span>
+						 </div>
+					   </div>
+					   </li>
+	   </ul>
+		 </div>
+	   </div>
+   <nav class="navbar navbar-expand-md navbar-light ppk_nav p-0">
+	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#marinav">
+	   <span class="navbar-toggler-icon"></span>
+	 </button>
+		 <!--<a class="navbar-brand" href="#"><img class="logo" src="img/logo2.png"></a>-->
+		 <div class="collapse navbar-collapse justify-content-center" id="marinav">
+		 <ul class="navbar-nav pr-0 shop_nav">
+			<li class="nav-item mgm_item">
+		   <a class="nav-link font14 bold" href="index.html">خانه</a>
+		 </li>
+			<li class="nav-item dropdown mgm_item" id="wdrpmn">
+		   <a class="nav-link wdrp font14 dropdown-toggle bold" data-toggle="dropdown" href="#">دوره های آموزشی</a>
+				   <div class="dropdown-menu">
+				   <div class=" container-fluid mgmn_cont">
+					<div class=" row mgmn_row p-3">
+						<div class="col-md-12 mgmn_catsmcol">
+						<div class="row mgmn_catsrow">
+							<div class="col-md-2 mgmn_catscol">
+								<ul class="mgmn_catsul list-unstyled pr-0">
+									<li class="mgmn_catli cat_li">
+									   <a class="hm_st txt_black" href="crslists_page.html">نمایش خلاق</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+											<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+											</ul>
+									</li>
+									 <li class="mgmn_catli cat_li">
+									   <a class="txt_black hm_st" href="crslists_page.html">داستان نویسی</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+											</ul>
+									</li>
+									 <li class="mgmn_catli cat_li">
+									   <a class="txt_black hm_st" href="crslists_page.html">نمایشنامه نویسی</a>
+									</li>
+								</ul>
+   
+						 </div>
+							<div class="col-md-2 mgmn_catscol">
+								<ul class="mgmn_catsul list-unstyled pr-0">
+									<li class="mgmn_catli cat_li">
+									   <a class="hm_st txt_black" href="crslists_page.html">نمایش خلاق</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+   
+											</ul>
+									</li>
+									 <li class="mgmn_catli cat_li">
+									   <a class="txt_black hm_st" href="crslists_page.html">پادکست سازی</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+											</ul>
+									</li>
+									 <li class="mgmn_catli cat_li">
+									   <a class="hm_st txt_black" href="crslists_page.html">نمایشنامه نویسی</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+											</ul>
+									</li>
+								</ul>
+   
+						 </div>
+							 <div class="col-md-2 mgmn_catscol">
+								<ul class="mgmn_catsul list-unstyled pr-0">
+									<li class="mgmn_catli cat_li">
+									   <a class="hm_st txt_black" href="crslists_page.html">پادکست سازی</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+   
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+											</ul>
+									</li>
+									<li class="mgmn_catli cat_li">
+									   <a class="txt_black hm_st" href="crslists_page.html">تدوین</a>
+									</li>
+									<li class="mgmn_catli cat_li">
+									   <a class="txt_black hm_st" href="crslists_page.html">داستان نویسی</a>
+									</li>
+									 <li class="mgmn_catli cat_li">
+									   <a class="txt_black hm_st" href="crslists_page.html">پادکست سازی</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+											</ul>
+									</li>
+   
+								</ul>
+   
+						 </div>
+							 <div class="col-md-2 mgmn_catscol">
+								<ul class="mgmn_catsul list-unstyled pr-0">
+									<li class="mgmn_catli cat_li">
+									   <a class="hm_st txt_black" href="crslists_page.html">موسیقی کودک</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+											</ul>
+									</li>
+									 <li class="mgmn_catli cat_li">
+									   <a class="txt_black hm_st" href="crslists_page.html">نقاشی</a>
+											<ul class="mgmn_subcatul list-unstyled ">
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+												<li class="mgmn_subcatli subcat_li">
+												<a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
+												</li>
+											</ul>
+									</li>
+									 <li class="mgmn_catli cat_li">
+									   <a class="txt_black hm_st" href="crslists_page.html">انیمیشن</a>
+									</li>
+								</ul>
+   
+						 </div>
+								<div class="col-md-4 cat_col">
+						   <div class="row cat_inner_row">
+						   <div class="col-md-12 cat_inner_imgcol">
+						   <img src="img/crs02.jpg" class="menu_img">
+						   </div>
+					   </div>
+					   </div>
+						</div>
+						</div>
+			   </div>
+				   </div>
+   
+			   </div>
+   
+   
+		 </li>
+			  <li class="nav-item mgm_item">
+		   <a class="nav-link font14 bold" href="pkglists_page.html">محصولات</a>
+		 </li>
+			<li class="nav-item mgm_item">
+		   <a class="nav-link font14 bold" href="pdclists_ssnpage.html">پادکست</a>
+		 </li>
+			<li class="nav-item mgm_item">
+		   <a class="nav-link font14 bold" href="chldphsy_mainpg.html">روانشناسی کودک و نوجوان</a>
+		 </li>
+			<li class="nav-item mgm_item">
+		   <a class="nav-link font14 bold" href="about_us.html">تیم مکعب</a>
+		 </li>
+			<li class="nav-item mgm_item">
+		   <a class="nav-link font14 bold" href="blog_mainpg.html">بلاگ</a>
+		 </li>
+			<li class="nav-item mgm_item">
+			   <a class="nav-link font14 bold" href="frvidlists_page .html">فیلم های آموزشی رایگان</a>
+			 </li>
+			<li class="nav-item mgm_item">
+		   <a class="nav-link font14 bold" href="contact_us.html">تماس با ما</a>
+		 </li>
+		 </ul>
+	 </div>
+   </nav>
+   </section>			
+	<section class="container-fluid slide_sec">
+ <div class="row slide_npg_row">
+	 <div class="col-md-12 slide_npg_col p-0" style="background-image: url(img/bg06.jpg)">
+	 </div>
+	
+	 <div class="col-md-12 wv_prjmcol">
+		 <div class="row">
+		   <div class="col-md-12 wv_prjcol p-0">
+			   <svg  class="wv_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,128L720,288L1440,160L1440,320L720,320L0,320Z"></path></svg>
+			 </div>
+		 </div>
+	</div>
+ </div>  
+</section>
+ <section class="container-fluid prjdt_mainsec pb-5">
+<div class="row artcl_mainrow m-0 justify-content-center" id="artcl_mainsec">
+	 <div class="col-md-10 artcl_cont">
+		<div class="row prjdt_rltmrow m-0">
+		 	<div class="col-md-12 artcl_maintxtmcol">
+					<div class="row artcl_txtmrow">
+						<div class="col-md-12 artcl_infomcol">
+							<div class="row artcl_infomrow">
+								<div class="col-md-4 artcl_wrtmcol m-auto">
+									<div class="row artcl_wrtmrow justify-content-center">
+									 <div class="col-md-4 artcl_wrtimgcol text-center mb-3">
+										<img src="img/avtfm1.png" class="artcl_wrtimg">
+									 </div>
+										<div class="col-md-12 artcl_wrtnmcol text-center">
+											<h6 class="font15 txt_gray bold mb-1">نام نویسنده</h6>
+											<span class="txt_gray font12">حوزه  تخصص</span>
+										</div>
+									</div>
+								</div>
+									<div class="col-md-8 artcltit_mcol m-auto">
+										<div class="row">
+											<div class="col-md-12">
+												<ul class="list-unstyled list-inline pr-0 txt_grayl font12">
+												<li class=" list-inline-item ">
+												 <a class="txt_org" href="blog_mainpg.html"><span>دسنه مقاله</span></a>
+												</li>
+													<li class=" list-inline-item txt_org">
+												 <span> | </span>
+												</li>
+												<li class=" list-inline-item mr-1">
+												 <span class=""> <i class="fas fa-calendar-alt font10 fa-fw"></i> 14 اسفند 1399 </span>
+												</li>
+												
+											</ul>
+											</div>
+											<div class="col-md-12">
+											 <h1 class="txt_dgray artcl_tit">نام مقاله در این مکان قرار می گیرد</h1>
+											</div>
+										</div>
+										</div>
+							</div>
+						</div>
+					
+						<div class="col-12 txt_dgray col-md-12 pt-5 pb-5 ">
+					<h6 class="txt_dgray font24">عنوان این بخش در این مکان قرار می گیرد
+
+							</h6>
+				</div>
+                        <div class="col-md-12 crsl_txtcol txt_gray pb-4">
+                                    <p>متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									
+									 متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									</p>
+							<p>متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									
+									 متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									</p>
+                                </div>
+						<div class="col-md-12 prj_picmcol pb-5">
+							<div class="row prj_picmrow justify-content-center">
+								<div class="col-md-8 prj_piccol">
+						<img class="artcl_pic" src="img/bg2.jpg">
+					</div>
+				</div>
+			</div>
+                        <div class="col-md-12 crsl_txtcol txt_gray pb-5">
+                                    <p>متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									
+									 متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									</p>
+							<p>متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									
+									 متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									</p>
+                                </div>
+						<div class="col-md-12 prj_picmcol pb-5">
+							<div class="row prj_picmrow justify-content-center">
+								<div class="col-md-8 prj_piccol">
+						<img class="artcl_pic" src="img/bg1.jpg">
+					</div>
+				</div>
+			</div>
+						<div class="col-12 txt_dgray col-md-12 pt-5 pb-5 ">
+					<h6 class="txt_dgray font24">عنوان این بخش در این مکان قرار می گیرد
+
+							</h6>
+				</div>
+                        <div class="col-md-12 crsl_txtcol txt_grayl pb-4">
+                                    <p>متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									
+									 متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									</p>
+							<p>متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									
+									 متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									</p>
+                                </div>
+						<div class="col-md-12 prj_picmcol pb-5">
+							<div class="row prj_picmrow justify-content-center">
+								<div class="col-md-8 prj_piccol">
+						<img class="artcl_pic" src="img/bg5.jpg">
+					</div>
+				</div>
+			</div>
+						   <div class="col-md-12 crsl_txtcol txt_gray pb-5">
+                                    <p>متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									
+									 متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									</p>
+							<p>متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									
+									 متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی 
+									 این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
+									</p>
+                                </div>
+								<div class="col-md-12 prj_picmcol pb-5">
+									<div class="row prj_picmrow justify-content-center">
+										<div class="col-md-8 prj_piccol">
+											<img class="artcl_pic" src="img/bg3.jpg">
+										</div>
+									</div>
+								</div>
+					</div>
+				</div>
+			<div class="col-md-12 art_sharemcol pb-5">
+					<div class="row tags_row">
+						<div class="col-md-12 clr_col pt-4">
+									<ul class="pr-0 txt_grayl list-inline bold list-unstyled">
+										<li class="list-inline-item  tls_li ml-1">
+											<a href="#"  class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
+										</li>
+										<li class="list-inline-item  tls_li ml-1">
+											<a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
+										</li>
+										<li class="list-inline-item  tls_li ml-1">
+											<a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
+										</li>
+										<li class="list-inline-item  tls_li ml-1">
+											<a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
+										</li>
+										
+										<li class="list-inline-item  tls_li ml-1">
+											<a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
+										</li>
+										<li class="list-inline-item  tls_li ml-1">
+											<a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
+										</li>
+										
+										
+									</ul>
+								</div>
+					</div>
+					<div class="row art_sharerow">
+									<div class="col-2 col-md-2">
+										<span class="txt_gray font20 pt-4">همرسانی :</span>
+									</div>
+									<div class="col-1 col-md-1 shareico_col pr-0">
+										<a href="#"><span class="shr_ico"><i class="fab fa-instagram font26"></i></span></a>
+									</div>
+									<div class="col-1 col-md-1 shareico_col pr-0">
+										<a href="#"><span class="shr_ico"><i class="fab fa-telegram font26"></i></span></a>
+									</div>
+									<div class="col-1 col-md-1 shareico_col pr-0">
+										<a href="#"><span class="shr_ico"><i class="fab fa-whatsapp font26"></i></span></a>
+									</div>
+									
+								</div>
+				</div>
+		 </div>
+	 </div>
+	 
+	</div>
+			<div class="row commentpr_row m-0 mt-6">
+				<div class="col-12 col-md-6 prdt_col p-5">
+									
+										<div class="row user_rating_row m-0">
+											<div class="col-12 col-md-12 title_row2 pb-4">
+											<h4 class="txt_dgray bold">دیدگاه خود را بیان کنید</h4>
+										  </div>
+											 <div class="col-md-12 scm_ico p-0">
+	 		 						<div class="row sc_row">
+										<form id="comment_form" action="" method="post" role="form" class="w-100">
+                                       <div class="form-group col-12 col-md-12 ">
+													      <div class="input-group input-group-sm">
+														  <span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
+														  <i class="fa fa-envelope txt_org"></i>
+															  </span>
+														  <input class="form-control srch_cus3 txt_dgray mr-0" type="email" placeholder="ایمیل">
+
+														   </div>
+														</div>
+												      <div class="form-group col-12 col-md-12 ">
+													      <div class="input-group input-group-sm">
+														  <span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
+														  <i class="fa fa-user txt_org"></i>
+															  </span>
+														  <input class="form-control srch_cus3  txt_dgray mr-0" type="email" placeholder="نام و نام خانوادگی">
+
+														   </div>
+														</div>
+														  <div class="form-group col-12 col-md-12 mg">
+													      <textarea class="form-control cus_txtarea" placeholder="پیام" id="exampleFormControlTextarea1" rows="5"></textarea>
+						
+														</div>
+														<div class="col-md-5 offset-md-7 mg">
+																	<div>
+																	<a type="sumbit" href="user_profile.html" class="btn btn-raised btn_cusblgray btn-sm btn_full w-100">ارسال</a>
+																	</div>
+																</div>
+								</form>
+									</div>
+	 		 					</div>
+								   </div>
+									
+
+							</div>
+				<div class="col-12 col-md-6 prdt_col prdt_cmm_col p-5">
+								    <div class="row userscomm_row m-0">
+											<div class="col-12 col-md-12  title_row2 pb-5 ">
+											<h4 class="txt_dgray bold">نظرات کاربران</h4>
+										  </div>
+										  <div class="col-12 col-md-12 users_cmm_col mCustomScrollbar"
+										 data-mcs-theme="minimal-dark">
+														 <div class="row">
+														<div class="col-12 col-md-12">
+												<h6 class="blackgray">نام کاربری </h6>
+										  </div>
+										  
+															 <div class="col-12 col-md-12">
+																<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>	 	
+															 </div> 
+															
+														 </div>
+											   <div class="row">
+														<div class="col-12 col-md-12">
+												<h6 class="blackgray">نام کاربری </h6>
+										  </div>
+										  
+															 <div class="col-12 col-md-12">
+																
+																	<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>		 	
+															 </div> 
+															
+														 </div>	
+											   <div class="row">
+														<div class="col-12 col-md-12">
+												<h6 class="blackgray">نام کاربری </h6>
+										  </div>
+										  
+															 <div class="col-12 col-md-12">
+																
+																	<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>		 	
+															 </div> 
+															
+														 </div>	 
+											   <div class="row">
+														<div class="col-12 col-md-12">
+												<h6 class="blackgray">نام کاربری </h6>
+										  </div>
+										  
+															 <div class="col-12 col-md-12">
+																
+																	<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>		 	
+															 </div> 
+															
+														 </div>	 
+											   <div class="row">
+														<div class="col-12 col-md-12">
+												<h6 class="blackgray">نام کاربری </h6>
+										  </div>
+										  
+															 <div class="col-12 col-md-12">
+																
+																	<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>	 	
+															 </div> 
+															
+														 </div>	 
+														
+															
+											 </div>
+								   </div>
+							</div>
+			</div> 
+	 
+ </section>
+
+<footer class="footer_sec container-fluid">
+	<div class="row qcicons_mrow back_grdrk">
+			<div class="col-md-12 ftr_links_mcol p-4">
+			<div class="row">
+			    <div class="col-md-8 txt_crm font12 m-auto">
+					
+					<p class="">توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد..توضیح مختصری در این مکان قرار می گیرد.. 
+						</p>
+					<p class="">توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد..توضیح مختصری در این مکان قرار می گیرد.. 
+						</p>
+					<p class="">توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد..توضیح مختصری در این مکان قرار می گیرد.. 
+						</p>
+					
+				</div>
+
+			<div class="col-md-4">
+					<div class="row namads_row justify-content-center">
+						<div class="col-md-8 ftlogo_imgcol">
+						   <img class="ftlogo_img" src="img/mokaablg.png">
+						</div>
+				</div>
+				</div>
+			</div>
+			</div>
+
+	</div>
+	<div class="row ftr_linksrow back_crm">
+
+		<div class="col-md-12 ftr_links_mcol">
+			<div class="row">
+			<div class="col-md-8">
+				<div class="row  ft_mincol  pt-4">
+						<div class="col-md-12 ft_linkscol pr-5">
+				<div class="row ft_linksrow">
+				<div class="col-md-4 ft_ulcol pr-0">
+					<ul class="inrpages_footer_li_ul list-unstyled pr-0 bold">
+					<li class="pb-2 txt_dgray font13 text-justify">
+					<span><i class="fas fa-fw font15 fa-map-marker-alt"></i></span><span class="pr-2">دفتر مرکزی :</span>
+						شيراز , اردیبهشت شرقی , برج IT , طبقه هفتم , واحد 73
+					</li>
+					<li class="pb-2 txt_dgray ">
+					<i class="fa fa-phone fa-fw font15"></i> 07132345678
+					</li>
+
+					<li class="pb-2 txt_dgray lato">
+						<i class="fa fa-fw fa-envelope font15  "></i> info@mokaab.com </li>
+						<li class="pt-2 txt_dgray normal">
+
+
+					<div class="row ftsc_row ">
+						<div class="col-md-1 ftsc_col">
+								<a href="#" class="sc_linkitem txt_dgray">
+									<i class="fab fa-fw fa-telegram font20"></i>
+								</a>
+							</div>
+						<div class="col-md-1 ftsc_col">
+								<a href="#" class="sc_linkitem txt_dgray">
+									<i class="fab fa-fw fa-instagram font20"></i>
+								</a>
+							</div>
+						<div class="col-md-1 ftsc_col ">
+								<a href="#" class="sc_linkitem txt_dgray">
+								<i class="fab fa-fw fa-facebook font20"></i></a>
+							</div>
+						<div class="col-md-1 ftsc_col">
+								<a href="#" class="sc_linkitem txt_dgray">
+								<i class="fab fa-fw fa-linkedin font20"></i></a>
+						</div>
+					</div>
+
+						</li>
+
+					</ul>
+				</div>
+				<div class="col-md-4 ft_ulcol pr-0">
+					<ul class="inrpages_footer_li_ul list-unstyled bold">
+								<li class="pb-2"><a class="txt_dgray" href="about_us.html" >درباره ی ما</a></li>
+								<li class="pb-2"><a class="txt_dgray" href="contact_us.html" >تماس با ما</a></li>
+								<li class="pb-2"><a class="txt_dgray" href="faq_page.html" >سوالات متداول</a></li>
+								<li class="pb-2"><a class="txt_dgray" href="faq_page.html">راهنمای خرید</a></li>
+								<li class="pb-2"><a class="txt_dgray" href="faq_page.html">قوانین و مقررات</a></li>
+					</ul>
+				</div>
+					<div class="col-md-4 ft_ulcol pr-0">
+					<ul class="inrpages_footer_li_ul list-unstyled bold">
+								<li class="pb-2"><a class="txt_dgray" href="faq_page.html" >نحوه ثبت سفارش</a></li>
+								<li class="pb-2"><a class="txt_dgray" href="faq_page.html" >رویه ارسال سفارش</a></li>
+								<li class="pb-2"><a class="txt_dgray" href="user_profile.html">پیگیری سفارش</a></li>
+								<li class="pb-2"><a class="txt_dgray" href="faq_page.html">شرایط استفاده</a></li>
+								<li class="pb-2"><a class="txt_dgray" href="faq_page.html">رویه بازگرداندن کالا</a></li>
+					</ul>
+				</div>
+
+				</div>
+			</div>
+
+				</div>
+			</div>
+			<div class="col-md-4">
+					<div class="row namads_row  pt-4">
+						<div class="samandehi_col col-md-4 offset-md-2">
+						   <img class="e_imgst" src="img/samandehi.png">
+						</div>
+						<div class="e_namad_col col-md-6">
+
+							<img class="e_imgst" src="img/namad1.png">
+						</div>
+				</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="row back_org">
+					<div class="col-12 col-md-12 txt_crm p-2">
+				<div class="row ft_cprow justify-content-center text-center">
+				<div class="col-md-6 ft_cpcol font13 ">
+					تمامی حقوق برای سایت کانون رشد خلاق مکعب محفوظ می باشد. Powered by <a title="" class="txt_grdrk " href="http://fanacmp.ir/">FANA</a>
+					</div>
+
+				</div>
+           </div>
+				</div>
+</footer>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main_js.js"></script>
+<script src="js/jquery.mCustomScrollbar.js"></script>		
+<script src="js/owl.carousel.min.js"></script>
+	    <script>
+
+    if (window.innerWidth > 1024) {
+
+        // global vars
+
+        var winWidth = $(window).width();
+
+        var winHeight = $(window).height() -5;
+
+
+
+// set initial div height / width
+
+        $('div.slide_npg_col').css({
+
+            'width': winWidth,
+
+            'height': winHeight,
+
+        });
+
+    }
+    // make sure div stays full width/height on resize
+
+    $(window).resize(function () {
+
+        $('div.slide_npg_col').css({
+
+            'width': winWidth,
+
+            'height': winHeight,
+
+        });
+    });
+
+</script>
+<script> 
+ 	   $(document).ready(function() {
+              var owl = $('.splofs_slcrls');
+              owl.owlCarousel({
+				rtl:true,
+                items:4,
+				nav:true,
+				navText:['<svg class="navsvg_sl_sploff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.005 512.005" style="enable-background:new 0 0 512.005 512.005;" xml:space="preserve"><g><g><path d="M511.189,251.931c-0.533-1.323-1.323-2.496-2.325-3.477L338.219,77.808c-4.16-4.16-10.923-4.16-15.083,0c-4.16,4.16-4.16,10.923,0,15.083l152.448,152.448H10.667C4.779,245.339,0,250.117,0,256.005s4.779,10.667,10.667,10.667h464.917L323.136,419.12c-4.16,4.16-4.16,10.923,0,15.083c2.091,2.091,4.821,3.115,7.552,3.115s5.461-1.045,7.552-3.115l170.645-170.645c0.96-0.981,1.749-2.176,2.304-3.477C512.277,257.477,512.277,254.533,511.189,251.931z"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>','<svg class="navsvg_sl_sploff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.005 512.005" style="enable-background:new 0 0 512.005 512.005;" xml:space="preserve"><g><g><path d="M501.339,245.328H36.421L188.869,92.88c4.16-4.16,4.16-10.923,0-15.083c-4.16-4.16-10.923-4.16-15.083,0L3.141,248.443c-0.981,0.981-1.771,2.176-2.325,3.477c-1.088,2.603-1.088,5.547,0,8.149c0.533,1.323,1.323,2.496,2.325,3.477l170.645,170.645c2.091,2.091,4.821,3.136,7.552,3.136c2.731,0,5.461-1.045,7.552-3.115c4.16-4.16,4.16-10.923,0-15.083L36.421,266.661h464.917c5.888,0,10.667-4.779,10.667-10.667S507.227,245.328,501.339,245.328z"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>'],
+				loop: true,
+                margin:25,
+				 slideBy:1, 
+                autoplay:false,
+                autoplayTimeout: 1000,
+                autoplayHoverPause: false,
+
+              });
+              $('.play').on('click', function() {
+                owl.trigger('play.owl.autoplay', [1000])
+              })
+              $('.stop').on('click', function() {
+                owl.trigger('stop.owl.autoplay')
+              })
+            })
+	</script>
+</body>
+</html>

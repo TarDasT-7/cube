@@ -1,0 +1,11 @@
+.dataTables_length {
+    float: right !important;
+    display: inline-block;
+}
+
+.dataTables_filter {
+    position: relative;
+    display: block;
+    float: left !important;
+    margin: 0 1.25rem 1.25rem 0;
+}

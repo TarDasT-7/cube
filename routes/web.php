@@ -85,6 +85,8 @@ use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProducerController;
+
 
 
 use Trez\RayganSms\Facades\RayganSms;
@@ -141,6 +143,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('role',RoleController::class);
         Route::resource('user',UserController::class);
         Route::patch('user-role-{id}',[UserController::class , 'role'])->name('user_role');
+        Route::resource('producer',ProducerController::class);
 
 
 

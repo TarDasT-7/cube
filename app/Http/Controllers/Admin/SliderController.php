@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderRequest;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class SliderController extends Controller
 {
@@ -38,27 +40,35 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'title'=> "required|max:255",
-            'desc'=> "required",
-            'category'=> "required",
-            'image'=> "required| dimensions:max_width=1650,max_height=550,min_width=1550,min_height=450",
+            'desc'=> "required|max:5000",
+            // 'image'=> "required| dimensions:max_width=1650,max_height=550,min_width=1550,min_height=450",
+            'image'=> "required|max:1500",
         ]);
 
-
         $slider=new Slider();
-        $slider->title=$request->input('title');
         $slider->desc=$request->input('desc');
-        $slider->category=$request->input('category');
+
         if($file=$request->file('image')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
+
+            $extension ='.'.$file->extension();
+            $path='images/wallpapers';
+            
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+
+            $name ='wallpaper-'. time() . $extension;
+            $file->move($path, $name);
             $slider->image = $name;
+
         }
+
         $slider->save();
-        $sliders=Slider::all();
         session()->flash('add','اسلاید با موفقیت ایجاد شد');
-        return redirect('admin/slider')->with('sliders',$sliders);
+        return redirect()->route('slider.index');
 
     }
 
@@ -95,29 +105,36 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'desc'=> "required",
-            'category'=> "required",
+            'desc'=> "required|max:5000",
+            // 'image'=> "required| dimensions:max_width=1650,max_height=550,min_width=1550,min_height=450",
+            'image'=> "max:1500",
         ]);
 
         $slider=Slider::find($id);
-        $slider->title=$request->input('title');
         $slider->desc=$request->input('desc');
-        if($request->input('category')) {
-            $slider->category = $request->input('category');
-        }
+
         if($file=$request->file('image')) {
-            $request->validate([
-                'image'=> " dimensions:max_width=1650,max_height=550,min_width=1550,min_height=450",
-            ]);
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
+
+            $rm='images/wallpapers/'.$slider->image;
+            File::delete($rm);
+
+            $extension ='.'.$file->extension();
+            $path='images/wallpapers';
+            
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+
+            $name ='wallpaper-'. time() . $extension;
+            $file->move($path, $name);
             $slider->image = $name;
+
         }
+
         $slider->save();
-        $sliders=Slider::all();
-        session()->flash('update','اسلاید با موفقیت به روز رسانی شد');
-        return redirect('admin/slider')->with('sliders',$sliders);
+        session()->flash('update','اسلاید با موفقیت ویرایش شد');
+        return redirect()->route('slider.index');
     }
 
     /**
@@ -128,10 +145,12 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
+
         $slider=Slider::find($id);
+        $rm='images/wallpapers/'.$slider->image;
+        File::delete($rm);
         $slider->delete();
-        $sliders=Slider::all();
-        session()->flash('delete','اسلاید با موفقیت حذف شد');
-        return redirect('admin/slider')->with('sliders',$sliders);
+        session()->flash('update','اسلاید با موفقیت حذف شد');
+        return redirect()->route('slider.index');
     }
 }

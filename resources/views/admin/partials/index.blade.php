@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <h1 class="mb-2 text-white" > {{\Auth::user()->name}}  عزیز : به پنل مدیریتی سایت آموزشی مکعب خوش آمدید </h1>                                {{--<p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p>--}}
+                                @auth <h1 class="mb-2 text-white" > {{\Auth::user()->name}}  عزیز : به پنل مدیریتی سایت آموزشی مکعب خوش آمدید </h1> @endauth                               <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p>
                             </div>
                         </div>
                     </div>

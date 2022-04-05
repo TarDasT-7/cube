@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse justify-content-center" id="marinav">
         <ul class="navbar-nav pr-0 shop_nav">
             <li class="nav-item mgm_item">
-                <a class="nav-link font14 bold" href="index.html">خانه</a>
+                <a class="nav-link font14 bold" href="/">خانه</a>
             </li>
             <li class="nav-item dropdown mgm_item" id="wdrpmn">
                 <a class="nav-link wdrp font14 dropdown-toggle bold" data-toggle="dropdown" href="#">دوره های آموزشی</a>

@@ -27,11 +27,15 @@ use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\CourseSubCategoryController;
 use App\Http\Controllers\Admin\AdminAccountingController;
 use App\Http\Controllers\Admin\SendPriceController;
+
+
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\InstallController;
 use App\Http\Controllers\JquaryController;
 use App\Http\Controllers\QcategoryController;
 use App\Http\Controllers\QuestionController;
+
+
 use App\Http\Controllers\Site\CommentController;
 use App\Http\Controllers\Site\ForgetPasswordController;
 use App\Http\Controllers\Site\SiteAdvertisementController;
@@ -48,6 +52,11 @@ use App\Http\Controllers\Site\ProductSubFilterController;
 use App\Http\Controllers\Site\SiteQuestionController;
 use App\Http\Controllers\Site\SiteSliderController;
 use App\Http\Controllers\Site\SiteUserController;
+
+use App\Http\Controllers\Site\IndexPagesController;
+
+
+
 use App\Models\ProductSubCategory;
 use App\Models\Qcategory;
 use Illuminate\Support\Facades\Artisan;
@@ -108,18 +117,21 @@ Route::get('fake',[InstallController::class,'install']);
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-Route::middleware(['auth:sanctum', 'verified'])->get('dashboard', function () {
-    return view('site.partials.index');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('dashboard', function () {
+//     return view('site.partials.index');
+// })->name('dashboard');
 
 
 
 /*admin route*/
 
 Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name('upload');
-Route::group(['middleware'=>'admin'],function (){
+
     Route::prefix('admin/')->group(function (){
+
         Route::get('index',[AdminController::class,'index'])->name('dashboard');
+
+
         Route::resource('question',\App\Http\Controllers\Admin\QuestionController::class);
         Route::resource('questioncategory',QuestionCategoryController::class);
         Route::resource('contactUs',ContactUsController::class);
@@ -162,11 +174,14 @@ Route::group(['middleware'=>'admin'],function (){
         Route::get('paid',[AdminAccountingController::class,'paid'])->name('paid');
         Route::get('unpaid',[AdminAccountingController::class,'unpaid'])->name('unpaid');
     });
-});
 
 
 /*site route*/
-Route::get('/',[Controller::class,'index']);
+Route::get('/',[IndexPagesController::class,'home'])->name('homePage');
+
+
+
+
 Route::resource('sitecourse',SiteCourseController::class);
 Route::resource('account',AccountingController::class);
 Route::get('city',[AccountingController::class,'select'])->name('cities');

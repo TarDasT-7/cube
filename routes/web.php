@@ -78,9 +78,15 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\AttributeController;
-use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\AboutUsController;
+
+
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+
+
 use Trez\RayganSms\Facades\RayganSms;
 
 /*
@@ -131,6 +137,13 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 
         Route::get('index',[AdminController::class,'index'])->name('dashboard');
 
+        Route::resource('slider',SliderController::class);
+        Route::resource('role',RoleController::class);
+        Route::resource('user',UserController::class);
+        Route::patch('user-role-{id}',[UserController::class , 'role'])->name('user_role');
+
+
+
 
         Route::resource('question',\App\Http\Controllers\Admin\QuestionController::class);
         Route::resource('questioncategory',QuestionCategoryController::class);
@@ -155,7 +168,6 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('podcategory',PodCastCategoryController::class);
         Route::resource('podaudio',PodCastAudioController::class);
         Route::resource('speaker',SpeakerController::class);
-        Route::resource('slider',SliderController::class);
         Route::resource('product',ProductController::class);
         Route::get('productselect',[ProductController::class,'select'])->name('product_selects');
         Route::get('productteacher',[ProductController::class,'teacher'])->name('product_teachers');

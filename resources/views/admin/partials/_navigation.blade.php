@@ -119,13 +119,13 @@
                 
                 <ul class="menu-content">
                     <li>
-                        <a href="{{route('product_category.index')}}">
+                        <a href="{{route('role.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">سمت ها</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('product_teacher.index')}}">
+                        <a href="{{route('user.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">کاربران</span>
                         </a>

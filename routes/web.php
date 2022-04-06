@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PadCastController;
 use App\Http\Controllers\Admin\PodCastAudioController;
 use App\Http\Controllers\Admin\PodCastCategoryController;
-use App\Http\Controllers\Admin\PodCastController;
+// use App\Http\Controllers\Admin\PodCastController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\ProductTeacherController;
@@ -88,6 +88,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\FreeVideoController;
 use App\Http\Controllers\Admin\FreeVideoFileController;
+use App\Http\Controllers\Admin\PodcastController;
+
 
 
 
@@ -153,6 +155,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('free-video',FreeVideoController::class);
         Route::resource('free-file',FreeVideoFileController::class);
         Route::get('freFl-VI-{id}',[FreeVideoFileController::class  , 'findVideo'])->name('free-file-index');
+        Route::resource('podcast',PodcastController::class);
 
 
 
@@ -177,7 +180,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('member',MemberController::class);
         Route::resource('contactUs',ContactUsController::class);
         Route::resource('footer',FooterController::class);
-        Route::resource('podcast',PodCastController::class);
+        // Route::resource('podcast',PodCastController::class);
         Route::resource('podcategory',PodCastCategoryController::class);
         Route::resource('podaudio',PodCastAudioController::class);
         Route::resource('speaker',SpeakerController::class);

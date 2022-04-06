@@ -79,7 +79,6 @@ class UserController extends Controller
             $name ='usr-'. time() . $extension;
             $file->move($path, $name);
             $user->profile_photo_path = $name;
-
         }
 
         $user->save();

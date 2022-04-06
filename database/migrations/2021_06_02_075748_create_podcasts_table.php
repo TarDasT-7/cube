@@ -17,10 +17,8 @@ class CreatePodcastsTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('title');
             $table->string('image');
-            $table->longText('desc');
-            $table->integer('speaker_id')->unsigned();
+            $table->bigInteger('category_id');
             $table->timestamps();
-            $table->foreign('speaker_id')->references('id')->on('speakers');
         });
     }
 

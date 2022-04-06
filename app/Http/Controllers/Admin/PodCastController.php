@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Podcast;
-use App\Models\PodCategory;
-use App\Models\Speaker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use App\Models\PodAudio;
+use App\Models\Podcast;
+use App\Models\Category;
 
-class PodCastController extends Controller
+
+
+
+class PodcastController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +22,8 @@ class PodCastController extends Controller
     public function index()
     {
         $podcasts = Podcast::all();
-        return view('admin.pages.podcast.indexpodcast')->with('podcasts', $podcasts);
+        $categories = Category::where('related' , 'پادکست')->get();
+        return view('admin.pages.ourProduct.podcast.index', compact(['podcasts','categories']));
     }
 
     /**
@@ -31,44 +36,53 @@ class PodCastController extends Controller
         $categories = PodCategory::all();
         $speakers = Speaker::all();
         return view('admin.pages.podcast.craetepodcast')->with('categories', $categories)->with('speakers', $speakers);
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'description'=> "required",
+            'title'=> "required|max:250",
             'category'=> "required",
-            'speaker'=> "required|numeric",
-            'image'=> "required| dimensions:max_width=700,max_height=700,min_width=600,min_height=600",
+            // 'image'=> "required| dimensions:max_width=700,max_height=700,min_width=600,min_height=600",
+            'image'=> "required|max:1000",
         ]);
+
         $podcast = new Podcast();
         $podcast->title = $request->input('title');
-        $podcast->speaker_id = $request->input('speaker');
+        $podcast->category_id = $request->category;
+        
         if($file=$request->file('image')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-            $podcast->image = $name;
-        }
-        $podcast->desc = $request->input('description');
-        $podcast->save();
-        $podcast->pod_categories()->attach($request->input('category'));
-        $podcasts = Podcast::all();
-        session()->flash('add','پادکست با موفقیت معرفی شد');
-        return redirect('admin/podcast')->with('podcasts', $podcasts);
 
+            $extension ='.'.$file->extension();
+            $path='images/podcasts';
+            
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+
+            $name ='podcast-'. time() . $extension;
+            $file->move($path, $name);
+            $podcast->image = $name;
+
+        }
+
+        $podcast->save();
+        session()->flash('add','پادکست با موفقیت معرفی شد');
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -79,7 +93,7 @@ class PodCastController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -88,59 +102,77 @@ class PodCastController extends Controller
         $categories = PodCategory::all();
         $speakers = Speaker::all();
         return view('admin.pages.podcast.editpodcast')->with('categories', $categories)->with('podcast', $podcast)->with('speakers', $speakers);
+  
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
             'title'=> "required|max:255",
-            'description'=> "required",
             'category'=> "required",
-            'speaker'=> "required|numeric",
+            'image'=> "max:1000",
         ]);
+
         $podcast = Podcast::find($id);
         $podcast->title = $request->input('title');
-        if ($request->input('speaker')) {
-            $podcast->speaker_id = $request->input('speaker');
-        }
+        $podcast->category_id = $request->category;
+        
         if($file=$request->file('image')) {
-            $request->validate([
-                'image'=> "required| dimensions:max_width=700,max_height=700,min_width=600,min_height=600",
-            ]);
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
+
+            $rm="images/podcasts/$podcast->image";
+            File::delete($rm);
+
+            $extension ='.'.$file->extension();
+            $path='images/podcasts';
+            
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+
+            $name ='podcast-'. time() . $extension;
+            $file->move($path, $name);
             $podcast->image = $name;
+
         }
-        $podcast->desc = $request->input('description');
+
         $podcast->save();
-        if ($request->input('category')) {
-            $podcast->pod_categories()->sync($request->input('category'));
-        }
-        $podcasts = Podcast::all();
-        session()->flash('update','پادکست با موفقیت به روزرسانی شد');
-        return redirect('admin/podcast')->with('podcasts', $podcasts);
+        session()->flash('add','پادکست با موفقیت ویرایش شد');
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $podcast = Podcast::find($id);
-        $podcast->pod_categories()->detach();
+
+        $rm="images/podcasts/$podcast->image";
+        File::delete($rm);
+
+        foreach($podcast->files as $file)
+        {
+            $rm="images/podcasts/$podcast->id/$file->image";
+            File::delete($rm);
+            $rm="sounds/podcasts/$podcast->id/$podcast->sound";
+            File::delete($rm);
+            $file->delete();
+        }
+
         $podcast->delete();
-        $courses = Podcast::all();
-        session()->flash('delete','پادکست با موفقیت حذف شد');
-        return redirect('admin/podcast')->with('courses', $courses);
+
+        session()->flash('add','پادکست با موفقیت حذف شد');
+        return redirect()->back();
     }
 }

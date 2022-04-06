@@ -9,17 +9,17 @@ class Blog extends Model
 {
     use HasFactory;
 
-    public function blog_categories()
+    public function category()
     {
-        return $this->belongsToMany(BlogCategory::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function author()
+    public function producer()
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(Producer::class);
     }
-    public function blog_views()
+    public function articles()
     {
-        return $this->hasMany(BlogView::class);
+        return $this->hasMany(Article::class);
     }
 }

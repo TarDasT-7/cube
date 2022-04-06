@@ -208,7 +208,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('product_teacher.index')}}">
+                        <a href="{{route('blog.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">بلاگ ها</span>
                         </a>

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Author;
+use Illuminate\Support\Facades\File;
+use App\Models\Producer;
 use App\Models\Blog;
-use App\Models\BlogCategory;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class Blogcontroller extends Controller
@@ -18,8 +19,9 @@ class Blogcontroller extends Controller
     public function index()
     {
         $blogs=Blog::all();
-        $authors=Author::all();
-        return view('admin.pages.blog.indexblog')->with('blogs',$blogs)->with('authors',$authors);
+        $producers=Producer::where('blog' , 1)->get();
+        $categories=Category::where('related' , 'بلاگ')->get();
+        return view('admin.pages.ourProduct.blog.index', compact(['blogs','categories' , 'producers']));
     }
 
     /**
@@ -43,26 +45,41 @@ class Blogcontroller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'author'=> "required|numeric",
-            'description'=> "required",
+            'title'=> "required|max:250",
+            'related'=> "required|max:250",
             'category'=> "required",
-            'image'=> "required| dimensions:max_width=680,max_height=470,min_width=580,min_height=370",
+            'producer'=> "required|numeric",
+            'description'=> "required",
+            // 'image'=> "required| dimensions:max_width=680,max_height=470,min_width=580,min_height=370",
+            'image'=> "required|max:1000",
         ]);
+
         $blog=new Blog();
         $blog->title=$request->input('title');
-        $blog->author_id=$request->input('author');
+        $blog->related=$request->input('related');
+        $blog->producer_id=$request->input('producer');
+        $blog->category_id=$request->input('category');
+        $blog->desc=$request->input('description');
+
+
         if($file=$request->file('image')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
+
+            $extension ='.'.$file->extension();
+            $path='images/blogs';
+            
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+
+            $name ='blog-'. time() . $extension;
+            $file->move($path, $name);
             $blog->image = $name;
         }
-        $blog->desc=$request->input('description');
+
         $blog->save();
-        $blog->blog_categories()->attach($request->input('category'));
-        $blogs=Blog::all();
         session()->flash('add','مقاله با موفقیت معرفی شد');
-        return redirect('admin/blog')->with('blogs',$blogs);
+        return redirect()->back();
 
     }
 
@@ -101,34 +118,44 @@ class Blogcontroller extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'author'=> "required|numeric",
-            'description'=> "required",
+            'title'=> "required|max:250",
+            'related'=> "required|max:250",
             'category'=> "required",
+            'producer'=> "required|numeric",
+            'description'=> "required",
+            // 'image'=> "required| dimensions:max_width=680,max_height=470,min_width=580,min_height=370",
+            'image'=> "max:1000",
         ]);
+
         $blog=Blog::find($id);
-        $blog->title = $request->input('title');
-        $request->validate([
-            'image'=> "required| dimensions:max_width=680,max_height=470,min_width=580,min_height=370",
-        ]);
-        if($request->input('author')) {
-            $blog->author_id = $request->input('author');
-        }
+        $blog->title=$request->input('title');
+        $blog->related=$request->input('related');
+        $blog->producer_id=$request->input('producer');
+        $blog->category_id=$request->input('category');
+        $blog->desc=$request->input('description');
+
+
         if($file=$request->file('image')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
+
+            $rm="images/blogs/$blog->image";
+            File::delete($rm);
+
+            $extension ='.'.$file->extension();
+            $path='images/blogs';
+            
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+
+            $name ='blog-'. time() . $extension;
+            $file->move($path, $name);
             $blog->image = $name;
         }
-        if($request->input('description')) {
-            $blog->desc = $request->input('description');
-        }
+
         $blog->save();
-        if ($request->input('category')) {
-            $blog->blog_categories()->sync($request->input('category'));
-        }
-        $blogs=Blog::all();
-        session()->flash('update','مقاله با موفقیت به روزرسانی شد');
-        return redirect('admin/blog')->with('blogs',$blogs);
+        session()->flash('add','مقاله با موفقیت ویرایش شد');
+        return redirect()->back();
     }
 
     /**
@@ -140,10 +167,20 @@ class Blogcontroller extends Controller
     public function destroy($id)
     {
         $blog=Blog::find($id);
-        $blog->blog_categories()->detach();
+        
+        $rm="images/blogs/$blog->image";
+        File::delete($rm);
+
+        foreach($blog->articles as $article)
+        {
+            $rm="images/blogs/$blog->id/$blog->image";
+            File::delete($rm);
+            $article->delete();
+        
+        }
+
         $blog->delete();
-        $blogs=Blog::all();
         session()->flash('delete','مقاله با موفقیت حذف شد');
-        return redirect('admin/blog')->with('blogs',$blogs);
+        return redirect()->back();
     }
 }

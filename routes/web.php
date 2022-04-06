@@ -169,6 +169,8 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::patch('podcast-edit-item-{id}',[PodcastController::class , 'updateItem'])->name('update_podItem');
         Route::delete('podcast-destroy-item-{id}',[PodcastController::class , 'destroyItem'])->name('destroy_podItem');
 
+        Route::resource('blog',Blogcontroller::class);
+
 
 
 
@@ -184,7 +186,6 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('course_category',CourseCategoryController::class);
         Route::resource('course_sub_category',CourseSubCategoryController::class);
         Route::resource('teacher',TeacherController::class);
-        Route::resource('blog',Blogcontroller::class);
         Route::resource('blogcategory',BlogCategoryController::class);
         Route::resource('author',AuthorController::class);
         Route::resource('coursevideo',CourseVideoController::class);

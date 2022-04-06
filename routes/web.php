@@ -86,6 +86,10 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProducerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\FreeVideoController;
+use App\Http\Controllers\Admin\FreeVideoFileController;
+
+
 
 
 
@@ -146,6 +150,10 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('producer',ProducerController::class);
         Route::resource('category',CategoryController::class);
         Route::resource('sub',SubCategoryController::class);
+        Route::resource('free-video',FreeVideoController::class);
+        Route::resource('free-file',FreeVideoFileController::class);
+        Route::get('freFl-VI-{id}',[FreeVideoFileController::class  , 'findVideo'])->name('free-file-index');
+
 
 
 

@@ -179,12 +179,20 @@
                 
                 <ul class="menu-content">
                     <li>
+                        <a href="{{route('free-video.index')}}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="Register">آموزش های رایگان</span>
+                        </a>
+                    </li>
+                    
+                    <li>
                         <a href="{{route('product_category.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">محصولات</span>
                         </a>
                     </li>
                     
+
                     <li>
                         <a href="{{route('product_category.index')}}">
                             <i class="feather icon-circle"></i>

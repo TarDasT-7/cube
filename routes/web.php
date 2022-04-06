@@ -146,16 +146,28 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::get('index',[AdminController::class,'index'])->name('dashboard');
 
         Route::resource('slider',SliderController::class);
+
         Route::resource('role',RoleController::class);
+
         Route::resource('user',UserController::class);
         Route::patch('user-role-{id}',[UserController::class , 'role'])->name('user_role');
+
         Route::resource('producer',ProducerController::class);
+
         Route::resource('category',CategoryController::class);
         Route::resource('sub',SubCategoryController::class);
+
         Route::resource('free-video',FreeVideoController::class);
         Route::resource('free-file',FreeVideoFileController::class);
         Route::get('freFl-VI-{id}',[FreeVideoFileController::class  , 'findVideo'])->name('free-file-index');
+
         Route::resource('podcast',PodcastController::class);
+        Route::get('podcast-part-{id}',[PodcastController::class , 'items'])->name('podcast_part');
+        Route::get('podcast-create-item-{id}',[PodcastController::class , 'createItem'])->name('create_podItem');
+        Route::get('podcast-edit-item-{id}',[PodcastController::class , 'editItem'])->name('edit_podItem');
+        Route::post('podcast-create-item',[PodcastController::class , 'storeItem'])->name('store_podItem');
+        Route::patch('podcast-edit-item-{id}',[PodcastController::class , 'updateItem'])->name('update_podItem');
+        Route::delete('podcast-destroy-item-{id}',[PodcastController::class , 'destroyItem'])->name('destroy_podItem');
 
 
 

@@ -15,13 +15,15 @@ class CreatePodAudioTable extends Migration
     {
         Schema::create('pod_audio', function (Blueprint $table) {
             $table->increments('id')->unsigned();
+            $table->tinyInteger('number');
             $table->string('title');
-            $table->string('file');
-            $table->integer('podcast_id')->unsigned();
-            $table->string('podcast_time');
-            $table->integer('show_id');
+            $table->string('name');
+            $table->string('image');
+            $table->string('sound');
+            $table->bigInteger('podcast_id');
+            $table->bigInteger('producer_id');
+            $table->text('description');
             $table->timestamps();
-            $table->foreign('podcast_id')->references('id')->on('podcasts')->onDelete('cascade');
         });
     }
 

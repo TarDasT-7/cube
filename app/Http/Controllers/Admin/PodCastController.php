@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\PodAudio;
+use App\Models\Producer;
 use App\Models\Podcast;
 use App\Models\Category;
 
@@ -26,17 +27,25 @@ class PodcastController extends Controller
         return view('admin.pages.ourProduct.podcast.index', compact(['podcasts','categories']));
     }
 
+    public function items($id)
+    {
+        $podcast = Podcast::find($id);
+        $parts=$podcast->files;
+        $categories = Category::where('related' , 'پادکست')->get();
+        return view('admin.pages.ourProduct.podcast.parts', compact(['podcast' , 'categories' , 'parts']));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createItem(Request $request)
     {
-        $categories = PodCategory::all();
-        $speakers = Speaker::all();
-        return view('admin.pages.podcast.craetepodcast')->with('categories', $categories)->with('speakers', $speakers);
-
+        $podcast = Podcast::find($request->id);
+        $producers=Producer::where('podcast',1)->get();
+        $rel ='create';
+        return view('admin.pages.ourProduct.podcast.createOrUpdatePart' , compact(['podcast','producers','rel']));
     }
 
     /**
@@ -79,6 +88,61 @@ class PodcastController extends Controller
         return redirect()->back();
     }
 
+    public function storeItem(Request $request)
+    {
+        $request->validate([
+            'title'=> "required|max:250",
+            'name'=> "required|max:250",
+            'producer'=> "required",
+            'number'=> "required",
+            'id'=> "required",
+            'long_description'=> "required|max:5000",
+            'sound'=> "required|max:10000",
+            'image'=> "required|max:1000",
+        ]);
+
+        $part=new PodAudio();
+        $part->title = $request->title;
+        $part->name = $request->name;
+        $part->producer_id = $request->producer;
+        $part->number = $request->number;
+        $part->podcast_id = $request->id;
+        $part->description = $request->long_description;
+
+        if($image = $request->file('image'))
+        {
+
+            $path="images/podcasts/$request->id";
+            $extension ='.'.$image->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='pod-cover-'. time() . $extension;
+            $image->move($path, $name);
+            $part->image=$name;
+        }
+
+        if($demo = $request->file('sound'))
+        {
+
+            $path="sounds/podcasts/$request->id";
+            $extension ='.'.$demo->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='pod-cast-'. time() . $extension;
+            $demo->move($path, $name);
+            $part->sound=$name;
+        }
+
+        $part->save();
+
+        session()->flash('add','پادکست با موفقیت معرفی شد');
+        return redirect()->route('podcast_part',$request->id);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -104,6 +168,15 @@ class PodcastController extends Controller
         return view('admin.pages.podcast.editpodcast')->with('categories', $categories)->with('podcast', $podcast)->with('speakers', $speakers);
   
     }
+
+    public function editItem($id)
+    {
+        $item=PodAudio::find($id);
+        $producers=Producer::where('podcast',1)->get();
+        $rel ='update';
+        return view('admin.pages.ourProduct.podcast.createOrUpdatePart' , compact(['item','producers','rel']));
+    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -148,6 +221,63 @@ class PodcastController extends Controller
         return redirect()->back();
     }
 
+    public function updateItem(Request $request, $id)
+    {
+        $request->validate([
+            'title'=> "required|max:250",
+            'name'=> "required|max:250",
+            'producer'=> "required",
+            'number'=> "required",
+            'long_description'=> "required|max:5000",
+            'sound'=> "|max:10000",
+            'image'=> "|max:1000",
+        ]);
+
+        $part=PodAudio::find($id);
+        $part->title = $request->title;
+        $part->name = $request->name;
+        $part->producer_id = $request->producer;
+        $part->number = $request->number;
+        $part->description = $request->long_description;
+        $id=$part->podcast_id;
+        if($image = $request->file('image'))
+        {
+            $rm="images/podcasts/$id/$part->image";
+            File::delete($rm);
+
+            $path="images/podcasts/$id";
+            $extension ='.'.$image->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='pod-cover-'. time() . $extension;
+            $image->move($path, $name);
+            $part->image=$name;
+        }
+
+        if($demo = $request->file('sound'))
+        {
+            $rm="sounds/podcasts/$id/$part->sound";
+            File::delete($rm);
+
+            $path="sounds/podcasts/$id";
+            $extension ='.'.$demo->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='pod-cast-'. time() . $extension;
+            $demo->move($path, $name);
+            $part->sound=$name;
+        }
+
+        $part->save();
+
+        session()->flash('add','پادکست با موفقیت معرفی شد');
+        return redirect()->route('podcast_part',$id);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -171,6 +301,21 @@ class PodcastController extends Controller
         }
 
         $podcast->delete();
+
+        session()->flash('add','پادکست با موفقیت حذف شد');
+        return redirect()->back();
+    }
+
+    public function destroyItem($id)
+    {
+        $part=PodAudio::find($id);
+        $pid=$part->podcast_id;
+        $rm="images/podcasts/$pid/$part->image";
+        File::delete($rm);
+        $rm="sounds/podcasts/$pid/$part->sound";
+        File::delete($rm);
+        
+        $part->delete();
 
         session()->flash('add','پادکست با موفقیت حذف شد');
         return redirect()->back();

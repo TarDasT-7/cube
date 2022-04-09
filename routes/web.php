@@ -178,6 +178,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::delete('blog-destroy-item-{id}',[Blogcontroller::class , 'destroyItem'])->name('destroy_blogItem');
 
         Route::resource('aboutUs',AboutUsController::class);
+        Route::resource('contactUs',ContactUsController::class);
 
 
 
@@ -192,7 +193,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 
 
 
-        
+
 
 
         Route::resource('question',\App\Http\Controllers\Admin\QuestionController::class);
@@ -210,7 +211,6 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('author',AuthorController::class);
         Route::resource('coursevideo',CourseVideoController::class);
         Route::resource('member',MemberController::class);
-        Route::resource('contactUs',ContactUsController::class);
         Route::resource('footer',FooterController::class);
         // Route::resource('podcast',PodCastController::class);
         Route::resource('podcategory',PodCastCategoryController::class);

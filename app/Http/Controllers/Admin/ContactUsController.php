@@ -17,7 +17,15 @@ class ContactUsController extends Controller
     public function index()
     {
         $contact=Contact_Us::all()->last();
-        return view('admin.pages.contactUs.indexcontactus')->with('contact',$contact);
+        if(!is_null($contact))
+        {
+            $rel = 'update';
+
+        }else
+        {
+            $rel = 'create';
+        }
+        return view('admin.pages.cubeTeam.contactUs.createOrUpdate',compact(['contact' , 'rel']));
     }
 
     /**
@@ -39,16 +47,17 @@ class ContactUsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'address'=> "required",
+            'title'=> "required|max:250",
+            'address'=> "required|max:1000",
             'location'=> "required",
-            'facebook'=> "required",
-            'linkedin'=> "required",
-            'instagram'=> "required",
-            'telegram'=> "required",
+            'facebook'=> "max:250",
+            'linkedin'=> "max:250",
+            'instagram'=> "max:250",
+            'telegram'=> "max:250",
             'phone'=> "required|numeric",
             'email'=> "required|email",
         ]);
+        
         $contact=new Contact_Us();
         $contact->title=$request->input('title');
         $contact->phone=$request->input('phone');
@@ -60,9 +69,8 @@ class ContactUsController extends Controller
         $contact->instagram=$request->input('instagram');
         $contact->telegram=$request->input('telegram');
         $contact->save();
-        $contact=Contact_Us::all()->last();
-        session()->flash('add','توضیحات ارتباط با ما با موفقیت ایجاد شد');
-        return redirect('admin/contactUs')->with('contact',$contact);
+        session()->flash('add',' ارتباط با ما با موفقیت ایجاد شد');
+        return redirect()->back();
     }
 
     /**
@@ -73,8 +81,6 @@ class ContactUsController extends Controller
      */
     public function show($id)
     {
-        $comments=Comment::all()->where('category','contact');
-        return view('admin.pages.contact_message.contact_message')->with('comments',$comments);
     }
 
     /**
@@ -85,8 +91,6 @@ class ContactUsController extends Controller
      */
     public function edit($id)
     {
-        $contact=Contact_Us::find($id);
-        return view('admin.pages.contactUs.editcontactus')->with('contact',$contact);
     }
 
     /**
@@ -99,16 +103,17 @@ class ContactUsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'address'=> "required",
+            'title'=> "required|max:250",
+            'address'=> "required|max:1000",
             'location'=> "required",
-            'facebook'=> "required",
-            'linkedin'=> "required",
-            'instagram'=> "required",
-            'telegram'=> "required",
+            'facebook'=> "max:250",
+            'linkedin'=> "max:250",
+            'instagram'=> "max:250",
+            'telegram'=> "max:250",
             'phone'=> "required|numeric",
             'email'=> "required|email",
         ]);
+        
         $contact=Contact_Us::find($id);
         $contact->title=$request->input('title');
         $contact->phone=$request->input('phone');
@@ -120,9 +125,8 @@ class ContactUsController extends Controller
         $contact->instagram=$request->input('instagram');
         $contact->telegram=$request->input('telegram');
         $contact->save();
-        $contact=Contact_Us::all()->last();
-        session()->flash('add','توضیحات ارتباط با ما با موفقیت به روزرسانی شد');
-        return redirect('admin/contactUs')->with('contact',$contact);
+        session()->flash('add',' ارتباط با ما با موفقیت ویرایش شد');
+        return redirect()->back();
     }
 
     /**

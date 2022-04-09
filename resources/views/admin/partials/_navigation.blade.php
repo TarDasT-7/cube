@@ -235,7 +235,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('product_category.index')}}">
+                        <a href="{{route('contactUs.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">ارتباط با ما</span>
                         </a>

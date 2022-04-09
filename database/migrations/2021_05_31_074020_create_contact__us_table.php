@@ -17,9 +17,13 @@ class CreateContactUsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('phone');
-            $table->string('address');
+            $table->text('address' , 1000);
             $table->string('email');
-            $table->longText('location');
+            $table->text('location' , 10000);
+            $table->string('facebook')->nulable();
+            $table->string('instagram')->nulable();
+            $table->string('linkedin')->nulable();
+            $table->string('telegram')->nulable();
             $table->timestamps();
         });
     }

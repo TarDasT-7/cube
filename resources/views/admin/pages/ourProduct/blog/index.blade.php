@@ -181,7 +181,7 @@
                                     <td class="text-center">{{$blog->related}}</td>
                                     <td class="text-center">{{$blog->producer->first_name}} {{$blog->producer->last_name}}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-info mb-1 text-white" href="{{route('podcast_part' , $blog->id)}}">مقالات</a><br>
+                                        <a class="btn btn-info mb-1 text-white" href="{{route('blog_article' , $blog->id)}}">مقالات</a><br>
                                         <a class="btn btn-warning mb-1 text-white"  data-toggle="modal" data-target="#update-{{$key}}">ویرایش</a>
                                         <form method="post" action="{{route('blog.destroy', $blog->id)}}">
                                             @csrf

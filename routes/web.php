@@ -170,6 +170,12 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::delete('podcast-destroy-item-{id}',[PodcastController::class , 'destroyItem'])->name('destroy_podItem');
 
         Route::resource('blog',Blogcontroller::class);
+        Route::get('blog-article-{id}',[Blogcontroller::class , 'article'])->name('blog_article');
+        Route::get('blog-create-item-{id}',[Blogcontroller::class , 'createItem'])->name('create_blogItem');
+        Route::get('blog-edit-item-{id}',[Blogcontroller::class , 'editItem'])->name('edit_blogItem');
+        Route::post('blog-create-item',[Blogcontroller::class , 'storeItem'])->name('store_blogItem');
+        Route::patch('blog-edit-item-{id}',[Blogcontroller::class , 'updateItem'])->name('update_blogItem');
+        Route::delete('blog-destroy-item-{id}',[Blogcontroller::class , 'destroyItem'])->name('destroy_blogItem');
 
 
 

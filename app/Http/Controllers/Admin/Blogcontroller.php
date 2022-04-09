@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Models\Producer;
 use App\Models\Blog;
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,14 @@ class Blogcontroller extends Controller
         return view('admin.pages.ourProduct.blog.index', compact(['blogs','categories' , 'producers']));
     }
 
+    public function article($id)
+    {
+        $blog=Blog::find($id);
+        $articles=$blog->articles;
+        return view('admin.pages.ourProduct.blog.parts', compact(['blog' , 'articles']));
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -34,6 +43,14 @@ class Blogcontroller extends Controller
         $categories=BlogCategory::all();
         $authors=Author::all();
         return view('admin.pages.blog.craeteblog')->with('categories',$categories)->with('authors',$authors);
+    }
+
+    public function createItem(Request $request)
+    {
+        $blog = Blog::find($request->id);
+        $producers=Producer::where('blog',1)->get();
+        $rel ='create';
+        return view('admin.pages.ourProduct.blog.createOrUpdatePart' , compact(['blog','producers','rel']));
     }
 
     /**
@@ -51,7 +68,7 @@ class Blogcontroller extends Controller
             'producer'=> "required|numeric",
             'description'=> "required",
             // 'image'=> "required| dimensions:max_width=680,max_height=470,min_width=580,min_height=370",
-            'image'=> "required|max:1000",
+            'image'=> "required|max:1500",
         ]);
 
         $blog=new Blog();
@@ -80,7 +97,40 @@ class Blogcontroller extends Controller
         $blog->save();
         session()->flash('add','مقاله با موفقیت معرفی شد');
         return redirect()->back();
+    }
 
+    public function storeItem(Request $request)
+    {
+        $request->validate([
+            'title'=> "max:250",
+            'id'=> "required",
+            'description'=> "required|max:8000",
+            'image'=> "max:1500",
+        ]);
+
+        $part=new Article();
+        $part->title = $request->title;
+        $part->blog_id = $request->id;
+        $part->desc = $request->description;
+
+
+        if($image = $request->file('image'))
+        {
+            $path="images/blogs/$request->id";
+            $extension ='.'.$image->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='blog-img-'. time() . $extension;
+            $image->move($path, $name);
+            $part->image=$name;
+        }
+
+        $part->save();
+
+        session()->flash('add','مقاله با موفقیت معرفی شد');
+        return redirect()->route('blog_article',$request->id);
     }
 
     /**
@@ -108,6 +158,13 @@ class Blogcontroller extends Controller
         return view('admin.pages.blog.editblog')->with('categories',$categories)->with('blog',$blog)->with('authors',$authors);
     }
 
+    public function editItem($id)
+    {
+        $item=Article::find($id);
+        $rel ='update';
+        return view('admin.pages.ourProduct.blog.createOrUpdatePart' , compact(['item','rel']));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -124,7 +181,7 @@ class Blogcontroller extends Controller
             'producer'=> "required|numeric",
             'description'=> "required",
             // 'image'=> "required| dimensions:max_width=680,max_height=470,min_width=580,min_height=370",
-            'image'=> "max:1000",
+            'image'=> "max:1500",
         ]);
 
         $blog=Blog::find($id);
@@ -158,6 +215,53 @@ class Blogcontroller extends Controller
         return redirect()->back();
     }
 
+
+    public function updateItem(Request $request, $id)
+    {
+        $request->validate([
+            'title'=> "max:250",
+            'description'=> "required|max:8000",
+            'image'=> "max:1500",
+        ]);
+
+        $part=Article::find($id);
+
+        $part->title = $request->title;
+        $part->desc = $request->description;
+
+        $id=$part->blog_id;
+        
+        if($request->rm_image)
+        {
+            $rm="images/blogs/$id/$part->image";
+            File::delete($rm);
+            $part->image=null;
+        }
+        else
+        {
+            if($image = $request->file('image'))
+            {
+                $rm="images/blogs/$id/$part->image";
+                File::delete($rm);
+    
+                $path="images/blogs/$id";
+                $extension ='.'.$image->extension();
+                if(!file_exists($path))
+                {
+                    File::makeDirectory($path , 0775 , true);
+                }
+                $name ='blog-img-'. time() . $extension;
+                $image->move($path, $name);
+                $part->image=$name;
+            }
+        }
+
+        $part->save();
+
+        session()->flash('add','مقاله با موفقیت معرفی شد');
+        return redirect()->route('blog_article',$id);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -181,6 +285,19 @@ class Blogcontroller extends Controller
 
         $blog->delete();
         session()->flash('delete','مقاله با موفقیت حذف شد');
+        return redirect()->back();
+    }
+
+    public function destroyItem($id)
+    {
+        $part=Article::find($id);
+        $pid=$part->blog_id;
+        $rm="images/blogs/$pid/$part->image";
+        File::delete($rm);
+        
+        $part->delete();
+
+        session()->flash('add','مقاله با موفقیت حذف شد');
         return redirect()->back();
     }
 }

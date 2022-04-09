@@ -19,7 +19,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ایجاد پادکست جدید</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">ایجاد مقاله جدید</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -47,9 +47,9 @@
                             <fieldset class="form-group">
                                 <label >دسته بندی</label>
                                 <select class="select2-bg form-control" name="category"  id="category" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
-                                    @foreach($categories as $category)
+                                    {{-- @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->title}}</option>
-                                    @endforeach
+                                    @endforeach --}}
                                 </select>
                             </fieldset>
                         </div>
@@ -102,7 +102,7 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title text-center">مدیریت پادکست : {{$podcast->title}}</h4>
+                    <h4 class="card-title text-center">مدیریت بلاگ : {{$blog->title}}</h4>
                 </div>
 
                 <section id="relief-buttons">
@@ -115,8 +115,8 @@
                                             <div class="col-10">
                                             </div>
                                             <div class="col-2">
-                                                <a href="{{route('create_podItem' , $podcast->id)}}" class="btn btn-success mr-1 mb-1">
-                                                    فایل جدید
+                                                <a href="{{route('create_blogItem' , $blog->id)}}" class="btn btn-success mr-1 mb-1">
+                                                    مقاله جدید
                                                 </a>
                                                     
                                             </div>
@@ -137,22 +137,31 @@
                             <tr >
                                 <th scope="col" class="text-center">تصویر</th>
                                 <th scope="col" class="text-center">عنوان</th>
-                                <th scope="col" class="text-center">تولید کننده</th>
-                                <th scope="col" class="text-center">شماره قسمت</th>
+                                <th scope="col" class="text-center">متن</th>
                                 <th scope="col" class="text-center">عملیات</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            @foreach($parts as $key=>$part)
+                            @foreach($articles as $key=>$part)
                                  <tr>
-                                    <td style="text-align: center"><img width="150" src="{{"/images/podcasts/$podcast->id/".$part->image}}" ></td>
-                                    <td class="text-center">{{$part->title}}</td>
-                                    <td class="text-center">{{$part->producer->first_name}} {{$part->producer->last_name}}</td>
-                                    <td class="text-center">{{$part->number}}</td>
+                                    @if($part->image)
+                                        <td style="text-align: center"><img width="150" src="{{"/images/blogs/$blog->id/".$part->image}}" ></td>
+                                    @else
+                                        <td style="text-align: center">بدون تصویر</td>
+                                    @endif
+
+                                    @if($part->title)
+                                        <td class="text-center">{{$part->title}}</td>
+                                    @else
+                                        <td style="text-align: center">بدون عنوان</td>
+                                    @endif
+
+                                        <td class="text-center" style="width: 65%"><?php echo $part->desc ;?></td>
+
                                     <td class="text-center">
-                                        <a class="btn btn-warning mb-1 text-white" href="{{route('edit_podItem' , $part->id)}}">ویرایش</a>
-                                        <form method="post" action="{{route('destroy_podItem', $part->id)}}">
+                                        <a class="btn btn-warning mb-1 text-white" href="{{route('edit_blogItem' , $part->id)}}">ویرایش</a>
+                                        <form method="post" action="{{route('destroy_blogItem', $part->id)}}">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-danger ">حذف</button>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionCategoriesTable extends Migration
+class CreateFreevideoQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateQuestionCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_categories', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->string('title');
+        Schema::create('freevideo_questions', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('question_id');
+            $table->bigInteger('video_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateQuestionCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_categories');
+        Schema::dropIfExists('freevideo_questions');
     }
 }

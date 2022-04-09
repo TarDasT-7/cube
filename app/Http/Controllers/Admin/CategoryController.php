@@ -44,6 +44,7 @@ class CategoryController extends Controller
             'related'=>'required|max:250',
         ]);
 
+
         $category = new Category();
         $category->title = $request->title;
         $category->related = $request->related;

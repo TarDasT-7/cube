@@ -33,7 +33,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\InstallController;
 use App\Http\Controllers\JquaryController;
 use App\Http\Controllers\QcategoryController;
-use App\Http\Controllers\QuestionController;
 
 
 use App\Http\Controllers\Site\CommentController;
@@ -89,6 +88,8 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\FreeVideoController;
 use App\Http\Controllers\Admin\FreeVideoFileController;
 use App\Http\Controllers\Admin\PodcastController;
+use App\Http\Controllers\Admin\QuestionController;
+
 
 
 
@@ -180,6 +181,8 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('aboutUs',AboutUsController::class);
         Route::resource('contactUs',ContactUsController::class);
 
+        Route::resource('question',QuestionController::class);
+        Route::get('question-position',[QuestionController::class , 'position'])->name('question_position');
 
 
 
@@ -196,7 +199,6 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 
 
 
-        Route::resource('question',\App\Http\Controllers\Admin\QuestionController::class);
         Route::resource('questioncategory',QuestionCategoryController::class);
         Route::resource('contactUs',ContactUsController::class);
         Route::resource('admin',AdminusersController::class);

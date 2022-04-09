@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Question;
-use App\Models\QuestionCategory;
+use App\Models\Faq;
+use App\Models\FreeVideo;
+use App\Models\FreevideoQuestion;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,8 +19,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions=Question::all();
-        return view('admin.pages.question.indexquestion')->with('questions',$questions);
+        $questions=faq::all();
+        return view('admin.pages.cubeTeam.faq.index')->with('questions',$questions);
     }
 
     /**
@@ -28,8 +30,9 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        $categories=QuestionCategory::all();
-        return view('admin.pages.question.createquestion')->with('categories',$categories);
+        $categories=Category::where('related' , 'سوالات')->get();
+        $rel = 'create';
+        return view('admin.pages.cubeTeam.faq.createOrUpdate' , compact(['rel' , 'categories']));
     }
 
     /**
@@ -40,27 +43,35 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'question'=> "required|max:255",
-            'name'=> "required|max:255",
-            'answer'=> "required|max:255",
-            'email'=> "required|email",
+            'title'=> "required|max:255",
+            'description'=> "required|max:5000",
+            'position'=> "required|max:50",
             'category'=> "required",
-
-
+            'items.*'=> "",
         ]);
 
-        $question = new Question();
-        $question->question =$request->input('question');
-        $question->name =Auth::user()->name;
-        $question->email =Auth::user()->email;
-        $question->answer =$request->input('answer');
-        $question->question_category_id = $request->input('category');
-        $question->save();
-        $categories=QuestionCategory::all();
-        $questions=Question::all();
+        $faq = new Faq();
+        $faq->position=$request->position;
+        $faq->title=$request->title;
+        $faq->text=$request->description;
+        $faq->category_id=$request->category;
+        $faq->save();
+        switch ($request->position) {
+            case 'fre':
+                foreach ($request->items as $key => $item) {
+                    $vq=new FreevideoQuestion();
+                    $vq->question_id=$faq->id;
+                    $vq->video_id=$item;
+                    $vq->save();;
+                }
+                break;
+        
+        }
+
         session()->flash('add','سوال و جواب با موفقیت اضافه شد');
-        return redirect('question')->with('questions', $questions)->with('categories', $categories);
+        return redirect()->route('question.index');
     }
 
     /**
@@ -82,9 +93,10 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        $categories=QuestionCategory::all();
-        $question=Question::find($id);
-        return view('admin.pages.question.editquestion')->with('question',$question)->with('categories',$categories);
+        $question=Faq::find($id);
+        $categories=Category::where('related' , 'سوالات')->get();
+        $rel = 'update';
+        return view('admin.pages.cubeTeam.faq.createOrUpdate' , compact(['question' , 'rel' , 'categories']));
     }
 
     /**
@@ -97,23 +109,19 @@ class QuestionController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'question'=> "required|max:255",
-            'name'=> "required|max:255",
-            'answer'=> "required|max:255",
-            'email'=> "required|email",
+            'title'=> "required|max:255",
+            'description'=> "required|max:5000",
             'category'=> "required",
-
-
         ]);
-        $question=Question::find($id);
-        $question->question=$request->input('question');
-        $question->answer=$request->input('answer');
-        $question->question_category_id=$request->input('category');
-        $question->save();
-        $categories=QuestionCategory::all();
-        $questions=Question::all();
-        session()->flash('update','سوال و جواب با موفقیت به روزرسانی شد');
-        return redirect('question')->with('questions',$questions)->with('categories',$categories);
+
+        $faq =Faq::find($id);
+        $faq->title=$request->title;
+        $faq->text=$request->description;
+        $faq->category_id=$request->category;
+        $faq->save();
+
+        session()->flash('add','سوال و جواب با موفقیت ویرایش شد');
+        return redirect()->route('question.index');
     }
 
     /**
@@ -124,12 +132,40 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        $question=Question::find($id);
+        $question=Faq::find($id);
+        switch ($question->position) {
+            case 'fre':
+                $items=FreevideoQuestion::where('question_id' , $id)->get();
+                foreach ($items as $key => $item) {
+                    $item->delete();
+                }
+                break;
+            
+            default:
+                # code...
+                break;
+        }
         $question->delete();
 
-        $categories=QuestionCategory::all();
-        $questions=Question::all();
         session()->flash('delete','سوال و جواب با موفقیت حذف شد');
-        return redirect('question')->with('questions',$questions)->with('categories',$categories);
+        return redirect()->route('question.index');
+    }
+
+
+    public function position(Request $request)
+    {
+        switch ($request->position) {
+            case 'fre':
+
+                $items=FreeVideo::all();
+
+                break;
+            
+            default:
+                $items=null;
+                break;
+        }
+
+        return $items;
     }
 }

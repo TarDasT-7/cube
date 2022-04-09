@@ -46,10 +46,13 @@
                             <fieldset class="form-group">
                                 <label >مرتبط با </label>
                                 <select class="select2-bg form-control" name="related"  id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
-                                    <option value="محصولات">محصولات</option>
-                                    <option value="دوره">دوره</option>
-                                    <option value="پادکست">پادکست</option>
-                                    <option value="بلاگ">بلاگ</option>
+                                    <option value="سوالات">سوالات متداول</option>
+                                    <optgroup label="__دیگر">
+                                        <option value="محصولات">محصولات</option>
+                                        <option value="دوره">دوره</option>
+                                        <option value="پادکست">پادکست</option>
+                                        <option value="بلاگ">بلاگ</option>
+                                    </optgroup>
                                 </select>
                             </fieldset>
                         </div>
@@ -180,10 +183,13 @@
                                                                 <fieldset class="form-group">
                                                                     <label >مرتبط با </label>
                                                                     <select class="select2-bg form-control" name="related"  id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
-                                                                        <option @if($category->related == 'محصولات') selected @endif value="محصولات">محصولات</option>
-                                                                        <option @if($category->related == 'دوره') selected @endif value="دوره">دوره</option>
-                                                                        <option @if($category->related == 'پادکست') selected @endif value="پادکست">پادکست</option>
-                                                                        <option @if($category->related == 'بلاگ') selected @endif value="بلاگ">بلاگ</option>
+                                                                        <option @if($category->related == 'سوالات') selected @endif value="سوالات">سوالات متداول</option>
+                                                                        <optgroup label="__دیگر">
+                                                                            <option @if($category->related == 'محصولات') selected @endif value="محصولات">محصولات</option>
+                                                                            <option @if($category->related == 'دوره') selected @endif value="دوره">دوره</option>
+                                                                            <option @if($category->related == 'پادکست') selected @endif value="پادکست">پادکست</option>
+                                                                            <option @if($category->related == 'بلاگ') selected @endif value="بلاگ">بلاگ</option>
+                                                                        </optgroup>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>

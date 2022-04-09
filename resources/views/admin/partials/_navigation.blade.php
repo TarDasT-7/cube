@@ -159,13 +159,6 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="{{route('product_teacher.index')}}">
-                            <i class="feather icon-circle"></i>
-                            <span class="menu-item" data-i18n="Register">سوالات متداول</span>
-                        </a>
-                    </li>
-
                 </ul>
 
             </li>
@@ -242,7 +235,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('product_teacher.index')}}">
+                        <a href="{{route('question.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">سوالات متداول</span>
                         </a>

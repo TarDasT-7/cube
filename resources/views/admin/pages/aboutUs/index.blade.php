@@ -56,11 +56,9 @@
                 @endif
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">ایجاد توضیحات صفحه درباره ما</h4>
+                        <h4 class="card-title">درباره ما</h4>
                     </div>
-           {{--         <div class="card-header">
-                        <p class="card-title">تنها برای اولین مرتبه از ذخیره فایل برای ایجاد توضیحات استفاده کنید و حتی الامکان در مراحل بعد از گزینه ویرایش استفاده نمایید</p>
-                    </div>--}}
+
 
                     <div id="submit" class="card-content">
                         <div class="card-body">

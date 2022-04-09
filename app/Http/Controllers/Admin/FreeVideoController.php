@@ -206,5 +206,8 @@ class FreeVideoController extends Controller
             $rm='videos/free/'.$id.'/'.$file->file;
             File::delete($rm);
         }
+        $video->delete();
+        session()->flash('add','ویدئو با موفقیت حذف شد');
+        return redirect()->route('free-video.index');
     }
 }

@@ -56,7 +56,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">لیست ویدئو های رایگان</h4>
+                        <h4 class="card-title">درباره ما</h4>
                     </div>
                     <section id="relief-buttons">
                         <div class="row">
@@ -69,7 +69,7 @@
                                                 </div>
                                                 <div class="col-2">
                                                     {{-- <button type="button" class="btn btn-success mr-1 mb-1" data-toggle="modal" data-target="#Modal"> --}}
-                                                    <a href="{{route('free-video.create')}}" class="btn btn-success mr-1 mb-1">
+                                                    <a href="{{route('aboutUs.create')}}" class="btn btn-success mr-1 mb-1">
                                                         ایجاد مورد جدید
                                                     </a>
                                                     {{-- </button> --}}
@@ -90,27 +90,20 @@
                                     <tr id="add">
                                         <th scope="col" class="text-center">تصویر</th>
                                         <th scope="col" class="text-center">عنوان</th>
-                                        <th scope="col" class="text-center">تولید کننده</th>
-                                        <th scope="col" class="text-center">دسته بندی</th>
-                                        <th scope="col" class="text-center">سطح</th>
-                                        <th scope="col" class="text-center">توضیح مختصر</th>
+                                        <th scope="col" class="text-center">متن</th>
                                         <th scope="col" class="text-center">عملیات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($videos as $key=>$video)
-                                        <tr>
-                                            <td class="text-center"><img  src='{{"/images/free/".$video->cover}}'  width="100px" ></td>
-                                            <td class="text-center">{{$video->title}}</td>
-                                            <td class="text-center">{{$video->producer->first_name}} {{$video->producer->last_name}}</td>
-                                            <td class="text-center">{{$video->category->title}}</td>
-                                            <td class="text-center">{{$video->hardship}}</td>
-                                            <td class="text-center" style="width: 45%">{{$video->small_description}}</td>
+                                    @foreach($abouts as $key=>$about)
+                                    <tr>
+                                            <td class="text-center"><img  src='{{"/images/abouts/".$about->image}}'  width="150px" ></td>
+                                            <td class="text-center">{{$about->title}}</td>
+                                            <td class="text-center" style="width: 60%"><?php echo $about->description;?></td>
 
                                             <td class="text-center">
-                                                <a class="btn btn-success mb-1 text-white"  href="{{route('free-file-index' ,$video->id)}}">فایل ها</a><br>
-                                                <a class="btn btn-warning mb-1 text-white"  href="{{route('free-video.edit' , $video->id)}}">ویرایش</a>
-                                                <form  method="post" action="{{route('free-video.destroy', $video->id)}}">
+                                                <a class="btn btn-warning mb-1 text-white"  href="{{route('aboutUs.edit' , $about->id)}}">ویرایش</a>
+                                                <form  method="post" action="{{route('aboutUs.destroy', $about->id)}}">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="btn btn-danger ">حذف</button>

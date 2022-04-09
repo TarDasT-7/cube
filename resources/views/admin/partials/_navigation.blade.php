@@ -228,7 +228,7 @@
                 <ul class="menu-content">
                     
                     <li>
-                        <a href="{{route('product_category.index')}}">
+                        <a href="{{route('aboutUs.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">درباره ما</span>
                         </a>

@@ -240,6 +240,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 /*site route*/
 Route::get('/',[IndexPagesController::class,'home'])->name('homePage');
 Route::get('podcast-list',[IndexPagesController::class,'podList'])->name('podcastList');
+Route::get('podcast-collection-{id}',[IndexPagesController::class,'podCol'])->name('podcastCollection');
 Route::get('blog-list-{href}',[IndexPagesController::class,'blogList'])->name('blogtList');
 Route::get('free-video-list',[IndexPagesController::class,'fvList'])->name('fvList');
 Route::get('about-us',[IndexPagesController::class,'about'])->name('about');

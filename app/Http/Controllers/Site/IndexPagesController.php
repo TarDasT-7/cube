@@ -41,6 +41,13 @@ class IndexPagesController extends Controller
         return view('site.pages.podcast.list' , compact(['podcasts' , 'categories']));
     }
 
+    public function podCol($id)
+    {
+        $podcast=Podcast::find($id);
+
+        return view('site.pages.podcast.collection' , compact(['podcast']));
+    }
+
     public function blogList($href)
     {
         if($href == 'blog')

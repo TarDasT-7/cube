@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id')->unsigned();
+            $table->boolean('team')->nullable()->default(0);
             $table->text('profile_photo_path')->nullable();
             $table->string('first_name');
             $table->string('last_name');

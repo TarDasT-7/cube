@@ -187,12 +187,12 @@
 
                                         <div class="col-4">
                                             <label>ادرس</label>
-                                            <textarea class="form-control" id="" name="address" placeholder="آدرس خود را وارد کنید">value="{{$contact->address}}"</textarea>
+                                            <textarea class="form-control" id="" name="address" placeholder="آدرس خود را وارد کنید">{{$contact->address}}</textarea>
                                         </div>
 
                                         <div class="col-8">
                                             <label>لوکیشن</label>
-                                            <textarea class="form-control" id="" name="location" placeholder="لوکیشن خود را از گوگل مپ پیدا و وارد کنید">value="{{$contact->location}}"</textarea>
+                                            <textarea class="form-control" id="" name="location" placeholder="لوکیشن خود را از گوگل مپ پیدا و وارد کنید">{{$contact->location}}</textarea>
                                         </div>
 
                                     </div>

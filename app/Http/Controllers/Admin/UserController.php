@@ -56,6 +56,13 @@ class UserController extends Controller
             'image'=>'max:1500',
         ]);
 
+        $fUbE=User::where('email' , $request->email)->get()->first();
+        if(!empty($fUbE))
+        {
+            session()->flash('add','قبلا از این ایمیل استفاده شده');
+            return redirect()->route('user.index');
+        }
+
         $user = new User();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -170,6 +177,7 @@ class UserController extends Controller
 
 
         $roleUser = RoleUser::where('user_id' , $id)->get();
+        $user=User::find($id);
         $rmRole=array();
 
         if (in_array("0", $request->roles))
@@ -177,7 +185,7 @@ class UserController extends Controller
             foreach($roleUser as $rm){
                 $rm->delete();
             }
-                
+             $user->team=0;   
         }else
         {
             foreach($roleUser as $key=>$ru)
@@ -201,8 +209,10 @@ class UserController extends Controller
                     $ru->save();
                 }
             }
+            $user->team=1;   
         }
 
+        $user->save();   
         
         session()->flash('update','کاربر با موفقیت ویرایش شد');
         return redirect()->route('user.index');

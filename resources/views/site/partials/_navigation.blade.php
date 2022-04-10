@@ -187,22 +187,22 @@
                 <a class="nav-link font14 bold" href="pkglists_page.html">محصولات</a>
             </li>
             <li class="nav-item mgm_item">
-                <a class="nav-link font14 bold" href="pdclists_ssnpage.html">پادکست</a>
+                <a class="nav-link font14 bold" href="{{route('podcastList')}}">پادکست</a>
             </li>
             <li class="nav-item mgm_item">
-                <a class="nav-link font14 bold" href="chldphsy_mainpg.html">روانشناسی کودک و نوجوان</a>
+                <a class="nav-link font14 bold" href="{{route('blogtList', 'psychology')}}">روانشناسی کودک و نوجوان</a>
             </li>
             <li class="nav-item mgm_item">
-                <a class="nav-link font14 bold" href="about_us.html">تیم مکعب</a>
+                <a class="nav-link font14 bold" href="{{route('about')}}">تیم مکعب</a>
             </li>
             <li class="nav-item mgm_item">
-                <a class="nav-link font14 bold" href="blog_mainpg.html">بلاگ</a>
+                <a class="nav-link font14 bold" href="{{route('blogtList', 'blog')}}">بلاگ</a>
             </li>
             <li class="nav-item mgm_item">
-                <a class="nav-link font14 bold" href="frvidlists_page .html">فیلم های آموزشی رایگان</a>
+                <a class="nav-link font14 bold" href="{{route('fvList')}}">فیلم های آموزشی رایگان</a>
             </li>
             <li class="nav-item mgm_item">
-                <a class="nav-link font14 bold" href="contact_us.html">تماس با ما</a>
+                <a class="nav-link font14 bold" href="{{route('contact')}}">تماس با ما</a>
             </li>
         </ul>
     </div>

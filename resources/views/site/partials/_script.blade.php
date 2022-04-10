@@ -168,3 +168,4 @@
 
 
 </script>
+@yield('add_script')

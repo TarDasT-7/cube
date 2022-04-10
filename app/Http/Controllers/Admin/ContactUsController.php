@@ -57,7 +57,6 @@ class ContactUsController extends Controller
             'phone'=> "required|numeric",
             'email'=> "required|email",
         ]);
-        
         $contact=new Contact_Us();
         $contact->title=$request->input('title');
         $contact->phone=$request->input('phone');
@@ -113,7 +112,7 @@ class ContactUsController extends Controller
             'phone'=> "required|numeric",
             'email'=> "required|email",
         ]);
-        
+
         $contact=Contact_Us::find($id);
         $contact->title=$request->input('title');
         $contact->phone=$request->input('phone');

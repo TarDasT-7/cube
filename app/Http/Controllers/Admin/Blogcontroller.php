@@ -21,7 +21,7 @@ class Blogcontroller extends Controller
     {
         $blogs=Blog::all();
         $producers=Producer::where('blog' , 1)->get();
-        $categories=Category::where('related' , 'بلاگ')->get();
+        $categories=Category::where('related' , 'بلاگ')->orWhere('related' , 'روانشناسی')->get();
         return view('admin.pages.ourProduct.blog.index', compact(['blogs','categories' , 'producers']));
     }
 

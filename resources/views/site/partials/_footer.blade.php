@@ -1,29 +1,24 @@
 
 <!-- BEGIN: Footer-->
 <?php
-use App\Models\Contact_Us;use App\Models\Footer;
-$footer=Footer::all()->last();
-$contact=Contact_Us::all()->last();
+    $footer=App\Models\Footer::all()->last();
+    $contact=\App\Models\Contact_Us::all()->last();
 ?>
 <footer class="footer_sec container-fluid">
     <div class="row qcicons_mrow back_grdrk">
         <div class="col-md-12 ftr_links_mcol p-4">
             <div class="row">
-                <div class="col-md-8 txt_crm font12 m-auto">
 
-                    <p class="">توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد..توضیح مختصری در این مکان قرار می گیرد..
-                    </p>
-                    <p class="">توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد..توضیح مختصری در این مکان قرار می گیرد..
-                    </p>
-                    <p class="">توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری  در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد...توضیح مختصری در این مکان قرار می گیرد.. مکان قرار می گیرد..توضیح مختصری در این مکان قرار می گیرد..
-                    </p>
+                <div class="col-md-8 txt_crm font12 m-auto">
+                    
+                    <?php echo $footer->description;?>
 
                 </div>
 
                 <div class="col-md-4">
                     <div class="row namads_row justify-content-center">
                         <div class="col-md-8 ftlogo_imgcol">
-                            <img class="ftlogo_img" src="img/mokaablg.png">
+                            <img class="ftlogo_img" src="{{'/images/footer/'.$footer->image}}">
                         </div>
                     </div>
                 </div>
@@ -31,6 +26,7 @@ $contact=Contact_Us::all()->last();
         </div>
 
     </div>
+
     <div class="row ftr_linksrow back_crm">
 
         <div class="col-md-12 ftr_links_mcol">
@@ -42,35 +38,45 @@ $contact=Contact_Us::all()->last();
                                 <div class="col-md-4 ft_ulcol pr-0">
                                     <ul class="inrpages_footer_li_ul list-unstyled pr-0 bold">
                                         <li class="pb-2 txt_dgray font13 text-justify">
-                                            <span><i class="fas fa-fw font15 fa-map-marker-alt"></i></span><span class="pr-2">دفتر مرکزی :</span>
-                                            شيراز , اردیبهشت شرقی , برج IT , طبقه هفتم , واحد 73
+                                            <span><i class="fas fa-fw font15 fa-map-marker-alt"></i></span>
+                                            <span class="pr-2">دفتر مرکزی :</span>
+                                            @if($contact)
+                                            {{$contact->address}}
+                                            @endif
                                         </li>
                                         <li class="pb-2 txt_dgray ">
-                                            <i class="fa fa-phone fa-fw font15"></i> 07132345678
+                                            <i class="fa fa-phone fa-fw font15"></i>
+                                            @if($contact)
+                                            {{$contact->phone}}
+                                            @endif
                                         </li>
 
                                         <li class="pb-2 txt_dgray lato">
-                                            <i class="fa fa-fw fa-envelope font15  "></i> info@mokaab.com </li>
+                                            <i class="fa fa-fw fa-envelope font15  "></i>
+                                            @if($contact)
+                                            {{$contact->email}}
+                                            @endif
+                                         </li>
                                         <li class="pt-2 txt_dgray normal">
 
 
                                             <div class="row ftsc_row ">
                                                 <div class="col-md-1 ftsc_col">
-                                                    <a href="#" class="sc_linkitem txt_dgray">
+                                                    <a  @if($contact) href="{{$contact->telegram}}" @endif class="sc_linkitem txt_dgray">
                                                         <i class="fab fa-fw fa-telegram font20"></i>
                                                     </a>
                                                 </div>
                                                 <div class="col-md-1 ftsc_col">
-                                                    <a href="#" class="sc_linkitem txt_dgray">
+                                                    <a  @if($contact) href="{{$contact->instagram}}" @endif class="sc_linkitem txt_dgray">
                                                         <i class="fab fa-fw fa-instagram font20"></i>
                                                     </a>
                                                 </div>
                                                 <div class="col-md-1 ftsc_col ">
-                                                    <a href="#" class="sc_linkitem txt_dgray">
+                                                    <a  @if($contact) href="{{$contact->facebook}}" @endif class="sc_linkitem txt_dgray">
                                                         <i class="fab fa-fw fa-facebook font20"></i></a>
                                                 </div>
                                                 <div class="col-md-1 ftsc_col">
-                                                    <a href="#" class="sc_linkitem txt_dgray">
+                                                    <a  @if($contact) href="{{$contact->linkedin}}" @endif class="sc_linkitem txt_dgray">
                                                         <i class="fab fa-fw fa-linkedin font20"></i></a>
                                                 </div>
                                             </div>

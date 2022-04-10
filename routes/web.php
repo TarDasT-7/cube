@@ -201,7 +201,6 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 
 
         Route::resource('questioncategory',QuestionCategoryController::class);
-        Route::resource('contactUs',ContactUsController::class);
         Route::resource('admin',AdminusersController::class);
         Route::resource('course',Coursecontroller::class);
         Route::get('select',[Coursecontroller::class,'select'])->name('selects');
@@ -240,6 +239,11 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 
 /*site route*/
 Route::get('/',[IndexPagesController::class,'home'])->name('homePage');
+Route::get('podcast-list',[IndexPagesController::class,'podList'])->name('podcastList');
+Route::get('blog-list-{href}',[IndexPagesController::class,'blogList'])->name('blogtList');
+Route::get('free-video-list',[IndexPagesController::class,'fvList'])->name('fvList');
+Route::get('about-us',[IndexPagesController::class,'about'])->name('about');
+Route::get('contact-us',[IndexPagesController::class,'contact'])->name('contact');
 
 
 

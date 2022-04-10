@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Blog;
+use App\Models\FreeVideo;
 use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseVideo;
-use App\Models\Footer;
+use App\Models\Category;
 use App\Models\Podcast;
 use App\Models\Product;
-use App\Models\ProductCategory;
 use App\Models\Slider;
+use App\Models\AboutUs;
+use App\Models\Contact_Us;
+use App\Models\User;
+use Hekmatinasser\Verta\Verta;
 
 
 class IndexPagesController extends Controller
@@ -25,32 +27,56 @@ class IndexPagesController extends Controller
             $user=Auth::user();
         }
         $sliders=Slider::all();
-        // $podcasts=Podcast::all();
-        // $product_categories=ProductCategory::all();
-        // $blogs=Blog::orderBy('created_at')->latest()->get();
-        // $products=Product::orderBy('created_at')->latest()->get();
+        $podcasts=Podcast::orderBy('id' , 'DESC')->take(8)->get();
+        $blogs=Blog::orderBy('id' , 'DESC')->take(2)->get();
 
-        // $pers=Course::orderBy('created_at')->latest()->get();
-        // $count=Count($pers);
-        // $courses=[];
-        // $i=0;
-        // for ($i ;$i<$count; $i++){
-        //     if ($i>2){
-        //         break;
-        //     }else
-        //         $courses[$i]=$pers[$i];
-        // }
-        // $videos=[];
-        // $i=0;
-        // foreach ( $courses as $course){
-        //     foreach ($course->course_videos as $video){
-        //         if ($video->show_id==0){
-        //             $videos[$i]=$video;
-        //         }
-        //         $i++;
-        //     }
-        // }
-        return view('site.pages.index.index' , compact(['user','sliders']));
+        return view('site.pages.index.index' , compact(['user','sliders','podcasts','blogs']));
+    }
+
+    public function podList()
+    {
+        $podcasts=Podcast::all()->sortByDesc('id');
+        $categories = Category::where('related' , 'پادکست')->get();
+
+        return view('site.pages.podcast.list' , compact(['podcasts' , 'categories']));
+    }
+
+    public function blogList($href)
+    {
+        if($href == 'blog')
+        {
+            $blogs=Blog::where('related' , 'بلاگ')->get();
+            $categories = Category::where('related' , 'بلاگ')->get();
+            
+        }elseif($href == 'psychology')
+        {
+            $blogs=Blog::where('related' , 'روانشناسی')->get();
+            $categories = Category::where('related' , 'روانشناسی')->get();
+        }
+
+        return view('site.pages.blog.list' , compact(['blogs' , 'categories' , 'href']));
+    }
+
+    public function fvList()
+    {
+        $videos=FreeVideo::all()->sortByDesc('id');
+        $categories = Category::where('related' , 'محصولات')->orWhere('related' , 'دوره')->get();
+
+        return view('site.pages.freeVideo.list' , compact(['videos' , 'categories']));
+
+    }
+
+    public function about()
+    {
+        $abouts=AboutUs::all();
+        $users=User::where('team' , 1)->get();
+        return view('site.pages.about_us.index' , compact(['abouts' , 'users']));
+    }
+
+    public function contact()
+    {
+        $contact=Contact_Us::all()->first();
+        return view('site.pages.contact_us.index' , compact(['contact']));
 
     }
 

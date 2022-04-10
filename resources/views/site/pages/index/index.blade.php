@@ -1192,680 +1192,103 @@
     </div>
 </div>
 </div>
-<div class="row pdcastsl_mrow pt-5 mb-5 ">
+    <div class="row pdcastsl_mrow pt-5 mb-5 ">
         <div class="col-12 col-md-12 slider_spoffmcol">
         <div class="row slider_spoffrow">
             <div class="col-md-12">
                 <div class="row">
-                <div class="col-md-2 slbn_mcol">
-                <div class="row slbn_mrow back_crm">
-                    <div class="col-md-12 slbn_col">
-                        <div class="row slbn_row ">
-                            <div class="col-md-12 slbn_svgcol">
-                            <svg class="slbn_svg" id="Line" height="512" viewBox="0 0 64 64" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m62 32.5h-1a1 1 0 0 0 -1 1v2h-3v-9a9.011 9.011 0 0 0 -9-9h-8a9.011 9.011 0 0 0 -9 9v9h-3v-1.663a1 1 0 0 0 -1-1h-1a1 1 0 0 0 -1 1v8.663a13.015 13.015 0 0 0 13 13h2v2h-3a3 3 0 0 0 -3 3 1 1 0 0 0 1 1h18a1 1 0 0 0 1-1 3 3 0 0 0 -3-3h-3v-2h2a13.015 13.015 0 0 0 13-13v-9a1 1 0 0 0 -1-1zm-24-6h12a1 1 0 0 1 0 2h-12a1 1 0 0 1 0-2zm0 6h12a1 1 0 0 1 0 2h-12a1 1 0 0 1 0-2zm22 9a11.013 11.013 0 0 1 -11 11h-10a11.013 11.013 0 0 1 -11-11v-4h3v3a9.011 9.011 0 0 0 9 9h8a9.011 9.011 0 0 0 9-9v-3h3z" fill="#ffa500c7"/><g fill="#697d38"><path d="m14 14.5a1 1 0 0 0 -1 1v12a1 1 0 0 0 2 0v-12a1 1 0 0 0 -1-1z"/><path d="m18 11.5a1 1 0 0 0 -1 1v18a1 1 0 0 0 2 0v-18a1 1 0 0 0 -1-1z"/><path d="m22 14.5a1 1 0 0 0 -1 1v12a1 1 0 0 0 2 0v-12a1 1 0 0 0 -1-1z"/><path d="m26 17.5a1 1 0 0 0 -1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0 -1-1z"/><path d="m10 17.5a1 1 0 0 0 -1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0 -1-1z"/><path d="m48 2.5h-44a3 3 0 0 0 -3 3v32a3 3 0 0 0 3 3h23.76a24.972 24.972 0 0 0 16.24 6 1 1 0 0 0 0-2 5.008 5.008 0 0 1 -4.9-4h8.9a3 3 0 0 0 3-3v-32a3 3 0 0 0 -3-3zm1 35a1 1 0 0 1 -1 1h-10a1 1 0 0 0 -1 1 6.965 6.965 0 0 0 1.507 4.334 22.983 22.983 0 0 1 -9.707-5.084 1 1 0 0 0 -.661-.25h-24.139a1 1 0 0 1 -1-1v-32a1 1 0 0 1 1-1h44a1 1 0 0 1 1 1z"/><path d="m38 14.5a1 1 0 0 0 -1 1v12a1 1 0 0 0 2 0v-12a1 1 0 0 0 -1-1z"/><path d="m30 14.5a1 1 0 0 0 -1 1v12a1 1 0 0 0 2 0v-12a1 1 0 0 0 -1-1z"/><path d="m42 17.5a1 1 0 0 0 -1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0 -1-1z"/><path d="m34 11.5a1 1 0 0 0 -1 1v18a1 1 0 0 0 2 0v-18a1 1 0 0 0 -1-1z"/></g></svg>
+                    <div class="col-md-2 slbn_mcol">
+                        <div class="row slbn_mrow back_crm">
+                            <div class="col-md-12 slbn_col">
+                                <div class="row slbn_row ">
+                                    <div class="col-md-12 slbn_svgcol">
+                                        <svg class="slbn_svg" id="Line" height="512" viewBox="0 0 64 64" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m62 32.5h-1a1 1 0 0 0 -1 1v2h-3v-9a9.011 9.011 0 0 0 -9-9h-8a9.011 9.011 0 0 0 -9 9v9h-3v-1.663a1 1 0 0 0 -1-1h-1a1 1 0 0 0 -1 1v8.663a13.015 13.015 0 0 0 13 13h2v2h-3a3 3 0 0 0 -3 3 1 1 0 0 0 1 1h18a1 1 0 0 0 1-1 3 3 0 0 0 -3-3h-3v-2h2a13.015 13.015 0 0 0 13-13v-9a1 1 0 0 0 -1-1zm-24-6h12a1 1 0 0 1 0 2h-12a1 1 0 0 1 0-2zm0 6h12a1 1 0 0 1 0 2h-12a1 1 0 0 1 0-2zm22 9a11.013 11.013 0 0 1 -11 11h-10a11.013 11.013 0 0 1 -11-11v-4h3v3a9.011 9.011 0 0 0 9 9h8a9.011 9.011 0 0 0 9-9v-3h3z" fill="#ffa500c7"/><g fill="#697d38"><path d="m14 14.5a1 1 0 0 0 -1 1v12a1 1 0 0 0 2 0v-12a1 1 0 0 0 -1-1z"/><path d="m18 11.5a1 1 0 0 0 -1 1v18a1 1 0 0 0 2 0v-18a1 1 0 0 0 -1-1z"/><path d="m22 14.5a1 1 0 0 0 -1 1v12a1 1 0 0 0 2 0v-12a1 1 0 0 0 -1-1z"/><path d="m26 17.5a1 1 0 0 0 -1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0 -1-1z"/><path d="m10 17.5a1 1 0 0 0 -1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0 -1-1z"/><path d="m48 2.5h-44a3 3 0 0 0 -3 3v32a3 3 0 0 0 3 3h23.76a24.972 24.972 0 0 0 16.24 6 1 1 0 0 0 0-2 5.008 5.008 0 0 1 -4.9-4h8.9a3 3 0 0 0 3-3v-32a3 3 0 0 0 -3-3zm1 35a1 1 0 0 1 -1 1h-10a1 1 0 0 0 -1 1 6.965 6.965 0 0 0 1.507 4.334 22.983 22.983 0 0 1 -9.707-5.084 1 1 0 0 0 -.661-.25h-24.139a1 1 0 0 1 -1-1v-32a1 1 0 0 1 1-1h44a1 1 0 0 1 1 1z"/><path d="m38 14.5a1 1 0 0 0 -1 1v12a1 1 0 0 0 2 0v-12a1 1 0 0 0 -1-1z"/><path d="m30 14.5a1 1 0 0 0 -1 1v12a1 1 0 0 0 2 0v-12a1 1 0 0 0 -1-1z"/><path d="m42 17.5a1 1 0 0 0 -1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0 -1-1z"/><path d="m34 11.5a1 1 0 0 0 -1 1v18a1 1 0 0 0 2 0v-18a1 1 0 0 0 -1-1z"/></g></svg>
+                                    </div>
+                                    <div class="col-md-12 lb_titcol">
+                                        <h5 class="bbj mb-0 font40 text-center txt_grdrk">پادکست </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- podcast --}}
+                    <div class="col-md-10 columns splofs_slcontrgt">
+                        <div class="owl-carousel pdcst_slcont owl-theme">
+                            
+                            @foreach ($podcasts as $podcast)
+
+                                <div class="pdcst_pr_col item">
+                                            
+                                    <a href="pdclists_page.html" class="txt_dgray">
+                                        <div class="row pdcst_pr_row  ">
+                                        <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
+                                            <img class="pdcst_img" src="{{'/images/podcasts/'.$podcast->image}}">
+                                            <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
+                                                xml:space="preserve">
+                                                <g>
+                                                <path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
+                                                    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                                <g>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
+                                            <div class="row pdcst_dts_row">
+                                                <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
+                                                    <h6 class="font14 txt_dgray bold">{{$podcast->title}}</h6>
+                                                </div>
+                                                <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
+                                                    {{-- <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
+                                                        <li class=" list-inline-item tch_dtulli">
+                                                            <span class="txt_gray font14">نام گوینده</span>
+                                                        </li>
+                                                    </ul>
+                                                </div> --}}
 
 
-                            </div>
-                            <div class="col-md-12 lb_titcol">
-                                <h5 class="bbj mb-0 font40 text-center txt_grdrk">پادکست </h5>
-                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+
+                            @endforeach
 
                         </div>
                     </div>
-
                 </div>
             </div>
-                <div class="col-md-10 columns splofs_slcontrgt">
-            <div class="owl-carousel pdcst_slcont owl-theme">
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast1.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast5.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast6.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast2.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast4.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast3.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast3.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast3.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast3.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-                <div class="pdcst_pr_col item">
-                            <a href="pdclists_page.html" class="txt_dgray">
-                                <div class="row pdcst_pr_row  ">
-                                <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                    <img class="pdcst_img" src="img/pdcast3.jpg">
-                                    <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
- xml:space="preserve">
-<g>
-<path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-                                </div>
-                                <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                    <div class="row pdcst_dts_row">
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                            <h6 class="font14 txt_dgray bold">عنوان پادکست در این مکان قرار می گیرد</h6>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                            <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                            <li class=" list-inline-item tch_dtulli">
-                                             <span class="txt_gray font14">نام گوینده</span>
-                                            </li>
-                                        </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                </div>
-                            </a>
-
-                    </div>
-
-
-
-           </div>
-        </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -1873,9 +1296,9 @@
 <div class="row blogpsts_slsecrow pt-5">
     <div class="col-md-12 blogpsts_slcont">
         <div class="row mb-2 m-0">
-                    <div class="col-6 lb_titcol">
-                        <h6 class="bold m-auto bbj font40 txt_grdrk">آخرین مطالب بلاگ</h6>
-                    </div>
+            <div class="col-6 lb_titcol">
+                <h6 class="bold m-auto bbj font40 txt_grdrk">آخرین مطالب بلاگ</h6>
+            </div>
                     <div class="col-md-3 offset-md-3 mre_butcol">
                         <a href="#" class="txt_dgray">
                             <div class="row mre_butrow">
@@ -1929,161 +1352,99 @@
                         </a>
                     </div>
                 </div>
+        
+    {{-- blog --}}
         <div class="row blogpsts_slmrow">
 
         
             <div class="col-md-12 blogpsts_slcol">
                 <div class="row blogpsts_slrow m-0">
-                <div class="blogpst_mcol col-md-6">
-                    <a href="artcl_dtpage.html" class="txt_dgray pkg_pr_lnk">
-                            <div class="row blgpst_dtimg_row">
-                                <div class="col-12 col-md-6 blgpst_indx_imgcol  text-center" style="background-image: url(img/bg1.jpg)">
-                                </div>
-                                    <div class="col-md-6  blgpst_pr_dtsmcol">
-                                    <div class="row  blgpst_pr_dts_mrow">
-                                        <div class="col-md-12 blgpst_pr_dtscol">
-                                            <div class="row  blgpst_pr_dts_row">
-
-                                          <div class="col-md-12 blgpst_pr_txtcol ">
-                                                <h6 class="font15 txt_dgray bold">عنوان پست در این مکان قرار می گیرد</h6>
-                                          </div>
-                                                <div class="col-md-12 blgpst_pr_txtcol">
-                                        <span class="font12 txt_org">نام دسته مقاله</span>
-                                      </div>
-                                          <div class="col-md-12 blgpst_pr_txtcol font12 txt_gray pt-2">
-                                                <p class="">توضیح مختصری از پست در این مکان قرار می گیرد...توضیح مختصری از پست در این مکان قرار می گیرد...توضیح مختصری از پست در این مکان قرار می گیرد.. مکان قرار می گیرد...توضیح مختصری از پست در این مکان قرار می گیرد...توضیح مختصری از پست در این مکان قرار می گیرد.. مکان قرار می گیرد.
-                                                </p>
-                                          </div>
-                                          <div class="col-12 col-md-7 but_coll pl-0">
-                                            <button class="btn btn-raised btn_cuswhitee btn-sm btn_full w-100 btn_moree">
-                                                <span class="d-inline-block ">جزییات بیشتر</span>
-
-                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" class="sp_afsvg mr-4 hvr-icon d-inline-block">
-<g>
-    <g>
-        <path d="M501.333,234.667H68.417l109.792-109.792c2-2,3.125-4.708,3.125-7.542V96c0-4.313-2.594-8.208-6.583-9.854
-            c-1.323-0.552-2.708-0.813-4.083-0.813c-2.771,0-5.5,1.083-7.542,3.125l-160,160c-4.167,4.167-4.167,10.917,0,15.083l160,160
-            c3.063,3.042,7.615,3.969,11.625,2.313c3.99-1.646,6.583-5.542,6.583-9.854v-21.333c0-2.833-1.125-5.542-3.125-7.542
-            L68.417,277.333h432.917c5.896,0,10.667-4.771,10.667-10.667v-21.333C512,239.438,507.229,234.667,501.333,234.667z"></path>
-    </g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg></button>
-                                          </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                    </a>
-                    </div>
+                
+                    @foreach ($blogs as $blog)
+                        
                         <div class="blogpst_mcol col-md-6">
-                    <a href="artcl_dtpage.html" class="txt_dgray pkg_pr_lnk">
-                            <div class="row blgpst_dtimg_row">
-                                <div class="col-12 col-md-6 blgpst_indx_imgcol  text-center" style="background-image: url(img/bg2.jpg)">
-                                        <!--<img class="blgpst_pr_img" src="img/prjexp45.jpg">-->
-                                </div>
-                                <div class="col-md-6  blgpst_pr_dtsmcol">
-                                    <div class="row  blgpst_pr_dts_mrow">
-                                        <div class="col-md-12 blgpst_pr_dtscol">
+                            <a href="artcl_dtpage.html" class="txt_dgray pkg_pr_lnk">
+                                <div class="row blgpst_dtimg_row">
+                                    <div class="col-12 col-md-6 blgpst_indx_imgcol  text-center" style="background-image: url({{url('/images/blogs/'.$blog->image)}})">
+                                            <!--<img class="blgpst_pr_img" src="img/prjexp45.jpg">-->
+                                    </div>
+                                    <div class="col-md-6  blgpst_pr_dtsmcol">
+                                        <div class="row  blgpst_pr_dts_mrow">
+                                            <div class="col-md-12 blgpst_pr_dtscol">
                                                 <div class="row  blgpst_pr_dts_row">
 
-                                          <div class="col-md-12 blgpst_pr_txtcol ">
-                                                <h6 class="font15 txt_dgray mb-0 bold">عنوان پست در این مکان قرار می گیرد</h6>
-                                          </div>
-                                                <div class="col-md-12 blgpst_pr_txtcol">
-                                        <span class="font12 txt_pink">نام دسته مقاله</span>
-                                      </div>
-                                          <div class="col-md-12 blgpst_pr_txtcol font12 txt_gray pt-2">
-                                                <p class="">توضیح مختصری از پست در این مکان قرار می گیرد...توضیح مختصری از پست در این مکان قرار می گیرد...توضیح مختصری از پست در این مکان قرار می گیرد.. مکان قرار می گیرد...توضیح مختصری از پست در این مکان قرار می گیرد..
-                                                </p>
-                                          </div>
-                                          <div class="col-12 col-md-7 but_coll pl-0">
-                                            <button class="btn btn-raised btn_cuswhitee btn-sm btn_full w-100 btn_moree">
-                                                <span class="d-inline-block ">جزییات بیشتر</span>
+                                                    <div class="col-md-12 blgpst_pr_txtcol ">
+                                                        <h6 class="font15 txt_dgray mb-0 bold">{{$blog->title}}</h6>
+                                                    </div>
+                                                    <div class="col-md-12 blgpst_pr_txtcol">
+                                                        <span class="font12 txt_pink">{{$blog->category->title}}</span>
+                                                    </div>
+                                                    <div class="col-md-12 blgpst_pr_txtcol font12 txt_gray pt-2">
+                                                        <?php echo $blog->desc;?>
+                                                    </div>
+                                                    <div class="col-12 col-md-7 but_coll pl-0">
+                                                        <button class="btn btn-raised btn_cuswhitee btn-sm btn_full w-100 btn_moree">
+                                                            <span class="d-inline-block ">جزییات بیشتر</span>
 
-                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" class="sp_afsvg mr-4 hvr-icon d-inline-block">
-<g>
-    <g>
-        <path d="M501.333,234.667H68.417l109.792-109.792c2-2,3.125-4.708,3.125-7.542V96c0-4.313-2.594-8.208-6.583-9.854
-            c-1.323-0.552-2.708-0.813-4.083-0.813c-2.771,0-5.5,1.083-7.542,3.125l-160,160c-4.167,4.167-4.167,10.917,0,15.083l160,160
-            c3.063,3.042,7.615,3.969,11.625,2.313c3.99-1.646,6.583-5.542,6.583-9.854v-21.333c0-2.833-1.125-5.542-3.125-7.542
-            L68.417,277.333h432.917c5.896,0,10.667-4.771,10.667-10.667v-21.333C512,239.438,507.229,234.667,501.333,234.667z"></path>
-    </g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg></button>
-                                          </div>
+                                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" class="sp_afsvg mr-4 hvr-icon d-inline-block">
+                                                                <g>
+                                                                    <g>
+                                                                        <path d="M501.333,234.667H68.417l109.792-109.792c2-2,3.125-4.708,3.125-7.542V96c0-4.313-2.594-8.208-6.583-9.854
+                                                                            c-1.323-0.552-2.708-0.813-4.083-0.813c-2.771,0-5.5,1.083-7.542,3.125l-160,160c-4.167,4.167-4.167,10.917,0,15.083l160,160
+                                                                            c3.063,3.042,7.615,3.969,11.625,2.313c3.99-1.646,6.583-5.542,6.583-9.854v-21.333c0-2.833-1.125-5.542-3.125-7.542
+                                                                            L68.417,277.333h432.917c5.896,0,10.667-4.771,10.667-10.667v-21.333C512,239.438,507.229,234.667,501.333,234.667z"></path>
+                                                                    </g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                                <g>
+                                                                </g>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-                            </div>
-                    </a>
-                    </div>
+                            </a>
+                        </div>
+
+                    @endforeach
+
+
+                    
+
                 </div>
+            </div>
         </div>
-    </div>
+
     </div>
 </div>
 </section>

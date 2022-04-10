@@ -57,7 +57,6 @@
                                     
                                 @endforeach
 
-								
 								</div>
 							</div>
 						   <div class="row commentpr_row p-5 back_crm">

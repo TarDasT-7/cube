@@ -15,6 +15,7 @@ use App\Models\Slider;
 use App\Models\AboutUs;
 use App\Models\Contact_Us;
 use App\Models\User;
+use App\Models\Faq;
 
 
 class IndexPagesController extends Controller
@@ -86,6 +87,11 @@ class IndexPagesController extends Controller
 
     }
 
+    public function faq()
+    {
+        $questions=Faq::where('position' , 'faq')->get();
+        return view('site.pages.question.question' , compact(['questions']));
 
+    }
     
 }

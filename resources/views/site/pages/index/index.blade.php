@@ -1219,7 +1219,7 @@
 
                                 <div class="pdcst_pr_col item">
                                             
-                                    <a href="pdclists_page.html" class="txt_dgray">
+                                    <a href="{{route('podcastCollection' , $podcast->id)}}" class="txt_dgray">
                                         <div class="row pdcst_pr_row  ">
                                         <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
                                             <img class="pdcst_img" src="{{'/images/podcasts/'.$podcast->image}}">
@@ -1363,7 +1363,7 @@
                     @foreach ($blogs as $blog)
                         
                         <div class="blogpst_mcol col-md-6">
-                            <a href="artcl_dtpage.html" class="txt_dgray pkg_pr_lnk">
+                            <a href="{{route('blogShow' , $blog->id)}}" class="txt_dgray pkg_pr_lnk">
                                 <div class="row blgpst_dtimg_row">
                                     <div class="col-12 col-md-6 blgpst_indx_imgcol  text-center" style="background-image: url({{url('/images/blogs/'.$blog->image)}})">
                                             <!--<img class="blgpst_pr_img" src="img/prjexp45.jpg">-->

@@ -250,6 +250,7 @@ Route::get('free-video-list',[IndexPagesController::class,'fvList'])->name('fvLi
 Route::get('free-video-show-{id}',[ShowController::class,'fvShow'])->name('fvShow');
 Route::get('about-us',[IndexPagesController::class,'about'])->name('about');
 Route::get('contact-us',[IndexPagesController::class,'contact'])->name('contact');
+Route::get('faq-list',[IndexPagesController::class,'faq'])->name('faq_list');
 
 
 

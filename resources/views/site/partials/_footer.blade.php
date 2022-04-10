@@ -89,7 +89,7 @@
                                     <ul class="inrpages_footer_li_ul list-unstyled bold">
                                         <li class="pb-2"><a class="txt_dgray" href="about_us.html" >درباره ی ما</a></li>
                                         <li class="pb-2"><a class="txt_dgray" href="contact_us.html" >تماس با ما</a></li>
-                                        <li class="pb-2"><a class="txt_dgray" href="faq_page.html" >سوالات متداول</a></li>
+                                        <li class="pb-2"><a class="txt_dgray" href="{{route('faq_list')}}" >سوالات متداول</a></li>
                                         <li class="pb-2"><a class="txt_dgray" href="faq_page.html">راهنمای خرید</a></li>
                                         <li class="pb-2"><a class="txt_dgray" href="faq_page.html">قوانین و مقررات</a></li>
                                     </ul>

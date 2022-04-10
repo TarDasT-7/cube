@@ -86,7 +86,7 @@
                     <div class="row prjcts_prv_mrow grid pb-5 m-0 pt-2">
                         <div class="col-12 col-md-3 artcl_prv_mcol grid-item">
 
-                            <a href="artcl_dtpage.html" class="artcl_lnk">
+                            <a href="{{route('blogShow' , $blog->id)}}" class="artcl_lnk">
                                 <div class="row post_rowind justify-content-center">
                                     <div class="col-md-12 post_colindimg">
                                     <img src="{{'/images/blogs/'.$blog->image}}" class="postindimg">

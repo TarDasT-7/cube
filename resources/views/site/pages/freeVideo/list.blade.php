@@ -78,7 +78,7 @@
                             @foreach ($videos as $video)
                                     
                                 <div class="frvid_lipr_col col-md-3">
-                                    <a href="frvid_dtpage.html" class="txt_dgray">
+                                    <a href="{{route('fvShow' , $video->id)}}" class="txt_dgray">
                                         <div class="row frvidlist_pr_row  ">
                                             <div class="col-12 col-md-12 frvid_imgcol pb-2 text-center">
                                             <img class="frvid_img" src="{{'/images/free/'.$video->cover}}">

@@ -5,6 +5,10 @@
 <script src="{{asset("site/js/main_js.js")}}"></script>
 <script src="{{asset("site/js/owl.carousel.min.js")}}"></script>
 <script src="{{asset("site/js/video.min.js")}}"></script>
+<script src="{{asset("site/js/jquery.mCustomScrollbar.js")}}"></script>
+<script src="{{asset("site/js/mediaelement-and-player.min.js")}}"></script>
+
+
 <script>
     $(document).ready(function() {
         var owl = $('.vbvc');
@@ -168,4 +172,6 @@
 
 
 </script>
+
 @yield('add_script')
+

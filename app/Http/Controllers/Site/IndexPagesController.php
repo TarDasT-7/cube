@@ -15,7 +15,6 @@ use App\Models\Slider;
 use App\Models\AboutUs;
 use App\Models\Contact_Us;
 use App\Models\User;
-use Hekmatinasser\Verta\Verta;
 
 
 class IndexPagesController extends Controller

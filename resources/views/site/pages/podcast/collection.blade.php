@@ -74,7 +74,7 @@
                     <div class="row prjcts_prv_mrow  m-0 ">
                         @foreach ($podcast->files as $file)
                             <div class="pdcst_lipr_col col-md-2">
-                                <a href="pdcst_dtpage.html" class="txt_dgray">
+                                <a href="{{route('podcastPlay' , $file->id)}}" class="txt_dgray">
                                     <div class="row pdcstlist_pr_row  ">
                                         <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
                                             <img class="pdcst_img" src="{{'/images/podcasts/'.$podcast->id.'/'.$file->image}}">

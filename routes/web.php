@@ -53,6 +53,8 @@ use App\Http\Controllers\Site\SiteSliderController;
 use App\Http\Controllers\Site\SiteUserController;
 
 use App\Http\Controllers\Site\IndexPagesController;
+use App\Http\Controllers\Site\ShowController;
+
 
 
 
@@ -241,11 +243,11 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 Route::get('/',[IndexPagesController::class,'home'])->name('homePage');
 Route::get('podcast-list',[IndexPagesController::class,'podList'])->name('podcastList');
 Route::get('podcast-collection-{id}',[IndexPagesController::class,'podCol'])->name('podcastCollection');
+Route::get('podcast-play-{id}',[ShowController::class,'podPlay'])->name('podcastPlay');
 Route::get('blog-list-{href}',[IndexPagesController::class,'blogList'])->name('blogtList');
 Route::get('free-video-list',[IndexPagesController::class,'fvList'])->name('fvList');
 Route::get('about-us',[IndexPagesController::class,'about'])->name('about');
 Route::get('contact-us',[IndexPagesController::class,'contact'])->name('contact');
-
 
 
 

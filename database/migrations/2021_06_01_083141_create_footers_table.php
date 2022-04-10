@@ -15,7 +15,8 @@ class CreateFootersTable extends Migration
     {
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
-            $table->longText('description');
+            $table->string('image');
+            $table->text('description');
 
             $table->timestamps();
         });

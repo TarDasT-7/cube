@@ -184,6 +184,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('question',QuestionController::class);
         Route::get('question-position',[QuestionController::class , 'position'])->name('question_position');
 
+        Route::resource('footer',FooterController::class);
 
 
 
@@ -213,7 +214,6 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('author',AuthorController::class);
         Route::resource('coursevideo',CourseVideoController::class);
         Route::resource('member',MemberController::class);
-        Route::resource('footer',FooterController::class);
         // Route::resource('podcast',PodCastController::class);
         Route::resource('podcategory',PodCastCategoryController::class);
         Route::resource('podaudio',PodCastAudioController::class);

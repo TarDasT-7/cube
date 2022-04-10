@@ -256,7 +256,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('product_teacher.index')}}">
+                        <a href="{{route('footer.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">پاورقی</span>
                         </a>

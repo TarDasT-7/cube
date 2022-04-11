@@ -158,6 +158,12 @@
                             <span class="menu-item" data-i18n="Register">زیر دسته ها</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('tag.index')}}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="Register">برچسب ها</span>
+                        </a>
+                    </li>
 
                 </ul>
 

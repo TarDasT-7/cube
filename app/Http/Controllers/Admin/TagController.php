@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\SubCategory;
+use App\Models\Tag;
 
-class SubCategoryController extends Controller
+
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::where('related' , 'محصولات')->orWhere('related' , 'دوره')->get();
-        $subCategories=SubCategory::all();
-        return view('admin.pages.category.subCate' , compact(['subCategories','categories']));
+        $tags = Tag::all();
+        return view('admin.pages.category.tag' , compact(['tags']));
     }
 
     /**
@@ -41,16 +40,14 @@ class SubCategoryController extends Controller
     {
         $request->validate([
             'title'=>'required|max:250',
-            'category'=>'required',
         ]);
 
-        $category = new SubCategory();
-        $category->title = $request->title;
-        $category->category_id = $request->category;
-        $category->save();
+        $tag = new Tag();
+        $tag->title = $request->title;
+        $tag->save();
 
-        session()->flash('add','زیر دسته با موفقیت ایجاد شد');
-        return redirect()->route('sub.index');
+        session()->flash('add','برچسب با موفقیت ایجاد شد');
+        return redirect()->back();
     }
 
     /**
@@ -85,18 +82,15 @@ class SubCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-
             'title'=>'required|max:250',
-            'category'=>'required',
         ]);
 
-        $category =SubCategory::find($id);
-        $category->title = $request->title;
-        $category->category_id = $request->category;
-        $category->save();
+        $tag =Tag::find($id);
+        $tag->title = $request->title;
+        $tag->save();
 
-        session()->flash('add','زیر دسته با موفقیت ویرایش شد');
-        return redirect()->route('sub.index');
+        session()->flash('add','برچسب با موفقیت ویرایش شد');
+        return redirect()->back();
     }
 
     /**
@@ -107,8 +101,8 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category =SubCategory::find($id)->delete();
-        session()->flash('add','زیر دسته با موفقیت حذف شد');
-        return redirect()->route('sub.index');
+        $tag =Tag::find($id);
+        session()->flash('add','برچسب با موفقیت حذف شد');
+        return redirect()->back();
     }
 }

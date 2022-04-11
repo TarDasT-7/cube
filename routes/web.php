@@ -87,6 +87,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProducerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\FreeVideoController;
 use App\Http\Controllers\Admin\FreeVideoFileController;
 use App\Http\Controllers\Admin\PodcastController;
@@ -159,6 +160,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 
         Route::resource('category',CategoryController::class);
         Route::resource('sub',SubCategoryController::class);
+        Route::resource('tag',TagController::class);
 
         Route::resource('free-video',FreeVideoController::class);
         Route::resource('free-file',FreeVideoFileController::class);

@@ -23,6 +23,7 @@ class CreatePodAudioTable extends Migration
             $table->bigInteger('podcast_id');
             $table->bigInteger('producer_id');
             $table->text('description');
+            $table->mediumText('tags')->nullable();
             $table->timestamps();
         });
     }

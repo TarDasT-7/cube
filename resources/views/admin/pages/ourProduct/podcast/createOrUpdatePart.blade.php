@@ -92,18 +92,18 @@
                                 <div class="card-body">
                                     <div class="row">
   
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <label>کاور</label>
                                             <input type="file" name="image" accept="image/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                             <p class="font-size-sm" >ابعاد عکس باید 1600 در 500 پیکسل مربع باشد</p>
             
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <label>موزیک</label>
                                             <input type="file" name="sound" accept="audio/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                             <p class="font-size-sm" >ابعاد عکس باید 1600 در 500 پیکسل مربع باشد</p>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <label>شماره قسمت</label>
                                             <select class="select2-bg form-control" name="number" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
                                                 <option value="1">1</option>
@@ -148,6 +148,17 @@
                                                 <option value="40">40</option>
                                             </select>
                                         </div>
+
+                                        <div class="col-3">
+                                            <label>برچسب ها</label>
+                                            <select class="select2-bg form-control" multiple name="tags[]" id="tag" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                                <option value="null" selected>هیچکدام</option>
+                                                @foreach ($tags as $tag)
+                                                    <option value="{{$tag->title}}">{{$tag->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                     </div>
                                     
                                 </div>
@@ -212,18 +223,18 @@
                                 <div class="card-body">
                                     <div class="row">
   
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <label>کاور</label>
                                             <input type="file" name="image" accept="image/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                             <p class="font-size-sm" >ابعاد عکس باید 1600 در 500 پیکسل مربع باشد</p>
             
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <label>موزیک</label>
                                             <input type="file" name="sound" accept="audio/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                             <p class="font-size-sm" >ابعاد عکس باید 1600 در 500 پیکسل مربع باشد</p>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <label>شماره قسمت</label>
                                             <select class="select2-bg form-control" name="number" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
                                                 <option @if($item->number == 1) selected @endif value="1">1</option>
@@ -266,6 +277,15 @@
                                                 <option @if($item->number == 38) selected @endif value="38">38</option>
                                                 <option @if($item->number == 39) selected @endif value="39">39</option>
                                                 <option @if($item->number == 40) selected @endif value="40">40</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <label>برچسب ها</label>
+                                            <select class="select2-bg form-control" multiple name="tags[]" id="tag" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                                <option value="null" @if(is_null($item->tags)) selected @endif>هیچکدام</option>
+                                                @foreach ($allTag as $tag)
+                                                    <option value="{{$tag->title}}">{{$tag->title}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

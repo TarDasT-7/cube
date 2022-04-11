@@ -9,6 +9,7 @@ use App\Models\PodAudio;
 use App\Models\Producer;
 use App\Models\Podcast;
 use App\Models\Category;
+use App\Models\Tag;
 
 
 
@@ -44,8 +45,9 @@ class PodcastController extends Controller
     {
         $podcast = Podcast::find($request->id);
         $producers=Producer::where('podcast',1)->get();
+        $tags=Tag::all();
         $rel ='create';
-        return view('admin.pages.ourProduct.podcast.createOrUpdatePart' , compact(['podcast','producers','rel']));
+        return view('admin.pages.ourProduct.podcast.createOrUpdatePart' , compact(['podcast','producers','rel','tags']));
     }
 
     /**
@@ -90,11 +92,13 @@ class PodcastController extends Controller
 
     public function storeItem(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'title'=> "required|max:250",
             'name'=> "required|max:250",
             'producer'=> "required",
             'number'=> "required",
+            'tags.*'=> "max:250",
             'id'=> "required",
             'long_description'=> "required|max:5000",
             'sound'=> "required|max:10000",
@@ -137,6 +141,22 @@ class PodcastController extends Controller
             $part->sound=$name;
         }
 
+
+        if($request->tags)
+        {
+            if(in_array('null' , $request->tags))
+            {
+                $part->tags=null;
+            }else
+            {
+                $tags='';
+                foreach ($request->tags as $key => $tag) {
+                    $tags .= $tag.'&&&';
+                }
+                $part->tags=$tags;
+            }
+        }
+
         $part->save();
 
         session()->flash('add','پادکست با موفقیت معرفی شد');
@@ -172,9 +192,11 @@ class PodcastController extends Controller
     public function editItem($id)
     {
         $item=PodAudio::find($id);
+        $allTag=Tag::all();
+        $tags=explode('&&&',$item->tags);
         $producers=Producer::where('podcast',1)->get();
         $rel ='update';
-        return view('admin.pages.ourProduct.podcast.createOrUpdatePart' , compact(['item','producers','rel']));
+        return view('admin.pages.ourProduct.podcast.createOrUpdatePart' , compact(['item','producers','rel','tags' , 'allTag']));
     }
     
 

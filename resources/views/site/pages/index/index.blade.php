@@ -1216,73 +1216,71 @@
                         <div class="owl-carousel pdcst_slcont owl-theme">
                             
                             @foreach ($podcasts as $podcast)
-
                                 <div class="pdcst_pr_col item">
                                             
                                     <a href="{{route('podcastCollection' , $podcast->id)}}" class="txt_dgray">
                                         <div class="row pdcst_pr_row  ">
-                                        <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
-                                            <img class="pdcst_img" src="{{'/images/podcasts/'.$podcast->image}}">
-                                            <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
-                                                xml:space="preserve">
-                                                <g>
-                                                <path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
-                                                    c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
-                                            <div class="row pdcst_dts_row">
-                                                <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
-                                                    <h6 class="font14 txt_dgray bold">{{$podcast->title}}</h6>
-                                                </div>
-                                                <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
-                                                    {{-- <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-                                                        <li class=" list-inline-item tch_dtulli">
-                                                            <span class="txt_gray font14">نام گوینده</span>
-                                                        </li>
-                                                    </ul>
-                                                </div> --}}
-
-
+                                            <div class="col-12 col-md-12 pdcst_pr_img_col pb-2 text-center">
+                                                <img class="pdcst_img" src="{{'/images/podcasts/'.$podcast->image}}">
+                                                <svg class="pdcst_icocol" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"
+                                                    xml:space="preserve">
+                                                    <g>
+                                                    <path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275
+                                                        c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                    <g>
+                                                    </g>
+                                                </svg>
                                             </div>
-                                        </div>
+                                            <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
+                                                <div class="row pdcst_dts_row">
+                                                    <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
+                                                        <h6 class="font14 txt_dgray bold">{{$podcast->title}}</h6>
+                                                    </div>
+                                                    {{-- <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
+                                                        <ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
+                                                            <li class=" list-inline-item tch_dtulli">
+                                                                <span class="txt_gray font14">نام گوینده</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div> --}}
+
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </a>
 
                                 </div>
-
                             @endforeach
 
                         </div>

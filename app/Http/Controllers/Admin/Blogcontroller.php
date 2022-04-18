@@ -8,6 +8,7 @@ use App\Models\Producer;
 use App\Models\Blog;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class Blogcontroller extends Controller
@@ -21,15 +22,22 @@ class Blogcontroller extends Controller
     {
         $blogs=Blog::all();
         $producers=Producer::where('blog' , 1)->get();
+        $tags=Tag::all();
         $categories=Category::where('related' , 'بلاگ')->orWhere('related' , 'روانشناسی')->get();
-        return view('admin.pages.ourProduct.blog.index', compact(['blogs','categories' , 'producers']));
+        return view('admin.pages.ourProduct.blog.index', compact(['blogs','categories' , 'producers','tags']));
     }
 
     public function article($id)
     {
-        $blog=Blog::find($id);
-        $articles=$blog->articles;
-        return view('admin.pages.ourProduct.blog.parts', compact(['blog' , 'articles']));
+        // $blog=Blog::find($id);
+        // $articles=$blog->articles;
+        // return view('admin.pages.ourProduct.blog.parts', compact(['blog' , 'articles']));
+
+        $rel ='create';
+        $blog = Blog::find($id);
+        $producers=Producer::where('blog',1)->get();
+
+        return view('admin.pages.ourProduct.blog.crtorupd' , compact(['blog','producers','rel']));
 
     }
 
@@ -94,6 +102,21 @@ class Blogcontroller extends Controller
             $blog->image = $name;
         }
 
+        if($request->tags)
+        {
+            if(in_array('null' , $request->tags))
+            {
+                $blog->tags=null;
+            }else
+            {
+                $tags='';
+                foreach ($request->tags as $key => $tag) {
+                    $tags .= $tag.'&&&';
+                }
+                $blog->tags=$tags;
+            }
+        }
+
         $blog->save();
         session()->flash('add','مقاله با موفقیت معرفی شد');
         return redirect()->back();
@@ -102,35 +125,17 @@ class Blogcontroller extends Controller
     public function storeItem(Request $request)
     {
         $request->validate([
-            'title'=> "max:250",
+            'description'=> "required|max:55000",
             'id'=> "required",
-            'description'=> "required|max:8000",
-            'image'=> "max:1500",
         ]);
 
         $part=new Article();
-        $part->title = $request->title;
         $part->blog_id = $request->id;
         $part->desc = $request->description;
-
-
-        if($image = $request->file('image'))
-        {
-            $path="images/blogs/$request->id";
-            $extension ='.'.$image->extension();
-            if(!file_exists($path))
-            {
-                File::makeDirectory($path , 0775 , true);
-            }
-            $name ='blog-img-'. time() . $extension;
-            $image->move($path, $name);
-            $part->image=$name;
-        }
-
         $part->save();
 
         session()->flash('add','مقاله با موفقیت معرفی شد');
-        return redirect()->route('blog_article',$request->id);
+        return redirect()->route('blog.index');
     }
 
     /**
@@ -162,7 +167,8 @@ class Blogcontroller extends Controller
     {
         $item=Article::find($id);
         $rel ='update';
-        return view('admin.pages.ourProduct.blog.createOrUpdatePart' , compact(['item','rel']));
+
+        return view('admin.pages.ourProduct.blog.crtorupd' , compact(['item','rel']));
     }
 
     /**
@@ -182,6 +188,7 @@ class Blogcontroller extends Controller
             'description'=> "required",
             // 'image'=> "required| dimensions:max_width=680,max_height=470,min_width=580,min_height=370",
             'image'=> "max:1500",
+            'tags.*'=> "max:250",
         ]);
 
         $blog=Blog::find($id);
@@ -210,6 +217,23 @@ class Blogcontroller extends Controller
             $blog->image = $name;
         }
 
+        if($request->tags)
+        {
+            $blog->tags=null;
+            
+            if(in_array('null' , $request->tags))
+            {
+                $blog->tags=null;
+            }else
+            {
+                $tags='';
+                foreach ($request->tags as $key => $tag) {
+                    $tags .= $tag.'&&&';
+                }
+                $blog->tags=$tags;
+            }
+        }
+
         $blog->save();
         session()->flash('add','مقاله با موفقیت ویرایش شد');
         return redirect()->back();
@@ -219,47 +243,17 @@ class Blogcontroller extends Controller
     public function updateItem(Request $request, $id)
     {
         $request->validate([
-            'title'=> "max:250",
-            'description'=> "required|max:8000",
-            'image'=> "max:1500",
+            'description'=> "required|max:55000",
         ]);
 
         $part=Article::find($id);
 
-        $part->title = $request->title;
         $part->desc = $request->description;
-
-        $id=$part->blog_id;
-        
-        if($request->rm_image)
-        {
-            $rm="images/blogs/$id/$part->image";
-            File::delete($rm);
-            $part->image=null;
-        }
-        else
-        {
-            if($image = $request->file('image'))
-            {
-                $rm="images/blogs/$id/$part->image";
-                File::delete($rm);
-    
-                $path="images/blogs/$id";
-                $extension ='.'.$image->extension();
-                if(!file_exists($path))
-                {
-                    File::makeDirectory($path , 0775 , true);
-                }
-                $name ='blog-img-'. time() . $extension;
-                $image->move($path, $name);
-                $part->image=$name;
-            }
-        }
 
         $part->save();
 
-        session()->flash('add','مقاله با موفقیت معرفی شد');
-        return redirect()->route('blog_article',$id);
+        session()->flash('add','مقاله با موفقیت ویرایش شد');
+        return redirect()->route('blog.index');
     }
 
     /**

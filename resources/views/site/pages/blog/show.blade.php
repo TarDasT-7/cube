@@ -74,23 +74,12 @@
                     
                         @foreach ($blog->articles as $article)
                             
-                            @if($article->title)
-                                <div class="col-12 txt_dgray col-md-12 pt-5 pb-5 ">
-                                    <h6 class="txt_dgray font24">{{$article->title}}</h6>
-                                </div>
-                            @endif
 
-                            <div class="col-md-12 crsl_txtcol txt_gray pb-4">
+
+                            <div class="col-md-12 crsl_txtcol pb-4">
                                 {!! $article->desc !!}
                             </div>
 
-                            <div class="col-md-12 prj_picmcol pb-5">
-                                <div class="row prj_picmrow justify-content-center">
-                                    <div class="col-md-8 prj_piccol">
-                                        <img class="artcl_pic" src="{{'/images/blogs/'.$blog->id .'/'. $article->image }}">
-                                    </div>
-                                </div>
-                            </div>
 
                         @endforeach
 
@@ -103,27 +92,13 @@
                        <div class="row tags_row">
                            <div class="col-md-12 clr_col pt-4">
                                        <ul class="pr-0 txt_grayl list-inline bold list-unstyled">
-                                           <li class="list-inline-item  tls_li ml-1">
-                                               <a href="#"  class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
-                                           </li>
-                                           <li class="list-inline-item  tls_li ml-1">
-                                               <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
-                                           </li>
-                                           <li class="list-inline-item  tls_li ml-1">
-                                               <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
-                                           </li>
-                                           <li class="list-inline-item  tls_li ml-1">
-                                               <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
-                                           </li>
-                                           
-                                           <li class="list-inline-item  tls_li ml-1">
-                                               <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
-                                           </li>
-                                           <li class="list-inline-item  tls_li ml-1">
-                                               <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
-                                           </li>
-                                           
-                                           
+                                            @foreach ($tags as $tag)
+                                                @if(!empty($tag))
+                                                    <li class="list-inline-item  tls_li ml-1">
+                                                        <a href="#"  class="txt_gray"><h6 class="font12 mb-0 bold">#{{$tag}} </h6></a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
                                        </ul>
                                    </div>
                        </div>

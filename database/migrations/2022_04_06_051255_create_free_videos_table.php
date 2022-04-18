@@ -20,7 +20,6 @@ class CreateFreeVideosTable extends Migration
             $table->string('cover');
             $table->bigInteger('producer_id');
             $table->string('time');
-            $table->string('hardship');
             $table->string('demo');
             $table->bigInteger('category_id');
             $table->text('small_description');

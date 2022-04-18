@@ -74,6 +74,15 @@
                                 </select>
                             </fieldset>
                         </div>
+                        <div class="col-md-12  mb-1">
+                            <label>برچسب ها</label>
+                            <select class="select2-bg form-control" multiple name="tags[]" id="tag" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                <option value="null" selected>هیچکدام</option>
+                                @foreach ($tags as $tag)
+                                    <option  value="{{$tag->title}}">{{$tag->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="col-md-12  mb-1">
                             <fieldset class="form-group">
@@ -181,7 +190,11 @@
                                     <td class="text-center">{{$blog->related}}</td>
                                     <td class="text-center">{{$blog->producer->first_name}} {{$blog->producer->last_name}}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-info mb-1 text-white" href="{{route('blog_article' , $blog->id)}}">مقالات</a><br>
+                                        @if(count($blog->articles) > 0)
+                                            <a class="btn btn-info mb-1 text-white" href="{{route('edit_blogItem' , $blog->articles[0]->id)}}">مقالات</a><br>
+                                        @else
+                                            <a class="btn btn-info mb-1 text-white" href="{{route('blog_article' , $blog->id)}}">مقالات</a><br>
+                                        @endif
                                         <a class="btn btn-warning mb-1 text-white"  data-toggle="modal" data-target="#update-{{$key}}">ویرایش</a>
                                         <form method="post" action="{{route('blog.destroy', $blog->id)}}">
                                             @csrf
@@ -190,7 +203,9 @@
                                         </form>
                                     </td>
                                 </tr>
-
+                                    <?php 
+                                        $blogTags=explode('&&&',$blog->tags);
+                                    ?>
                                 <div class="modal fade" id="update-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -250,6 +265,16 @@
                                                             @endforeach
                                                         </select>
                                                     </fieldset>
+                                                </div>
+
+                                                <div class="col-md-12  mb-1">
+                                                    <label>برچسب ها</label>
+                                                    <select class="select2-bg form-control" multiple name="tags[]" id="tag" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                                        <option value="null" @if(is_null($blog->tags)) selected @endif>هیچکدام</option>
+                                                        @foreach ($tags as $tag)
+                                                            <option  @if(in_array($tag->title , $blogTags)) selected @endif value="{{$tag->title}}">{{$tag->title}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                         
                                                 <div class="col-md-12  mb-1">

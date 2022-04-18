@@ -52,8 +52,8 @@ class IndexPagesController extends Controller
     {
         if($href == 'blog')
         {
-            $blogs=Blog::where('related' , 'بلاگ')->get();
-            $categories = Category::where('related' , 'بلاگ')->get();
+            $blogs=Blog::all();
+            $categories = Category::where('related' , 'بلاگ')->orWhere('related' , 'روانشناسی')->get();
             
         }elseif($href == 'psychology')
         {

@@ -43,7 +43,6 @@ class SliderController extends Controller
 
         $request->validate([
             'desc'=> "required|max:5000",
-            // 'image'=> "required| dimensions:max_width=1650,max_height=550,min_width=1550,min_height=450",
             'image'=> "required|max:1500",
         ]);
 

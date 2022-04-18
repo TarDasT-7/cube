@@ -67,19 +67,15 @@
                             
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label>عنوان</label>
                                             <input type="text" name="title" class="form-control" placeholder="عنوان خود را وارد کنید">        
                                         </div>
-                                        <div class="col-3">
-                                            <label>زمان ویدئو</label>
-                                            <input type="text" name="time" class="form-control" placeholder="12:40:15 فرمت مناسب ساعت:دقیقه:ثانیه">        
-                                        </div>
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label>ویدئو دمو</label>
                                             <input type="file" name="video" accept="video/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label>کاور پیش فرض</label>
                                             <input type="file" name="image" accept="images/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                         </div>
@@ -92,21 +88,15 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-4">
+                                            <label>زمان ویدئو</label>
+                                            <input type="text" name="time" class="form-control" placeholder="12:40:15 فرمت مناسب ساعت:دقیقه:ثانیه">        
+                                        </div>
+                                        <div class="col-4">
                                             <label>تولید کننده</label>
                                             <select class="select2-bg form-control" name="producer" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
                                                 @foreach ($producers as $producer)
                                                     <option value="{{$producer->id}}">{{$producer->first_name}} {{$producer->last_name}}</option>
                                                 @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-4">
-                                            <label>سطح</label>
-                                            <select class="select2-bg form-control" name="hardship" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
                                             </select>
                                         </div>
                                         <div class="col-4">
@@ -160,19 +150,15 @@
                             
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label>عنوان</label>
                                             <input type="text" name="title" class="form-control" value="{{$video->title}}" placeholder="عنوان خود را وارد کنید">        
                                         </div>
-                                        <div class="col-3">
-                                            <label>زمان ویدئو</label>
-                                            <input type="text" name="time" class="form-control" value="{{$video->time}}" placeholder="12:40:15 فرمت مناسب ساعت:دقیقه:ثانیه">        
-                                        </div>
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label>ویدئو دمو</label>
                                             <input type="file" name="video" accept="video/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label>کاور پیش فرض</label>
                                             <input type="file" name="image" accept="images/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                         </div>
@@ -185,6 +171,10 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-4">
+                                            <label>زمان ویدئو</label>
+                                            <input type="text" name="time" class="form-control" value="{{$video->time}}" placeholder="12:40:15 فرمت مناسب ساعت:دقیقه:ثانیه">        
+                                        </div>
+                                        <div class="col-4">
                                             <label>تولید کننده</label>
                                             <select class="select2-bg form-control" name="producer" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
                                                 @foreach ($producers as $producer)
@@ -192,16 +182,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-4">
-                                            <label>سطح</label>
-                                            <select class="select2-bg form-control" name="hardship" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
-                                                <option @if($video->hardship == '1') selected @endif value="1">1</option>
-                                                <option @if($video->hardship == '2') selected @endif value="2">2</option>
-                                                <option @if($video->hardship == '3') selected @endif value="3">3</option>
-                                                <option @if($video->hardship == '4') selected @endif value="4">4</option>
-                                                <option @if($video->hardship == '5') selected @endif value="5">5</option>
-                                            </select>
-                                        </div>
+                                        
                                         <div class="col-4">
                                             <label>دسته بندی</label>
                                             <select class="select2-bg form-control" name="category" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">

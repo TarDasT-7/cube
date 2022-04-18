@@ -279,12 +279,14 @@
                                                 <option @if($item->number == 40) selected @endif value="40">40</option>
                                             </select>
                                         </div>
+                                        {{-- @dd($allTag , $tags); --}}
+
                                         <div class="col-3">
                                             <label>برچسب ها</label>
                                             <select class="select2-bg form-control" multiple name="tags[]" id="tag" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
                                                 <option value="null" @if(is_null($item->tags)) selected @endif>هیچکدام</option>
                                                 @foreach ($allTag as $tag)
-                                                    <option value="{{$tag->title}}">{{$tag->title}}</option>
+                                                    <option @if(in_array($tag->title , $tags)) selected @endif value="{{$tag->title}}">{{$tag->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -307,26 +307,14 @@
                 <div class="row tags_row">
                     <div class="col-md-12 clr_col pt-4">
                         <ul class="pr-0 txt_grayl list-inline bold list-unstyled">
-                            <li class="list-inline-item  tls_li ml-1">
-                                <a href="#"  class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
-                            </li>
-                            <li class="list-inline-item  tls_li ml-1">
-                                <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
-                            </li>
-                            <li class="list-inline-item  tls_li ml-1">
-                                <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
-                            </li>
-                            <li class="list-inline-item  tls_li ml-1">
-                                <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
-                            </li>
                             
-                            <li class="list-inline-item  tls_li ml-1">
-                                <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> تگ </h6></a>
-                            </li>
-                            <li class="list-inline-item  tls_li ml-1">
-                                <a href="#" class="txt_gray"><h6 class="font12 mb-0 bold"> برچسب </h6></a>
-                            </li>
-                            
+                            @foreach ($tags as $tag)
+                                @if(!empty($tag))
+                                    <li class="list-inline-item  tls_li ml-1">
+                                        <a href="#"  class="txt_gray"><h6 class="font12 mb-0 bold">#{{$tag}} </h6></a>
+                                    </li>
+                                @endif
+                            @endforeach
                             
                         </ul>
                     </div>

@@ -17,6 +17,7 @@ class CreateSlidersTable extends Migration
             $table->increments('id');
             $table->text('desc')->nullable();
             $table->string('image');
+            $table->string('link')->nullable()->default('#');
             $table->timestamps();
         });
     }

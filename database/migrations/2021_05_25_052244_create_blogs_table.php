@@ -18,9 +18,10 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->string('related');
             $table->string('image');
-            $table->text('desc');
+            $table->text('desc' , 1000);
             $table->bigInteger('producer_id')->unsigned();
             $table->bigInteger('category_id');
+            $table->mediumText('tags')->nullable();
             $table->timestamps();
         });
     }

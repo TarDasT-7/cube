@@ -253,6 +253,7 @@ class PodcastController extends Controller
             'long_description'=> "required|max:5000",
             'sound'=> "|max:10000",
             'image'=> "|max:1000",
+            'tags.*'=> "max:250",
         ]);
 
         $part=PodAudio::find($id);
@@ -292,6 +293,23 @@ class PodcastController extends Controller
             $name ='pod-cast-'. time() . $extension;
             $demo->move($path, $name);
             $part->sound=$name;
+        }
+
+        if($request->tags)
+        {
+            $part->tags=null;
+            
+            if(in_array('null' , $request->tags))
+            {
+                $part->tags=null;
+            }else
+            {
+                $tags='';
+                foreach ($request->tags as $key => $tag) {
+                    $tags .= $tag.'&&&';
+                }
+                $part->tags=$tags;
+            }
         }
 
         $part->save();

@@ -92,7 +92,6 @@
                                         <th scope="col" class="text-center">عنوان</th>
                                         <th scope="col" class="text-center">تولید کننده</th>
                                         <th scope="col" class="text-center">دسته بندی</th>
-                                        <th scope="col" class="text-center">سطح</th>
                                         <th scope="col" class="text-center">توضیح مختصر</th>
                                         <th scope="col" class="text-center">عملیات</th>
                                     </tr>
@@ -104,7 +103,6 @@
                                             <td class="text-center">{{$video->title}}</td>
                                             <td class="text-center">{{$video->producer->first_name}} {{$video->producer->last_name}}</td>
                                             <td class="text-center">{{$video->category->title}}</td>
-                                            <td class="text-center">{{$video->hardship}}</td>
                                             <td class="text-center" style="width: 45%">{{$video->small_description}}</td>
 
                                             <td class="text-center">

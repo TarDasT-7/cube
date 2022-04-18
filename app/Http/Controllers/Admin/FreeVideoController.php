@@ -52,7 +52,6 @@ class FreeVideoController extends Controller
             'title'=>'required|max:250',
             'time'=>'required|max:250',
             'producer'=>'required|',
-            'hardship'=>'required|',
             'category'=>'required|',
             'small_description'=>'required|max:700',
             'long_description'=>'required|max:5000',
@@ -63,7 +62,6 @@ class FreeVideoController extends Controller
         $video->title = $request->title;
         $video->time = $request->time;
         $video->producer_id = $request->producer;
-        $video->hardship = $request->hardship;
         $video->category_id = $request->category;
         $video->small_description = $request->small_description;
         $video->long_description = $request->long_description;
@@ -136,7 +134,6 @@ class FreeVideoController extends Controller
             'title'=>'required|max:250',
             'time'=>'required|max:250',
             'producer'=>'required|',
-            'hardship'=>'required|',
             'category'=>'required|',
             'small_description'=>'required|max:700',
             'long_description'=>'required|max:5000',
@@ -147,7 +144,6 @@ class FreeVideoController extends Controller
         $video->title = $request->title;
         $video->time = $request->time;
         $video->producer_id = $request->producer;
-        $video->hardship = $request->hardship;
         $video->category_id = $request->category;
         $video->small_description = $request->small_description;
         $video->long_description = $request->long_description;

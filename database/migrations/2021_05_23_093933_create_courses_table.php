@@ -17,17 +17,18 @@ class CreateCoursesTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('title');
             $table->string('image');
-            $table->longText('desc');
+            $table->string('demo');
+            $table->text('desc' , 1000);
+            $table->text('long_desc' , 10000);
             $table->integer('price');
-            $table->integer('off_price');
             $table->integer('off');
             $table->integer('video_num');
             $table->string('course_time');
             $table->string('level');
-            $table->integer('teacher_id')->unsigned();
-            $table->string('condition');
+            $table->bigInteger('producer_id');
+            $table->bigInteger('category_id');
+            $table->bigInteger('sub_category');
             $table->timestamps();
-            $table->foreign('teacher_id')->references('id')->on('teachers');
         });
     }
 

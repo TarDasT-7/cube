@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Upload;
 use App\Models\CourseVideo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CourseVideoController extends Controller
 {
@@ -17,9 +18,14 @@ class CourseVideoController extends Controller
      */
     public function index()
     {
-        $files=CourseVideo::all();
-        $courses=Course::all();
-       return view('admin.pages.coursevideo.indexcoursevideo')->with('files',$files)->with('courses',$courses);
+
+    }
+
+    public function items($id)
+    {
+        $course=Course::find($id);
+        $files=CourseVideo::where('course_id' , $id)->get();
+        return view('admin.pages.ourProduct.course.files' , compact('files' , 'course'));
     }
 
     /**
@@ -41,28 +47,40 @@ class CourseVideoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'show_id'=> "required|numeric",
-            'course'=> "required|numeric",
-            'course_time'=> "required",
-            'file'=> "required| size:100000",
+            'title'=> "required|max:250",
+            'heading'=> "required|max:250",
+            'id'=> "required|numeric",
+            'size'=> "required|max:250",
+            'file'=> "required|max:300000",
         ]);
+
+        $course=Course::find($request->id);
+        $course->video_num=$course->video_num + 1;
+        $course->save();
         $video=new CourseVideo();
         $video->title=$request->input('title');
-        $video->show_id=$request->input('show_id');
-        if ($request->file('file')) {
-            $file = $request->file('file');
-            $filename = time() .$file->getClientOriginalName();
-            $file->move('files', $filename);
-            $video->file=$filename;
+        $video->heading=$request->input('heading');
+        $video->course_id=$request->input('id');
+        $video->size=$request->input('size');
+        
+        $file=$request->file('file');
+        {
+            $path="videos/courses/$request->id/";
+            $extension ='.'.$file->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ="course-$request->id-$video->size-CUBE-". time() . $extension;
+            $file->move($path, $name);
+            $video->file=$name;
         }
-        $video->course_time = $request->input('course_time');
-        $video->course_id=$request->input('course');
+
+
         $video->save();
-        $files=CourseVideo::all();
-        $courses=Course::all();
+
         session()->flash('add','فایل با موفقیت اضافه شد');
-        return redirect('admin/coursevideo')->with('files',$files)->with('courses',$courses);
+        return redirect()->back();
     }
 
     /**
@@ -99,23 +117,34 @@ class CourseVideoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'show_id'=> "required|numeric",
-            'course'=> "required|numeric",
-            'course_time'=> "required",
+            'title'=> "required|max:250",
+            'heading'=> "required|max:250",
+            'size'=> "required|max:250",
+            'file'=> "max:300000",
         ]);
         $video=CourseVideo::find($id);
         $video->title=$request->input('title');
-        $video->show_id=$request->input('show_id');
-        if($request->input('course')) {
-            $video->course_id = $request->input('course');
+        $video->heading=$request->input('heading');
+        $video->size=$request->input('size');
+
+        if($demo = $request->file('file'))
+        {
+            $rm="videos/courses/$video->course_id/$video->file";
+            File::delete($rm);
+            $path="videos/courses/$video->course_id";
+            $extension ='.'.$demo->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ="course-$video->course_id-$video->size-CUBE-". time() . $extension;
+            $demo->move($path, $name);
+            $video->file=$name;
         }
-        $video->course_time = $request->input('course_time');
+
         $video->save();
-        $files=CourseVideo::all();
-        $courses=Course::all();
         session()->flash('update','فایل با موفقیت به روزرسانی شد');
-        return redirect('admin/coursevideo')->with('files',$files)->with('courses',$courses);
+        return redirect()->back();
     }
 
     /**
@@ -127,10 +156,15 @@ class CourseVideoController extends Controller
     public function destroy($id)
     {
         $video=CourseVideo::find($id);
+        $course=Course::find($video->course_id);
+        $course->video_num=$course->video_num - 1;
+        $course->save();
+        $rm="videos/courses/$video->course_id/$video->file";
+        File::delete($rm);
+
         $video->delete();
-        $files=CourseVideo::all();
-        $courses=Course::all();
+
         session()->flash('delete','فایل با موفقیت حذف شد');
-        return redirect('admin/coursevideo')->with('files',$files)->with('courses',$courses);
+        return redirect()->back();
     }
 }

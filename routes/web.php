@@ -182,6 +182,14 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::patch('blog-edit-item-{id}',[Blogcontroller::class , 'updateItem'])->name('update_blogItem');
         Route::delete('blog-destroy-item-{id}',[Blogcontroller::class , 'destroyItem'])->name('destroy_blogItem');
 
+
+        Route::resource('course',Coursecontroller::class);
+        Route::get('course-subcate',[Coursecontroller::class , 'subCateGET'])->name('subcateFind');
+        Route::resource('coursevideo',CourseVideoController::class);
+        Route::get('coursevideo-items-{id}',[CourseVideoController::class , 'items'])->name('cv_item');
+
+
+
         Route::resource('aboutUs',AboutUsController::class);
         Route::resource('contactUs',ContactUsController::class);
 
@@ -206,7 +214,6 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 
         Route::resource('questioncategory',QuestionCategoryController::class);
         Route::resource('admin',AdminusersController::class);
-        Route::resource('course',Coursecontroller::class);
         Route::get('select',[Coursecontroller::class,'select'])->name('selects');
         Route::get('courseteacher',[Coursecontroller::class,'teacher'])->name('courseteachers');
 
@@ -215,7 +222,6 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::resource('teacher',TeacherController::class);
         Route::resource('blogcategory',BlogCategoryController::class);
         Route::resource('author',AuthorController::class);
-        Route::resource('coursevideo',CourseVideoController::class);
         Route::resource('member',MemberController::class);
         // Route::resource('podcast',PodCastController::class);
         Route::resource('podcategory',PodCastCategoryController::class);

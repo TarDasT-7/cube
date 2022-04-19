@@ -29,8 +29,8 @@ class IndexPagesController extends Controller
         $sliders=Slider::all();
         $podcasts=Podcast::orderBy('id' , 'DESC')->take(8)->get();
         $blogs=Blog::orderBy('id' , 'DESC')->take(2)->get();
-
-        return view('site.pages.index.index' , compact(['user','sliders','podcasts','blogs']));
+        $frees=FreeVideo::orderBy('id' , 'DESC')->take(7)->get();
+        return view('site.pages.index.index' , compact(['user','sliders','podcasts','blogs','frees']));
     }
 
     public function podList()

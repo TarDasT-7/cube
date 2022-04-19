@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\Teacher;
+use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\Producer;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class Coursecontroller extends Controller
 {
@@ -18,11 +20,8 @@ class Coursecontroller extends Controller
      */
     public function index()
     {
-        $course=Course::find(1);
-
         $courses = Course::all();
-        $teachers = Teacher::all();
-        return view('admin.pages.course.indexcourse')->with('courses', $courses)->with('teacher', $teachers);
+        return view('admin.pages.ourProduct.course.index' , compact('courses'));
     }
 
     /**
@@ -32,10 +31,10 @@ class Coursecontroller extends Controller
      */
     public function create()
     {
-        $categories = CourseCategory::all();
-        $teachers = Teacher::all();
-
-        return view('admin.pages.course.craetecourse')->with('categories', $categories)->with('teachers', $teachers);
+        $categories=Category::where('related' , 'دوره')->get();
+        $producers = Producer::where('course' , 1)->get();
+        $rel='create';
+        return view('admin.pages.ourProduct.course.createOrUpdate' , compact(['rel' , 'categories' , 'producers']));
     }
 
     /**
@@ -46,44 +45,64 @@ class Coursecontroller extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'title'=> "required|max:255",
+            'title'=> "required|max:250",
+            'time'=> "required",
+            'producer'=> "required",
+            'category'=> "required",
+            'subCate'=> "required",
+            'hardship'=> "required",
             'price'=> "required|numeric",
-            'good_id'=> "required|numeric",
-            'off_price'=> "required|numeric",
-            'course_time'=> "required",
-            'video_num'=> "required|numeric",
-            'level'=> "required",
-            'teacher'=> "required",
-            'condition'=> "required",
-            'description'=> "required",
-            'image'=> "required| dimensions:max_width=1250,max_height=770,min_width=1150,min_height=670",
+            'off'=> "required|numeric",
+            'small_description'=> "required",
+            'long_description'=> "required",
+            'image'=> "required|max:1000",
+            'video'=> "required|max:2000",
         ]);
+
         $course = new Course();
-        $course->title = $request->input('title');
-        $course->good_id = $request->input('good_id');
-        $course->price = $request->input('price');
-        $course->off_price = $request->input('off_price');
-        $course->course_time = $request->input('course_time');
-        $course->video_num = $request->input('video_num');
-        $off=round(($course->price-$course->off_price)/$course->price*100);
-        $course->off=$off;
-        $course->level = $request->input('level');
-        $course->teacher_id = $request->input('teacher');
-        $course->course_sub_category_id=$request->input('sub_category');
-        if($file=$request->file('image')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-            $course->image = $name;
+        $course->title = $request->title;
+        $course->course_time = $request->time;
+        $course->producer_id = $request->producer;
+        $course->category = $request->category;
+        $course->sub_category = $request->subCate;
+        $course->level = $request->hardship;
+        $course->price = $request->price;
+        $course->off = $request->off;
+        $course->desc = $request->small_description;
+        $course->long_desc = $request->long_description;
+        $course->video_num = 0;
+
+        $image=$request->file('image');
+        {
+            $path='images/courses';
+            $extension ='.'.$image->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='course-cover-'. time() . $extension;
+            $image->move($path, $name);
+            $course->image=$name;
         }
-        $course->desc = $request->input('description');
-        $course->condition = $request->input('condition');
+
+        $video=$request->file('video');
+        {
+            $path='videos/courses';
+            $extension ='.'.$video->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='course-demo-'. time() . $extension;
+            $video->move($path, $name);
+            $course->demo=$name;
+        }
+
         $course->save();
 
-        $courses = Course::all();
         session()->flash('add','دوره با موفقیت معرفی شد');
-        return redirect('admin/course')->with('courses', $courses);
+        return redirect()->route('course.index');
 
     }
 
@@ -93,20 +112,7 @@ class Coursecontroller extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function select(Request $request)
-    {
-        $cat=$request->data;
-        $category=CourseCategory::find($cat);
-        return json_encode($category->course_sub_categories);
-    }
 
-
-    public function teacher(Request $request)
-    {
-        $cat=$request->data;
-        $category=CourseCategory::find($cat);
-        return json_encode($category->teachers);
-    }
 
 
     public function show($id)
@@ -122,10 +128,14 @@ class Coursecontroller extends Controller
      */
     public function edit($id)
     {
+
+        $categories=Category::where('related' , 'دوره')->get();
+        $producers = Producer::where('course' , 1)->get();
         $course = Course::find($id);
-        $categories = CourseCategory::all();
-        $teachers = Teacher::all();
-        return view('admin.pages.course.editcourse')->with('categories', $categories)->with('course', $course)->with('teachers', $teachers);
+        $rel='update';
+        return view('admin.pages.ourProduct.course.createOrUpdate' , compact(['rel' , 'categories' , 'producers' , 'course']));
+
+
     }
 
     /**
@@ -138,49 +148,67 @@ class Coursecontroller extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=> "required|max:255",
-            'good_id'=> "required|numeric",
+            'title'=> "required|max:250",
+            'time'=> "required",
+            'producer'=> "required",
+            'category'=> "required",
+            'subCate'=> "required",
+            'hardship'=> "required",
             'price'=> "required|numeric",
-            'off_price'=> "required|numeric",
-            'course_time'=> "required",
-            'video_num'=> "required|numeric",
-            'level'=> "required",
-            'teacher'=> "required",
-            'condition'=> "required",
-            'description'=> "required",
+            'off'=> "required|numeric",
+            'small_description'=> "required",
+            'long_description'=> "required",
+            'image'=> "max:1000",
+            'video'=> "max:2000",
         ]);
+
         $course = Course::find($id);
-        $course->title = $request->input('title');
-                $course->good_id = $request->input('good_id');
-        $course->price = $request->input('price');
-        $course->off_price = $request->input('off_price');
-        $course->course_time = $request->input('course_time');
-        $course->video_num = $request->input('video_num');
-        $off = round(($course->price - $course->off_price) / $course->price * 100);
-        $course->off = $off;
-        if ($request->input('level')) {
-            $course->level = $request->input('level');
+        $course->title = $request->title;
+        $course->course_time = $request->time;
+        $course->producer_id = $request->producer;
+        $course->category = $request->category;
+        $course->sub_category = $request->subCate;
+        $course->level = $request->hardship;
+        $course->price = $request->price;
+        $course->off = $request->off;
+        $course->desc = $request->small_description;
+        $course->long_desc = $request->long_description;
+
+        if($image=$request->file('image'))
+        {
+            $rm="images/courses/$course->image";
+            File::delete($rm);
+
+            $path='images/courses';
+            $extension ='.'.$image->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='course-cover-'. time() . $extension;
+            $image->move($path, $name);
+            $course->image=$name;
         }
-        if ($request->input('teacher')) {
-            $course->teacher_id = $request->input('teacher');
+
+        if($video=$request->file('video'))
+        {
+            $rm="videos/courses/$course->video";
+            File::delete($rm);
+            $path='videos/courses';
+            $extension ='.'.$video->extension();
+            if(!file_exists($path))
+            {
+                File::makeDirectory($path , 0775 , true);
+            }
+            $name ='course-demo-'. time() . $extension;
+            $video->move($path, $name);
+            $course->demo=$name;
         }
-        if ($file = $request->file('image')) {
-            $request->validate([
-                'image'=> "required| dimensions:max_width=1250,max_height=770,min_width=1150,min_height=670",
-            ]);
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-            $course->image = $name;
-        }
-        if ($request->input('category')) {
-            $course->course_sub_category_id=$request->input('sub_category');
-        }
-        $course->desc = $request->input('description');
+
         $course->save();
 
-        $courses = Course::all();
-        session()->flash('update','دوره با موفقیت به روزرسانی شد');
-        return redirect('admin/course')->with('courses', $courses);
+        session()->flash('add','دوره با موفقیت ویرایش شد');
+        return redirect()->route('course.index');
     }
 
     /**
@@ -192,9 +220,30 @@ class Coursecontroller extends Controller
     public function destroy($id)
     {
         $course = Course::find($id);
+
+        $rm="images/courses/$course->image";
+        File::delete($rm);
+        
+        $rm="videos/courses/$course->demo";
+        File::delete($rm);
+
+        foreach ($course->course_videos as $key => $video) {
+            
+            $rm="videos/courses/$id/$video->file";
+            File::delete($rm);
+            $video->delete();
+        }
+
         $course->delete();
-        $courses = Course::all();
+
         session()->flash('delete','دوره با موفقیت حذف شد');
-        return redirect('admin/course')->with('courses', $courses);
+        return redirect()->back();
+    }
+
+
+    public function subCateGET(Request $request)
+    {
+
+        return SubCategory::where('category_id' , $request->cate)->get();
     }
 }

@@ -193,7 +193,7 @@
                     
 
                     <li>
-                        <a href="{{route('product_category.index')}}">
+                        <a href="{{route('course.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">دوره ها</span>
                         </a>

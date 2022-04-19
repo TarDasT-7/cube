@@ -9,14 +9,18 @@ class Course extends Model
 {
     use HasFactory;
 
-    public function course_sub_category()
+    public function categoryC()
     {
-        return $this->belongsTo(CourseSubCategory::class);
+        return $this->belongsTo(Category::class , 'category');
+    }
+    public function subcate()
+    {
+        return $this->belongsTo(SubCategory::class , 'sub_category');
     }
 
-    public function teacher()
+    public function producer()
     {
-        return $this->belongsTo(Teacher::class);
+        return $this->belongsTo(Producer::class);
     }
     public function course_videos()
     {

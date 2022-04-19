@@ -1,3 +1,10 @@
+<?php 
+    use App\Models\Category;
+    use App\Models\Slider;
+    $courses=Category::where('related' , 'دوره')->get();
+    $onlines=Category::where('related' , 'آنلاین')->get();
+    $pic=Slider::where('rel' , 'course')->get()->first();
+?>
 <nav class="navbar navbar-expand-md navbar-light ppk_nav p-0">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#marinav">
         <span class="navbar-toggler-icon"></span>
@@ -13,164 +20,52 @@
                 <div class="dropdown-menu">
                     <div class=" container-fluid mgmn_cont">
                         <div class=" row mgmn_row p-3">
-                            <div class="col-md-12 mgmn_catsmcol">
+                            <div class="col-md-8 mgmn_catsmcol">
                                 <div class="row mgmn_catsrow">
-                                    <div class="col-md-2 mgmn_catscol">
-                                        <ul class="mgmn_catsul list-unstyled pr-0">
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="hm_st txt_black" href="crslists_page.html">نمایش خلاق</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="txt_black hm_st" href="crslists_page.html">داستان نویسی</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="txt_black hm_st" href="crslists_page.html">نمایشنامه نویسی</a>
-                                            </li>
-                                        </ul>
+                                    @foreach ($courses as $item)
+                                        <div class="col-md-4 mgmn_catscol">
+                                            <ul class="mgmn_catsul list-unstyled pr-0">
+                                                <li class="mgmn_catli cat_li">
+                                                    <a class="hm_st txt_black" href="crslists_page.html">{{$item->title}}</a>
+                                                    <ul class="mgmn_subcatul list-unstyled ">
+                                                        @foreach ($item->subs as $sub)
+                                                            <li class="mgmn_subcatli subcat_li">
+                                                                <a class="txt_gray pl-1" href="crslists_page.html">{{$sub->title}}</a>
+                                                            </li>                                                            
+                                                        @endforeach
 
-                                    </div>
-                                    <div class="col-md-2 mgmn_catscol">
-                                        <ul class="mgmn_catsul list-unstyled pr-0">
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="hm_st txt_black" href="crslists_page.html">نمایش خلاق</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
+                                                    </ul>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                    @foreach ($onlines as $item)
+                                        <div class="col-md-4 mgmn_catscol">
+                                            <ul class="mgmn_catsul list-unstyled pr-0">
+                                                <li class="mgmn_catli cat_li">
+                                                    <a class="hm_st txt_black" href="crslists_page.html">{{$item->title}}</a>
+                                                    <ul class="mgmn_subcatul list-unstyled ">
+                                                        @foreach ($item->subs as $sub)
+                                                            <li class="mgmn_subcatli subcat_li">
+                                                                <a class="txt_gray pl-1" href="crslists_page.html">{{$sub->title}}</a>
+                                                            </li>                                                            
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
 
-                                                </ul>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="txt_black hm_st" href="crslists_page.html">پادکست سازی</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="hm_st txt_black" href="crslists_page.html">نمایشنامه نویسی</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                    <div class="col-md-2 mgmn_catscol">
-                                        <ul class="mgmn_catsul list-unstyled pr-0">
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="hm_st txt_black" href="crslists_page.html">پادکست سازی</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="txt_black hm_st" href="crslists_page.html">تدوین</a>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="txt_black hm_st" href="crslists_page.html">داستان نویسی</a>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="txt_black hm_st" href="crslists_page.html">پادکست سازی</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                        </ul>
-
-                                    </div>
-                                    <div class="col-md-2 mgmn_catscol">
-                                        <ul class="mgmn_catsul list-unstyled pr-0">
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="hm_st txt_black" href="crslists_page.html">موسیقی کودک</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="txt_black hm_st" href="crslists_page.html">نقاشی</a>
-                                                <ul class="mgmn_subcatul list-unstyled ">
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                    <li class="mgmn_subcatli subcat_li">
-                                                        <a class="txt_gray pl-1" href="crslists_page.html">زیردسته</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mgmn_catli cat_li">
-                                                <a class="txt_black hm_st" href="crslists_page.html">انیمیشن</a>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                    <div class="col-md-4 cat_col">
+                            <div class="col-md-4 mgmn_catsmcol">
+                                <div class="row mgmn_catsrow">
+                                    <div class="col-md-12 cat_col">
                                         <div class="row cat_inner_row">
                                             <div class="col-md-12 cat_inner_imgcol">
-                                                <img src="img/crs02.jpg" class="menu_img">
+                                                <img src="{{'/images/wallpapers/'.$pic->image}}" class="menu_img">
                                             </div>
                                         </div>
                                     </div>

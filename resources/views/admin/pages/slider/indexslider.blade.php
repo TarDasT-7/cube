@@ -38,8 +38,18 @@
                             <fieldset class="form-group">
                                 <label >تصویر </label>
 
-                                <input type="file" name="image" accept="images/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
+                                <input type="file" name="image" accept="image/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                 <p class="font-size-sm" >ابعاد عکس باید 1600 در 500 پیکسل مربع باشد</p>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-md-12  mb-1">
+                            <fieldset class="form-group">
+                                <label>موقعیت </label>
+                                <select class="select2-bg form-control" name="rel" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                    <option value="slider">اسلایدر</option>
+                                    <option value="course">منو دوره های آموزشی</option>
+                                </select>
                             </fieldset>
                         </div>
                         
@@ -131,6 +141,7 @@
                                     <thead>
                                     <tr id="add">
                                         <th scope="col" class="text-center">تصویر</th>
+                                        <th scope="col" class="text-center">موقعیت</th>
                                         <th scope="col" class="text-center">متن</th>
                                         <th scope="col" class="text-center">عملیات</th>
                                     </tr>
@@ -140,6 +151,11 @@
                                         <tr >
                                             <td class="text-center"><img  src='{{asset("images/wallpapers/".$slider->image)}}'  id="image" ></td>
                                             <td class="text-center"><?php echo $slider->desc;?></td>
+                                            @if($slider->rel == 'slider')
+                                                <td class="text-center">اسلایدر</td>
+                                            @elseif($slider->rel == 'course')
+                                                <td class="text-center">منو دوره های آموزشی</td>
+                                            @endif
 
                                             <td class="text-center">
                                                 <a class="btn btn-warning mb-1 text-white"  data-toggle="modal" data-target="#update-{{$key}}">ویرایش</a>
@@ -169,8 +185,17 @@
                                                                 <fieldset class="form-group">
                                                                     <label >تصویر </label>
                                     
-                                                                    <input type="file" name="image" accept="images/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
+                                                                    <input type="file" name="image" accept="image/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
                                                                     <p class="font-size-sm" >ابعاد عکس باید 1600 در 500 پیکسل مربع باشد</p>
+                                                                </fieldset>
+                                                            </div>
+                                                            <div class="col-md-12  mb-1">
+                                                                <fieldset class="form-group">
+                                                                    <label>موقعیت </label>
+                                                                    <select class="select2-bg form-control" name="rel" id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                                                        <option @if($slider->rel == 'slider') selected @endif value="slider">اسلایدر</option>
+                                                                        <option @if($slider->rel == 'course') selected @endif value="course">منو دوره های آموزشی</option>
+                                                                    </select>
                                                                 </fieldset>
                                                             </div>
                                                             

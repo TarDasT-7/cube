@@ -16,7 +16,7 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::where('related' , 'محصولات')->orWhere('related' , 'دوره')->get();
+        $categories=Category::where('related' , 'محصولات')->orWhere('related' , 'دوره')->orWhere('related' , 'آنلاین')->get();
         $subCategories=SubCategory::all();
         return view('admin.pages.category.subCate' , compact(['subCategories','categories']));
     }

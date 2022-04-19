@@ -14,7 +14,7 @@
     <div class="row sliderrow_blog justify-content-center pt-3 ">
         <div class="col-12 col-md-9 columns slider_col">
             <div class="owl-carousel owl-theme vbvc">
-                @foreach ($sliders as $slider)                    
+                @foreach ($sliders->where('rel' , 'slider') as $slider)                    
                     <div class="sl_blogitem item">
                         <div class="row slitm_row  ">
                             <div class="col-12 col-md-12 sl_blogimgcol pb-2 text-center">
@@ -553,218 +553,84 @@
 
     </div>
 <div class="row edctsec_vidtxt mb-5">
+        
     <div class="col-md-12 edcts_vidtxtcont">
         <div class="row edcts_vidtxtrow">
             <div class="col-md-12 edcts_vidtxtslcol pr-0">
                     <div class="owl-carousel educts_vidtxtsl owl-theme pb-2 pt-2">
-                        <div class="edct_vidslitmcol item">
-                            <div class="row edct_vidslitmrow">
-                                <div class="col-md-12 srvslist_rltcont">
-                                    <div class="row srvslist_mrow ">
-                                        <div class="col-md-12 srvprv_mcol">
-                                            <!-- <a href="#"> -->
-                                            <div class="row srvsprv_mrow m-0">
-                                            <div class="col-md-6 srvprv_rlttxtbxmcol m-auto">
-                                        <a href="pkg_dtpage.html"><div class="row srv_txtbxmrow">
-                                            <div class="col-md-12 smmdtit_col m-auto pr-0">
-                                                        <h4 class="bbj font32 txt_grdrk">تیتر مورد نظر شما در این مکان قرار می گیرد</h4>
+                        @foreach ($frees as $free)
+                        
+                            <div class="edct_vidslitmcol item">
+                                <div class="row edct_vidslitmrow">
+                                    <div class="col-md-12 srvslist_rltcont">
+                                        <div class="row srvslist_mrow ">
+                                            <div class="col-md-12 srvprv_mcol">
+                                                <a href="{{route('fvShow' , $free->id)}}"> 
+                                                    <div class="row srvsprv_mrow m-0">
+                                                        <div class="col-md-6 srvprv_rlttxtbxmcol m-auto">
+                                                            <a href="{{route('fvShow' , $free->id)}}">
+                                                                <div class="row srv_txtbxmrow">
+                                                                    <div class="col-md-12 smmdtit_col m-auto pr-0">
+                                                                        <h4 class="bbj font32 txt_grdrk">{{$free->title}}</h4>
+                                                                    </div>
+                                                                    <div class="col-md-12 crsl_txtcol txt_gray mb-2 pr-0">
+                                                                        {!! $free->small_description !!}
+                                                                    </div>
+                                                                    <div class="col-md-12 but_srvprvmcol pl-0 ">
+                                                                        <button class="learn-more but_srvprv" href="#">
+                                                                            <span class="circle" aria-hidden="true">
+                                                                            <span class="icon arroww"></span>
+                                                                            </span>
+                                                                            <span class="button-text">جزییات بیشتر</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-md-6 srvprv_bxmcol p-0 m-auto">
+                                                            <div class="row srvprv_imgbxmrow m-0">
+                                                                <div class="col-md-12 srvprv_rltbximgcol">
+
+                                                                    <div class="row minmbx_slrow">
+
+                                                                        <div class="col-md-12 minmbx_slvidcol p-0">
+                                                                            <video id="my-player" class="my-player video-js vjs-theme-fantasy vjs-big-play-centered" poster="{{'/images/free/'.$free->cover}}"  style="object-fit:cover;" data-setup='{ "controls": true, "preload": "none" }'  >
+                                                                                {{-- <source src="video/smpvid.mp4"> --}}
+                                                                            </video>
+                                                                                <!--<video src="video/smpvid.mp4" class="minmbx_slimg" style="object-fit:cover;" poster="img/sl_org4.jpg" ></video>
+                                                                                                    </div>
+                                                                                <div class="wrapper">
+
+                                                                                    <video src="video/smpvid.mp4" class="video minmbx_slimg" style="object-fit:cover;" poster="img/sl_org4.jpg" controls="contorols"></video>
+                                                                            <div class="playpause"></div>
+                                                                            </div>-->
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
                                                             </div>
-                                                    <div class="col-md-12 crsl_txtcol txt_gray mb-2 pr-0">
-                                                        <p >متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                         این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                        </p>
-                                                        <p >متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                         این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                        </p>
+                                                        </div>
                                                     </div>
-                                            <div class="col-md-12 but_srvprvmcol pl-0 ">
-                                                     <button class="learn-more but_srvprv" href="#">
-                                                        <span class="circle" aria-hidden="true">
-                                                          <span class="icon arroww"></span>
-                                                        </span>
-                                                        <span class="button-text">جزییات بیشتر</span>
-                                                      </button>
-                                                </div>
-                                                </div></a>
-                                    </div>
-                                            <div class="col-md-6 srvprv_bxmcol p-0 m-auto">
-                                        <div class="row srvprv_imgbxmrow m-0">
-                                                <div class="col-md-12 srvprv_rltbximgcol">
-
-                                                <div class="row minmbx_slrow">
-
-                         <div class="col-md-12 minmbx_slvidcol p-0">
-                            <video id="my-player" class="my-player video-js vjs-theme-fantasy vjs-big-play-centered" poster="img/crs03.jpg"  style="object-fit:cover;" data-setup='{ "controls": true, "preload": "none" }'  >
-                                <source src="video/smpvid.mp4">
-                             </video>
-                                <!--<video src="video/smpvid.mp4" class="minmbx_slimg" style="object-fit:cover;" poster="img/sl_org4.jpg" ></video>
-                                                    </div>
-                                <div class="wrapper">
-
-                                    <video src="video/smpvid.mp4" class="video minmbx_slimg" style="object-fit:cover;" poster="img/sl_org4.jpg" controls="contorols"></video>
-                              <div class="playpause"></div>
-                            </div>-->
-
-                         </div>
-
-
-                                                </div>
-
+                                                </a>
                                             </div>
                                         </div>
-
-                                        </div>
-
-                                        </div>
-                                            </a>
-                                        </div>
                                     </div>
+
+                                </div>
+
                             </div>
-
-                    </div>
-
-                       </div>
-                        <div class="edct_vidslitmcol item">
-                            <div class="row edct_vidslitmrow">
-                                <div class="col-md-12 srvslist_rltcont">
-                                    <div class="row abt_imgrow ">
-                                        <div class="col-md-12 srvprv_mcol">
-                                            
-                                            <div class="row srvsprv_mrow m-0">
-                                            <div class="col-md-6 srvprv_rlttxtbxmcol m-auto">
-                                        <a href="pkg_dtpage.html"><div class="row srv_txtbxmrow">
-                                            <div class="col-md-12 smmdtit_col m-auto pr-0">
-                                                        <h4 class="bbj font32 txt_grdrk">تیتر مورد نظر شما در این مکان قرار می گیرد</h4>
-                                                            </div>
-                                                    <div class="col-md-12 crsl_txtcol txt_gray mb-2 pr-0">
-                                                        <p >متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                         این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                        </p>
-                                                        <p >متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                         این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                        </p>
-                                                    </div>
-                                            <div class="col-md-12 but_srvprvmcol pl-0 ">
-                                                     <button class="learn-more but_srvprv" href="#">
-                                                        <span class="circle" aria-hidden="true">
-                                                          <span class="icon arroww"></span>
-                                                        </span>
-                                                        <span class="button-text">جزییات بیشتر</span>
-                                                      </button>
-                                                </div>
-                                            </div></a>
-                                    </div>
-                                            <div class="col-md-6 srvprv_bxmcol p-0 m-auto">
-                                        <div class="row srvprv_imgbxmrow m-0">
-                                                <div class="col-md-12 srvprv_rltbximgcol">
-
-                                                <div class="row minmbx_slrow">
-
-                         <div class="col-md-12 minmbx_slvidcol p-0">
-                            <video id="my-player2" class="my-player video-js vjs-theme-fantasy vjs-big-play-centered" poster="img/crs01.jpg" style="object-fit:cover;" data-setup='{ "controls": true, "preload": "none" }'  >
-                                <source src="video/smpvid.mp4">
-                             </video>
-                                <!--<video src="video/smpvid.mp4" class="minmbx_slimg" style="object-fit:cover;" poster="img/sl_org4.jpg" ></video>
-                                                    </div>
-                                <div class="wrapper">
-
-                                    <video src="video/smpvid.mp4" class="video minmbx_slimg" style="object-fit:cover;" poster="img/sl_org4.jpg" controls="contorols"></video>
-                              <div class="playpause"></div>
-                            </div>-->
-
-                         </div>
-
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        </div>
-
-                                        </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                            </div>
-
-                    </div>
-
-                       </div>
-               <div class="edct_vidslitmcol item">
-                            <div class="row edct_vidslitmrow">
-                                <div class="col-md-12 srvslist_rltcont">
-                                    <div class="row srvslist_mrow ">
-                                        <div class="col-md-12 srvprv_mcol">
-                                            
-                                            <div class="row srvsprv_mrow m-0">
-                                            <div class="col-md-6 srvprv_rlttxtbxmcol m-auto">
-                                        <a href="pkg_dtpage.html"><div class="row srv_txtbxmrow">
-                                            <div class="col-md-12 smmdtit_col m-auto pr-0">
-                                                        <h4 class="bbj font32 txt_grdrk">تیتر مورد نظر شما در این مکان قرار می گیرد</h4>
-                                                            </div>
-                                                    <div class="col-md-12 crsl_txtcol txt_gray mb-2 pr-0">
-                                                        <p >متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                         این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                        </p>
-                                                        <p >متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                         این مکان قرار می گیرد..متن کوتاهی در این مکان قرار می گیرد...متن کوتاهی
-                                                        </p>
-                                                    </div>
-                                            <div class="col-md-12 but_srvprvmcol pl-0 ">
-                                                     <button class="learn-more but_srvprv" href="#">
-                                                        <span class="circle" aria-hidden="true">
-                                                          <span class="icon arroww"></span>
-                                                        </span>
-                                                        <span class="button-text">جزییات بیشتر</span>
-                                                      </button>
-                                                </div>
-                                            </div></a>
-                                    </div>
-                                            <div class="col-md-6 srvprv_bxmcol p-0 m-auto">
-                                        <div class="row srvprv_imgbxmrow m-0">
-                                                <div class="col-md-12 srvprv_rltbximgcol">
-
-                                                <div class="row minmbx_slrow">
-
-                         <div class="col-md-12 minmbx_slvidcol p-0">
-                            <video id="my-player2" class="my-player video-js vjs-theme-fantasy vjs-big-play-centered" poster="img/crs05.jpg" style="object-fit:cover;" data-setup='{ "controls": true, "preload": "none" }'  >
-                                <source src="video/smpvid.mp4">
-                             </video>
-                                <!--<video src="video/smpvid.mp4" class="minmbx_slimg" style="object-fit:cover;" poster="img/sl_org4.jpg" ></video>
-                                                    </div>
-                                <div class="wrapper">
-
-                                    <video src="video/smpvid.mp4" class="video minmbx_slimg" style="object-fit:cover;" poster="img/sl_org4.jpg" controls="contorols"></video>
-                              <div class="playpause"></div>
-                            </div>-->
-
-                         </div>
-
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        </div>
-
-                                        </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                            </div>
-
-                    </div>
-
-                       </div>
+                        
+                        @endforeach
+               
                 
                         
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
+
 <div class="row pckg_slsecrow mb-5">
     <div class="col-md-12 pckg_slcont">
         <div class="row pckg_slmrow">

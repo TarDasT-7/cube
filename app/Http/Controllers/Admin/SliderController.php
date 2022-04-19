@@ -44,10 +44,12 @@ class SliderController extends Controller
         $request->validate([
             'desc'=> "required|max:5000",
             'image'=> "required|max:1500",
+            'rel'=>'required'
         ]);
 
         $slider=new Slider();
         $slider->desc=$request->input('desc');
+        $slider->rel=$request->input('rel');
 
         if($file=$request->file('image')) {
 
@@ -107,10 +109,13 @@ class SliderController extends Controller
             'desc'=> "required|max:5000",
             // 'image'=> "required| dimensions:max_width=1650,max_height=550,min_width=1550,min_height=450",
             'image'=> "max:1500",
+            'rel'=>'required'
+
         ]);
 
         $slider=Slider::find($id);
         $slider->desc=$request->input('desc');
+        $slider->rel=$request->input('rel');
 
         if($file=$request->file('image')) {
 

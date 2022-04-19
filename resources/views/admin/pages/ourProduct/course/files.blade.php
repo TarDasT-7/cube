@@ -1,5 +1,4 @@
 
-
 @extends('layouts/admin')
 
 @section('title', 'نمایش درباره ما')
@@ -21,49 +20,45 @@
 
 @section('content')
 
-    {{--modal page--}}
+    {{-- modal page--}}
     <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ایجاد دسته جدید</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">ایجاد قسمت جدید</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action='{{route('category.store')}}' enctype="multipart/form-data">
+                <form method="post" action='{{route('coursevideo.store' , ['id'=>$course->id])}}' enctype="multipart/form-data">
                    @csrf
                     <div class="modal-body">
-
-                        <div class="col-md-12  mb-1">
+                        
+                        <div class="col-md-12 ">
                             <fieldset class="form-group">
-                                <label >عنوان </label>
-                                <input type="text" name="title" class="form-control" placeholder="عنوان مورد نظر خود را وارد کنید">
+                                <label >فایل</label>
+                                <input type="file" name="file" accept="video/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
+                                <p class="font-size-sm" >ابعاد عکس باید 1600 در 500 پیکسل مربع باشد</p>
                             </fieldset>
                         </div>
-
+                        
                         <div class="col-md-12  mb-1">
                             <fieldset class="form-group">
-                                <label >مرتبط با </label>
-                                <select class="select2-bg form-control" name="related"  id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
-                                    <option value="سوالات">سوالات متداول</option>
-
-                                    <option disabled> </option>
-
-                                    <optgroup label="__مقالات">
-                                        <option value="روانشناسی">روانشناسی</option>
-                                        <option value="بلاگ">بلاگ</option>
-                                    </optgroup>
-                                    <option disabled> </option>
-
-                                    <optgroup label="__دیگر">
-                                        <option value="محصولات">محصولات</option>
-                                        <option value="دوره">دوره</option>
-                                        <option value="آنلاین">آنلاین</option>
-                                        <option value="پادکست">پادکست</option>
-                                    </optgroup>
-
-                                </select>
+                                <label >عنوان</label>
+                                <input type="text" name="title" class="form-control" placeholder="عنوان فایل خود را وارد کنید">
+                            </fieldset>
+                        </div>
+                        
+                        <div class="col-md-12  mb-1">
+                            <fieldset class="form-group">
+                                <label >سایز</label>
+                                <input type="text" name="size" class="form-control" placeholder="سایز فایل خود را وارد کنید">
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12  mb-1">
+                            <fieldset class="form-group">
+                                <label >سرفصل</label>
+                                <input type="text" name="heading" class="form-control" placeholder="عنوان سرفصل خود را وارد کنید">
                             </fieldset>
                         </div>
 
@@ -117,7 +112,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">لیست دسته بندی ها</h4>
+                        <h4 class="card-title">لیست فایل های : {{$course->title}}_( {!! $course->video_num !!} )</h4>
                     </div>
                     <section id="relief-buttons">
                         <div class="row">
@@ -130,7 +125,7 @@
                                                 </div>
                                                 <div class="col-2">
                                                     <button type="button" class="btn btn-success mr-1 mb-1" data-toggle="modal" data-target="#Modal">
-                                                        ایجاد دسته جدید
+                                                        ایجاد قسمت جدید
                                                     </button>
                                                 </div>
                                             </div>
@@ -148,19 +143,20 @@
                                     <thead>
                                     <tr id="add">
                                         <th scope="col" class="text-center">عنوان</th>
-                                        <th scope="col" class="text-center">مرتبط با</th>
+                                        <th scope="col" class="text-center">سرفصل</th>
+                                        <th scope="col" class="text-center">حجم فایل</th>
                                         <th scope="col" class="text-center">عملیات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories->sortBy('related') as $key=>$category)
-                                        <tr >
-                                            <td class="text-center">{{$category->title}}</td>
-                                            <td class="text-center">{{$category->related}}</td>
-
+                                    @foreach($files as $key=>$video)
+                                        <tr>
+                                            <td class="text-center">{{$video->title}}</td>
+                                            <td class="text-center">{{$video->heading}}</td>
+                                            <td class="text-center">{{$video->size}}</td>
                                             <td class="text-center">
-                                                <a class="btn btn-warning mb-1 text-white"  data-toggle="modal" data-target="#update-{{$key}}">ویرایش</a>
-                                                <form  method="post" action="{{route('category.destroy', $category->id)}}">
+                                                <a class="btn btn-warning mb-1 text-white" data-toggle="modal" data-target="#update-{{$key}}">ویرایش</a>
+                                                <form  method="post" action="{{route('coursevideo.destroy', $video->id)}}">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="btn btn-danger ">حذف</button>
@@ -177,41 +173,40 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form method="post" action='{{route('category.update' , $category->id)}}' enctype="multipart/form-data">
+                                                    <form method="post" action='{{route('coursevideo.update' , $video->id)}}' enctype="multipart/form-data">
                                                        @csrf
                                                        @method('patch')
-                                                        <div class="modal-body">
-                                    
-                                                            <div class="col-md-12  mb-1">
-                                                                <fieldset class="form-group">
-                                                                    <label >عنوان </label>
-                                                                    <input type="text" name="title" class="form-control" value="{{$category->title}}" placeholder="عنوان مورد نظر خود را وارد کنید">
-                                                                </fieldset>
-                                                            </div>
-                                    
-                                                            <div class="col-md-12  mb-1">
-                                                                <fieldset class="form-group">
-                                                                    <label >مرتبط با </label>
-                                                                    <select class="select2-bg form-control" name="related"  id="bg-select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
-                                                                        <option @if($category->related == 'سوالات') selected @endif value="سوالات">سوالات متداول</option>
-                                                                        <option disabled> </option>
-                                                                        <optgroup label="__مقالات">
-                                                                            <option @if($category->related == 'روانشناسی') selected @endif value="روانشناسی">روانشناسی</option>
-                                                                            <option @if($category->related == 'بلاگ') selected @endif value="بلاگ">بلاگ</option>
-                                                                        </optgroup>
-                                                                        <option disabled> </option>
-                                                                        <optgroup label="__دیگر">
-                                                                            <option @if($category->related == 'محصولات') selected @endif value="محصولات">محصولات</option>
-                                                                            <option @if($category->related == 'دوره') selected @endif value="دوره">دوره</option>
-                                                                            <option @if($category->related == 'آنلاین') selected @endif value="آنلاین">آنلاین</option>
-                                                                            <option @if($category->related == 'پادکست') selected @endif value="پادکست">پادکست</option>
-                                                                        </optgroup>
-
-                                                                    </select>
-                                                                </fieldset>
-                                                            </div>
-
+                                                       <div class="modal-body">
+                        
+                                                        <div class="col-md-12 ">
+                                                            <fieldset class="form-group">
+                                                                <label >فایل</label>
+                                                                <input type="file" name="file" accept="video/*" class="form-control" placeholder="تصویر معرفی را از درون رایانه خود انتخاب کنید...">
+                                                                <p class="font-size-sm" >ابعاد عکس باید 1600 در 500 پیکسل مربع باشد</p>
+                                                            </fieldset>
                                                         </div>
+                                                        
+                                                        <div class="col-md-12  mb-1">
+                                                            <fieldset class="form-group">
+                                                                <label >عنوان</label>
+                                                                <input type="text" name="title" class="form-control" value="{{$video->title}}" placeholder="عنوان فایل خود را وارد کنید">
+                                                            </fieldset>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12  mb-1">
+                                                            <fieldset class="form-group">
+                                                                <label >سایز</label>
+                                                                <input type="text" name="size" class="form-control" value="{{$video->size}}" placeholder="سایز فایل خود را وارد کنید">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-md-12  mb-1">
+                                                            <fieldset class="form-group">
+                                                                <label >سرفصل</label>
+                                                                <input type="text" name="heading" class="form-control" value="{{$video->heading}}" placeholder="عنوان سرفصل خود را وارد کنید">
+                                                            </fieldset>
+                                                        </div>
+                                
+                                                    </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-primary">ویرایش </button>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
@@ -222,7 +217,6 @@
                                     
                                             </div>
                                         </div>
-
                                     @endforeach
                                     </tbody>
                                 </table>

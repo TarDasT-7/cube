@@ -209,11 +209,6 @@
         </div>
 
 
-
-
-
-
-
 @endsection
 
 @section('more_scripts')

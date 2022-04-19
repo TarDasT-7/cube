@@ -259,6 +259,7 @@ Route::get('free-video-show-{id}',[ShowController::class,'fvShow'])->name('fvSho
 Route::get('about-us',[IndexPagesController::class,'about'])->name('about');
 Route::get('contact-us',[IndexPagesController::class,'contact'])->name('contact');
 Route::get('faq-list',[IndexPagesController::class,'faq'])->name('faq_list');
+Route::get('course-list-filtered-subCategory-{id}',[IndexPagesController::class,'courseSubList'])->name('courseFilterSubCate');
 
 
 

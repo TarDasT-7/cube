@@ -28,6 +28,8 @@ class CreateCoursesTable extends Migration
             $table->bigInteger('producer_id');
             $table->bigInteger('category_id');
             $table->bigInteger('sub_category');
+            $table->string('type');
+            $table->text('link' , 2500)->nullable();
             $table->timestamps();
         });
     }

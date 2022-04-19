@@ -119,7 +119,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-3">
-                                            <label>زمان ویدئو</label>
+                                            <label>زمان دوره</label>
                                             <input type="text" name="time" class="form-control" placeholder="12:40:15 فرمت مناسب ساعت:دقیقه:ثانیه">        
                                         </div>
                                         <div class="col-3">
@@ -172,6 +172,22 @@
                                     
                                 </div>
 
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label>نوع برگزاری</label>
+                                            <select class="select2-bg form-control" name="type" id="type" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                                <option value="دانلود">دانلود</option>
+                                                <option value="آنلاین">آنلاین</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-10 doc" style="display: none">
+                                            <label>لینک کلاس آنلاین</label>
+                                            <textarea class="form-control lt" id="" rows="1" name="link"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
 
                                 <div class="card-body">
                                     <div class="row">
@@ -232,7 +248,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-3">
-                                            <label>زمان ویدئو</label>
+                                            <label>زمان دوره</label>
                                             <input type="text" name="time" class="form-control" value="{{$course->course_time}}" placeholder="12:40:15 فرمت مناسب ساعت:دقیقه:ثانیه">        
                                         </div>
                                         <div class="col-3">
@@ -284,7 +300,23 @@
                                     </div>
                                     
                                 </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label>نوع برگزاری</label>
+                                            <select class="select2-bg form-control" name="type" id="type" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                                <option @if($course->type == 'دانلود') selected @endif value="دانلود">دانلود</option>
+                                                <option @if($course->type == 'آنلاین') selected @endif value="آنلاین">آنلاین</option>
+                                            </select>
+                                        </div>
 
+                                        <div class="col-10 doc" @if($course->type == 'دانلود') style="display:none;" @endif>
+                                            <label>لینک کلاس آنلاین</label>
+                                            <textarea class="form-control lt" id="" rows="1" name="link">{{$course->link}}</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
 
                                 <div class="card-body">
                                     <div class="row">
@@ -331,6 +363,29 @@
 
 @endsection
 @section('more_scripts')
+
+    <script>
+
+        $('#type').change(function () {
+
+            if($(this).val() == 'دانلود')
+            {
+                $('.doc').hide(250);
+                $('.lt').val('');
+
+            }else if($(this).val() == 'آنلاین')
+            {
+                $('.doc').show(300);
+                
+            }
+
+            
+
+        });
+
+
+    </script>
+
     <script>
 
         var slider = document.getElementById("myRange");

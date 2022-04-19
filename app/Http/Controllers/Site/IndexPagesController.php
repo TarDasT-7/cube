@@ -9,6 +9,7 @@ use App\Models\Blog;
 use App\Models\FreeVideo;
 use App\Models\Course;
 use App\Models\Category;
+use App\Models\SubCategory;
 use App\Models\Podcast;
 use App\Models\Product;
 use App\Models\Slider;
@@ -94,4 +95,12 @@ class IndexPagesController extends Controller
 
     }
     
+
+    public function courseSubList($id)
+    {
+        $sub=SubCategory::find($id);
+        $courses=$sub->courses;
+        return view('site.pages.course.list' , compact(['courses' , 'sub']));
+
+    }
 }

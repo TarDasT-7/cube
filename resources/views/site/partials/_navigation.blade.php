@@ -26,11 +26,11 @@
                                         <div class="col-md-4 mgmn_catscol">
                                             <ul class="mgmn_catsul list-unstyled pr-0">
                                                 <li class="mgmn_catli cat_li">
-                                                    <a class="hm_st txt_black" href="crslists_page.html">{{$item->title}}</a>
+                                                    <a class="hm_st txt_black">{{$item->title}}</a>
                                                     <ul class="mgmn_subcatul list-unstyled ">
                                                         @foreach ($item->subs as $sub)
                                                             <li class="mgmn_subcatli subcat_li">
-                                                                <a class="txt_gray pl-1" href="crslists_page.html">{{$sub->title}}</a>
+                                                                <a class="txt_gray pl-1" href="{{route('courseFilterSubCate' , $sub->id)}}">{{$sub->title}}</a>
                                                             </li>                                                            
                                                         @endforeach
 
@@ -44,11 +44,11 @@
                                         <div class="col-md-4 mgmn_catscol">
                                             <ul class="mgmn_catsul list-unstyled pr-0">
                                                 <li class="mgmn_catli cat_li">
-                                                    <a class="hm_st txt_black" href="crslists_page.html">{{$item->title}}</a>
+                                                    <a class="hm_st txt_black">{{$item->title}}</a>
                                                     <ul class="mgmn_subcatul list-unstyled ">
                                                         @foreach ($item->subs as $sub)
                                                             <li class="mgmn_subcatli subcat_li">
-                                                                <a class="txt_gray pl-1" href="crslists_page.html">{{$sub->title}}</a>
+                                                                <a class="txt_gray pl-1" href="{{route('courseFilterSubCate' , $sub->id)}}">{{$sub->title}}</a>
                                                             </li>                                                            
                                                         @endforeach
                                                     </ul>

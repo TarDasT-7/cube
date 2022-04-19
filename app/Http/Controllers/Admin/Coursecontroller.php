@@ -31,7 +31,7 @@ class Coursecontroller extends Controller
      */
     public function create()
     {
-        $categories=Category::where('related' , 'دوره')->get();
+        $categories=Category::where('related' , 'دوره')->orWhere('related' , 'آنلاین')->get();
         $producers = Producer::where('course' , 1)->get();
         $rel='create';
         return view('admin.pages.ourProduct.course.createOrUpdate' , compact(['rel' , 'categories' , 'producers']));
@@ -48,6 +48,8 @@ class Coursecontroller extends Controller
         $request->validate([
             'title'=> "required|max:250",
             'time'=> "required",
+            'type'=> "required|max:250",
+            'link'=> "max:2500",
             'producer'=> "required",
             'category'=> "required",
             'subCate'=> "required",
@@ -72,6 +74,9 @@ class Coursecontroller extends Controller
         $course->desc = $request->small_description;
         $course->long_desc = $request->long_description;
         $course->video_num = 0;
+
+        $course->type = $request->type;
+        $course->link = $request->link;
 
         $image=$request->file('image');
         {
@@ -160,6 +165,8 @@ class Coursecontroller extends Controller
             'long_description'=> "required",
             'image'=> "max:1000",
             'video'=> "max:2000",
+            'type'=> "required|max:250",
+            'link'=> "max:2500",
         ]);
 
         $course = Course::find($id);
@@ -173,6 +180,8 @@ class Coursecontroller extends Controller
         $course->off = $request->off;
         $course->desc = $request->small_description;
         $course->long_desc = $request->long_description;
+        $course->type = $request->type;
+        $course->link = $request->link;
 
         if($image=$request->file('image'))
         {

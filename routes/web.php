@@ -184,6 +184,7 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
 
 
         Route::resource('course',Coursecontroller::class);
+        Route::get('course-heading-{id}',[Coursecontroller::class , 'heading'])->name('courseHeading');
         Route::get('course-subcate',[Coursecontroller::class , 'subCateGET'])->name('subcateFind');
         Route::resource('coursevideo',CourseVideoController::class);
         Route::get('coursevideo-items-{id}',[CourseVideoController::class , 'items'])->name('cv_item');

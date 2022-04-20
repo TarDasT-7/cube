@@ -23,7 +23,10 @@ class Coursecontroller extends Controller
         $courses = Course::all();
         return view('admin.pages.ourProduct.course.index' , compact('courses'));
     }
-
+    public function heading($id)
+    {
+        return view('admin.pages.ourProduct.course.heading');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -107,7 +107,8 @@
                                             <td class="text-center">{{$course->categoryC->title}} / {{$course->subcate->title}}</td>
                                             <td class="text-center">{{$course->video_num}}</td>
                                             <td class="text-center">
-                                                <a class="btn btn-success mb-1 text-white"  href="{{route('cv_item' , $course->id)}}">فایل ها</a><br>
+                                                <a class="btn btn-success mb-1 text-white"  href="{{route('courseHeading' , $course->id)}}">سرفصل ها</a><br>
+                                                <a class="btn btn-info mb-1 text-white"  href="{{route('cv_item' , $course->id)}}">فایل ها</a><br>
                                                 <a class="btn btn-warning mb-1 text-white"  href="{{route('course.edit' , $course->id)}}">ویرایش</a>
                                                 <form  method="post" action="{{route('course.destroy', $course->id)}}">
                                                     @csrf

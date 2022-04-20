@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Producer;
+use App\Models\Heading;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -25,7 +26,9 @@ class Coursecontroller extends Controller
     }
     public function heading($id)
     {
-        return view('admin.pages.ourProduct.course.heading');
+        $course=Course::find($id);
+        $headings=Heading::where('course_id' , $id)->get();
+        return view('admin.pages.ourProduct.course.heading' , compact(['headings' , 'course']));
     }
     /**
      * Show the form for creating a new resource.

@@ -294,7 +294,7 @@
                                 <div class="col-md-12 prd_itemcont mb-4">
                                     <div class="row prd_itemcontrow">
                                         <div class="col-md-4 prd_itemcontimg_col text-center">
-                                            <a href="crs_dtpage.html">
+                                            <a href="{{route('courseShow' , $cours->id)}}">
                                                 <img class="prd_itemcontimg imghv" src="{{'/images/courses/'.$cours->image}}">
                                                 @if($cours->off > 0)
                                                     <span class="lato text-center sploff_tagind font20 txt_grdrk">{{$cours->off}}%<br></span>

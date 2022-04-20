@@ -5,6 +5,7 @@
 @section('more_styles')
     @include('admin.partials.datatable_css')
     <style>
+        
         #submit{
             margin-top: 15px;
         }
@@ -90,11 +91,11 @@
                     <form method='POST' action="{{route('course.store')}}"  enctype="multipart/form-data">
                         @csrf
                         <div class="card-header">
-                            <h4 class="card-title">ایجاد دوره آموزشی</h4>
+                            <h4 class="card-title"> ایجاد دوره آموزشی - <span id="heading" style="cursor: pointer;">سرفصل ها </span><span id="cloasing" style="color: red;font-size: 15px;display: none;cursor: pointer;"> بستن </span></h4>
                         </div>
 
 
-                        <div id="submit" class="card-content">
+                        <div id="submit" class="card-content course">
                             <div class="card-content">
                             
                                 <div class="card-body">
@@ -212,18 +213,43 @@
 
                             </div>
                         </div>
-                        <button type="submit" id="submit" class="btn btn-success pull-left">ذخیره</button>
+
+                        <div id="submit" class="card-content heading" style="display: none">
+                            
+                            <div class="card-content">
+                            
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-8" id="addHeading">
+                                            <label>عنوان</label>
+                                            <input type="text" name="heading[]" class="form-control" placeholder="عنوان خود را وارد کنید"><br>    
+                                        </div>
+                                        <div class="col-4" id="rmHeading">
+                                            <label>آیتم جدید</label>
+                                            <a class="btn btn-success pull-left text-white form-control createHeading mb-2">ایجاد</a><br>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+
+                            <a class="btn btn-success pull-left text-white form-control mt-5 acc">ثبت</a><br>
+
+                        </div>
+
+                        <button type="submit" id="submitB" class="btn btn-success pull-left">ذخیره</button>
                     
                     @elseif($rel == 'update')
-                    <form method='post' action="{{route('course.update' , $course->id)}}"  enctype="multipart/form-data">
+                    <form method='post' action="{{route('course.update' , $course->id)}}" enctype="multipart/form-data">
                         @method('patch')
                         @csrf
                         <div class="card-header">
-                            <h4 class="card-title">ویرایش دوره : </h4>
+                            <h4 class="card-title">ویرایش دوره : {{$course->title}} - <span id="heading" style="cursor: pointer;">سرفصل ها </span><span id="cloasing" style="color: red;font-size: 15px;display: none;cursor: pointer;"> بستن </span></h4>
                         </div>
 
 
-                        <div id="submit" class="card-content">
+                        <div id="submit" class="card-content course">
                             <div class="card-content">
                             
                                 <div class="card-body">
@@ -341,7 +367,29 @@
 
                             </div>
                         </div>
-                        <button type="submit" id="submit" class="btn btn-success pull-left">ویرایش</button>
+
+                        <div id="submit" class="card-content heading">
+                            <div class="card-content">
+                            
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-8" id="addHeading">
+                                            <label>عنوان</label>
+                                            <input type="text" name="heading[]" class="form-control" placeholder="عنوان خود را وارد کنید"><br>    
+                                        </div>
+                                        <div class="col-4" id="rmHeading">
+                                            <label>آیتم جدید</label>
+                                            <a class="btn btn-success pull-left text-white form-control createHeading mb-2">ایجاد</a><br>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                            <a class="btn btn-success pull-left text-white form-control mt-5 acc">ثبت</a><br>
+                        </div>
+
+                        <button type="submit" id="submitB" class="btn btn-success pull-left">ویرایش</button>
                     @endif
                     {{-- <div class="card-content">
                         <div class="card-body">
@@ -358,6 +406,8 @@
 
                 </div>
             </div>
+        </div>
+        <div style="display: none" id="hdingarry">
         </div>
     </form>
 
@@ -379,10 +429,61 @@
                 
             }
 
-            
-
         });
 
+        $('#heading').click(function () {
+           
+            var rel = $(this).attr('class');
+            // if(rel == 'crt'){
+
+
+            // }else if(rel == 'upd')
+            // {
+
+            // }
+            $('.course').hide(200);
+            $('.heading').show(250);
+            $('#cloasing').show(250);
+            $('#submitB').hide(200);
+            
+        });
+
+        $('#cloasing').click(function () {
+           
+           var rel = $(this).attr('class');
+           // if(rel == 'crt'){
+
+
+           // }else if(rel == 'upd')
+           // {
+
+           // }
+           $('.course').show(250);
+           $('.heading').hide(200);
+           $('#cloasing').hide(250);
+           $('#submitB').show(200);
+
+           
+       });
+
+       $('.createHeading').click(function () {
+            var id = Math.floor((Math.random() * 1000000) + 1) + Math.floor((Math.random() * 9000000) + 365 * 50);
+
+            $('#addHeading').append(`<input type="text" name="heading[]" class="form-control rmThis-`+ id +`" placeholder="عنوان خود را وارد کنید"><br class="rmThis-`+ id +`">`);
+            $('#rmHeading').append(`<a onClick="rmH(`+ id +`)" class="btn btn-danger pull-left text-white form-control mb-2 rmThis-`+ id +`">حذف</a>`);
+       });
+       function rmH(id) {
+           $('.rmThis-'+id).remove();
+       }
+
+       $('.acc').click(function(){
+
+            let heading=new Array();
+
+            $("input[name='heading[]']").each(function(i) {
+                $('#hdingarry').append(`<input type="hidden" name="items[]" value="`+this.value+`">`)
+            });
+        });
 
     </script>
 

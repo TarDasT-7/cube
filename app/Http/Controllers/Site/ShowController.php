@@ -8,6 +8,7 @@ use App\Models\PodAudio;
 use App\Models\Blog;
 use App\Models\FreeVideo;
 use App\Models\FreevideoQuestion;
+use App\Models\Course;
 
 class ShowController extends Controller
 {
@@ -33,6 +34,13 @@ class ShowController extends Controller
         $similars=FreeVideo::where('category_id' , $video->category_id)->where('id' ,'!=', $video->id)->orderBy('id' , 'DESC')->get();
         $questions=FreevideoQuestion::where('video_id' , $id)->get();
         return view('site.pages.freeVideo.show' , compact(['video','similars','questions']));
+
+    }
+
+    public function courseShow($id)
+    {
+        $course=Course::find($id);
+        return view('site.pages.course.show' , compact(['course']));
 
     }
 

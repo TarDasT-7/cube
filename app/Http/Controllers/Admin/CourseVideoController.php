@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Upload;
 use App\Models\CourseVideo;
+use App\Models\Heading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -24,8 +25,9 @@ class CourseVideoController extends Controller
     public function items($id)
     {
         $course=Course::find($id);
+        $headings=$course->headings;
         $files=CourseVideo::where('course_id' , $id)->get();
-        return view('admin.pages.ourProduct.course.files' , compact('files' , 'course'));
+        return view('admin.pages.ourProduct.course.files' , compact('files' , 'course' , 'headings'));
     }
 
     /**
@@ -48,7 +50,7 @@ class CourseVideoController extends Controller
     {
         $request->validate([
             'title'=> "required|max:250",
-            'heading'=> "required|max:250",
+            'subHead'=> "|max:250",
             'id'=> "required|numeric",
             'size'=> "required|max:250",
             'file'=> "required|max:300000",
@@ -59,7 +61,7 @@ class CourseVideoController extends Controller
         $course->save();
         $video=new CourseVideo();
         $video->title=$request->input('title');
-        $video->heading=$request->input('heading');
+        $video->heading_id=$request->input('subHead');
         $video->course_id=$request->input('id');
         $video->size=$request->input('size');
         
@@ -118,13 +120,13 @@ class CourseVideoController extends Controller
     {
         $request->validate([
             'title'=> "required|max:250",
-            'heading'=> "required|max:250",
+            'subHead'=> "|max:250",
             'size'=> "required|max:250",
             'file'=> "max:300000",
         ]);
         $video=CourseVideo::find($id);
         $video->title=$request->input('title');
-        $video->heading=$request->input('heading');
+        $video->heading_id=$request->input('subHead');
         $video->size=$request->input('size');
 
         if($demo = $request->file('file'))
@@ -166,5 +168,13 @@ class CourseVideoController extends Controller
 
         session()->flash('delete','فایل با موفقیت حذف شد');
         return redirect()->back();
+    }
+
+
+    public function subHeadingAjaax(Request $request)
+    {
+        $heading=Heading::find($request->id);
+        $subs=$heading->items;
+        return $subs;
     }
 }

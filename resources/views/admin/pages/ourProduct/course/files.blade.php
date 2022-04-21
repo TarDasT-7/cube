@@ -55,10 +55,25 @@
                                 <input type="text" name="size" class="form-control" placeholder="سایز فایل خود را وارد کنید">
                             </fieldset>
                         </div>
+
                         <div class="col-md-12  mb-1">
                             <fieldset class="form-group">
                                 <label >سرفصل</label>
-                                <input type="text" name="heading" class="form-control" placeholder="عنوان سرفصل خود را وارد کنید">
+                                <select class="select2-bg form-control" id="hdingslct" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                    <option value="">انتخاب سر فصل</option>
+                                    @foreach ($headings as $heading)
+                                        <option value="{{$heading->id}}">{{$heading->title}}</option>
+                                    @endforeach
+                                </select>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-md-12  mb-1" style="display: none;" id="subhead">
+                            <fieldset class="form-group">
+                                <label >زیر سرفصل</label>
+                                <select class="select2-bg form-control" name="subHead" id="subhead_select" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+
+                                </select>
                             </fieldset>
                         </div>
 
@@ -110,6 +125,7 @@
                         </ul>
                     </div>
                 @endif
+
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">لیست فایل های : {{$course->title}}_( {!! $course->video_num !!} )</h4>
@@ -144,6 +160,7 @@
                                     <tr id="add">
                                         <th scope="col" class="text-center">عنوان</th>
                                         <th scope="col" class="text-center">سرفصل</th>
+                                        <th scope="col" class="text-center">زیر سرفصل</th>
                                         <th scope="col" class="text-center">حجم فایل</th>
                                         <th scope="col" class="text-center">عملیات</th>
                                     </tr>
@@ -152,7 +169,18 @@
                                     @foreach($files as $key=>$video)
                                         <tr>
                                             <td class="text-center">{{$video->title}}</td>
-                                            <td class="text-center">{{$video->heading}}</td>
+                                            @if($video->sub)
+                                                <td class="text-center">{{$video->sub->heading->title}}</td>
+                                            @else
+                                             <td style="text-align: center">-</td>
+                                            @endif
+
+                                            @if($video->sub)
+                                            <td class="text-center">{{$video->sub->title}}</td>
+                                            @else
+                                                <td style="text-align: center">-</td>
+                                            @endif
+
                                             <td class="text-center">{{$video->size}}</td>
                                             <td class="text-center">
                                                 <a class="btn btn-warning mb-1 text-white" data-toggle="modal" data-target="#update-{{$key}}">ویرایش</a>
@@ -199,10 +227,37 @@
                                                                 <input type="text" name="size" class="form-control" value="{{$video->size}}" placeholder="سایز فایل خود را وارد کنید">
                                                             </fieldset>
                                                         </div>
+
                                                         <div class="col-md-12  mb-1">
                                                             <fieldset class="form-group">
                                                                 <label >سرفصل</label>
-                                                                <input type="text" name="heading" class="form-control" value="{{$video->heading}}" placeholder="عنوان سرفصل خود را وارد کنید">
+                                                                <select onchange="chngHeading({{$key}})" class="select2-bg form-control" name="producer" id="headid-{{$key}}" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                                                    <option value="">انتخاب سر فصل</option>
+                                                                    @foreach ($headings as $heading)
+                                                                        <option @if($video->sub && $heading->id == $video->sub->heading_id) selected @endif value="{{$heading->id}}">{{$heading->title}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
+                                                        <?php   
+                                                            if($video->sub)
+                                                            {
+                                                                $heading=$headings->find($video->sub->heading_id);
+                                                            }else
+                                                            {
+                                                                $heading=null;
+                                                            }
+                                                        ?>
+                                                        <div class="col-md-12  mb-1" @if(is_null($heading)) style="display: none;"  @endif id="subhead-{{$key}}">
+                                                            <fieldset class="form-group">
+                                                                <label >زیر سرفصل</label>
+                                                                <select class="select2-bg form-control" name="subHead" id="subhead_select-{{$key}}" data-bgcolor="success" data-bgcolor-variation="lighten-3" data-text-color="white">
+                                                                    @if(!is_null($heading))
+                                                                        @foreach ($heading->items as $item)
+                                                                            <option @if($item->id == $video->sub->id) selected @endif value="{{$item->id}}">{{$item->title}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </select>
                                                             </fieldset>
                                                         </div>
                                 
@@ -241,6 +296,84 @@
 			$(document).ready( function () {
 				$('#example').DataTable();
 			} );
+    </script>
+
+    <script>
+
+        $('#hdingslct').on('change' , function (){
+            
+            $('#subhead_select').html('');
+            var id = $(this).val();
+
+            if(id > 0)
+            {
+
+                $.ajax({
+                type: "GET",
+                url: "{{route('cv_sda')}}",
+                data: {id:id},
+                success: function (response) {
+                    if(response.length > 0)
+                    {
+                        $('#subhead').show(150);
+                        for (let i = 0; i < response.length; i++) {
+
+                            $('#subhead_select').append('<option value="'+ response[i].id +'" > '+ response[i].title +' </option>');
+                            
+                        }
+                    }
+                }
+            });
+
+            }else
+            {
+                $('#subhead_select').append('<option value="" > موردی وجود ندارد </option>');
+                $('#subhead').hide(150);
+
+            }
+
+            
+        });
+
+        function chngHeading(key) {
+
+            var id = $('#headid-'+key).val();
+            $('#subhead_select-'+key).html('');
+            console.log(id);
+            if(id > 0)
+            {
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{route('cv_sda')}}",
+                    data: {id:id},
+                    success: function (response) {
+                        if(response.length > 0)
+                        {
+                            $('#subhead-'+key).show(150);
+                            for (let i = 0; i < response.length; i++) {
+
+                                $('#subhead_select-'+key).append('<option value="'+ response[i].id +'" > '+ response[i].title +' </option>');
+                                
+                            }
+                        }
+                    }
+                });
+
+            }else
+            {
+                $('#subhead_select-'+key).append('<option value="" > موردی وجود ندارد </option>');
+                $('#subhead-'+key).hide(150);
+
+            }
+
+            
+
+
+        }
+        
+// subhead_select-
+
     </script>
 
 

@@ -31,4 +31,9 @@ class Course extends Model
         return $this->hasMany(CourseView::class);
     }
 
+    public function headings()
+    {
+        return $this->hasMany(Heading::class);
+    }
+
 }

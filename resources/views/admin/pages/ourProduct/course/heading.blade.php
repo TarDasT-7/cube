@@ -54,6 +54,42 @@
                         </ul>
                     </div>
                 @endif
+
+
+
+                <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">ایجاد سر فصل جدید</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="post" action='{{route('heading.store' , ['id'=>$course->id])}}' enctype="multipart/form-data">
+                               @csrf
+                                <div class="modal-body">
+                                    
+                                    <div class="col-md-12  mb-1">
+                                        <fieldset class="form-group">
+                                            <label >عنوان</label>
+                                            <input type="text" name="title" class="form-control" placeholder="عنوان فایل خود را وارد کنید">
+                                        </fieldset>
+                                    </div>
+            
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">ذخیره </button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+            
+                                </div>
+                            </form>
+                        </div>
+            
+                    </div>
+                </div>
+
+            
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">لیست سرفصل های : {{$course->title}}</h4>
@@ -68,11 +104,11 @@
                                                 <div class="col-10">
                                                 </div>
                                                 <div class="col-2">
-                                                    {{-- <button type="button" class="btn btn-success mr-1 mb-1" data-toggle="modal" data-target="#Modal"> --}}
-                                                    <a href="{{route('course.create')}}" class="btn btn-success mr-1 mb-1">
+                                                    <button type="button" class="btn btn-success mr-1 mb-1" data-toggle="modal" data-target="#Modal">
+                                                    {{-- <a href="{{route('course.create')}}" class="btn btn-success mr-1 mb-1"> --}}
                                                         ایجاد مورد جدید
-                                                    </a>
-                                                    {{-- </button> --}}
+                                                    {{-- </a> --}}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -88,35 +124,154 @@
                                 <table id="example" class="table table-striped ">
                                     <thead>
                                     <tr id="add">
-                                        <th scope="col" class="text-center">تصویر</th>
-                                        <th scope="col" class="text-center">عنوان</th>
-                                        <th scope="col" class="text-center">مدرس</th>
-                                        <th scope="col" class="text-center">قیمت</th>
-                                        <th scope="col" class="text-center">دسته بندی</th>
-                                        <th scope="col" class="text-center">تعداد قسمت</th>
-                                        <th scope="col" class="text-center">عملیات</th>
+                                        <th scope="col" class="text-center">عنوان سر فصل</th>
+                                        <th scope="col" class="text-center">عملیات سر فصل</th>
+                                        <th scope="col" class="text-center">عنوان زیر سر فصل</th>
+                                        <th scope="col" class="text-center">عملیات زیر سر فصل</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($headings as $key=>$course)
+                                    @foreach($headings as $key=>$heading)
                                         <tr>
-                                            <td class="text-center"><img  src='{{"/images/courses/".$course->image}}'  width="100px" ></td>
-                                            <td class="text-center">{{$course->title}}</td>
-                                            <td class="text-center">{{$course->producer->first_name}} {{$course->producer->last_name}}</td>
-                                            <td class="text-center">{{$course->price}} <br> % {{$course->off}} <br> <?php echo $course->price - (($course->price * $course->off) / 100); ?></td>
-                                            <td class="text-center">{{$course->categoryC->title}} / {{$course->subcate->title}}</td>
-                                            <td class="text-center">{{$course->video_num}}</td>
+                                            <td class="text-center">{{$heading->title}}</td>
+                                           
                                             <td class="text-center">
-                                                <a class="btn btn-success mb-1 text-white"  href="{{route('courseHeading' , $course->id)}}">سرفصل ها</a><br>
-                                                <a class="btn btn-info mb-1 text-white"  href="{{route('cv_item' , $course->id)}}">فایل ها</a><br>
-                                                <a class="btn btn-warning mb-1 text-white"  href="{{route('course.edit' , $course->id)}}">ویرایش</a>
-                                                <form  method="post" action="{{route('course.destroy', $course->id)}}">
+                                                <button type="button" class="btn btn-success mb-1 text-white" data-toggle="modal" data-target="#subHeading-{!! $key !!}">
+                                                    زیر عنوان
+                                                </button><br>
+                                                {{-- <a class="btn btn-success mb-1 text-white"  href="{{route('subHeading_index' , $heading->id)}}"></a><br> --}}
+                                                {{-- <a class="btn btn-warning mb-1 text-white"  href="{{route('course.edit' , $heading->id)}}">ویرایش</a> --}}
+                                                <button type="button" class="btn btn-warning mb-1 text-white" data-toggle="modal" data-target="#edHeading-{!! $key !!}">
+                                                    ویرایش
+                                                </button><br>
+                                                <form  method="post" action="{{route('heading.destroy', $heading->id)}}">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="btn btn-danger ">حذف</button>
                                                 </form>
                                             </td>
+
+                                            <td style="text-align: center">
+                                                @foreach ($heading->items as $k=>$item)
+                                                    {{$item->title}}  
+                                                <br>
+                                                @endforeach
+                                            </td>
+
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-info mb-1 text-white" data-toggle="modal" data-target="#subHeadingUpdate-{!! $key !!}">
+                                                    اقدامات
+                                                </button>
+                                            </td>
+
                                         </tr>
+
+                                        <div class="modal fade mdlsubheadupdt" id="edHeading-{!! $key !!}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">ویرایش سرفصل ها</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form  method="post" action='{{route('heading.update' , $heading->id)}}'>
+                                                        @method('patch')
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            
+                                                            <div class="col-md-12 " style="display: inline-block">
+                                                                <fieldset class="form-group">
+                                                                    <label >عنوان</label>
+                                                                    <input type="text" name="title" class="form-control" value="{{$heading->title}}" placeholder="عنوان فایل خود را وارد کنید">
+                                                                </fieldset>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">ذخیره </button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>                                    
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                    
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade mdlsubheadupdt" id="subHeadingUpdate-{!! $key !!}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">ویرایش زیر سرفصل ها</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form>
+                                                        <div class="modal-body">
+                                                            
+                                                            @foreach ($heading->items as $k=>$item)
+                                                                <div class="rm-sub-heading-{{$item->id}}">
+
+                                                                    <div class="col-md-8 " style="display: inline-block">
+                                                                        <fieldset class="form-group">
+                                                                            <label >ایتم {{$k + 1}}</label>
+                                                                            <input type="text" name="title" class="form-control" id="uptit-{{$item->id}}" value="{{$item->title}}" placeholder="عنوان فایل خود را وارد کنید">
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <div class="col-md-3 " style="display: inline-block">
+                                                                        <fieldset class="form-group ">
+                                                                            <label class=" ">عملیات</label>
+                                                                            <a class="form-control btn-danger text-white " style="display: inline-block" onclick="rmsubitem({{$item->id}})">حذف</a>
+                                                                            <a class="form-control btn-warning text-white " style="display: inline-block" onclick="upsubitem({{$item->id}})">ویرایش</a>
+                                                                        </fieldset>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            @endforeach
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>                                    
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                    
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade" id="subHeading-{!! $key !!}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">ایجاد زیر سرفصل جدید</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form method="post" action='{{route('sub_heading_store' , ['id'=>$heading->id])}}' enctype="multipart/form-data">
+                                                       @csrf
+                                                        <div class="modal-body">
+                                                            
+                                                            <div class="col-md-12  mb-1">
+                                                                <fieldset class="form-group">
+                                                                    <label >عنوان</label>
+                                                                    <input type="text" name="title" class="form-control" placeholder="عنوان فایل خود را وارد کنید">
+                                                                </fieldset>
+                                                            </div>
+                                    
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">ذخیره </button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                                    
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                    
+                                            </div>
+                                        </div>
+
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -126,7 +281,8 @@
                 </div>
             </div>
         </div>
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <input type="hidden" id="rldpg" value="false">
 
 
 
@@ -142,6 +298,83 @@
 				$('#example').DataTable();
 			} );
     </script>
+
+
+    <script>
+
+        function rmsubitem(id) {
+            
+            var confirm =  window.confirm("تایید می کنید این ایتم حذف شود ؟");
+
+            if(confirm == true)
+            {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "DELETE",
+                    url: "{{route('sub_heading_rm')}}",
+                    data: {id:id},
+                    success: function (response) {
+                        if(response == 0)
+                        {
+                            $('.rm-sub-heading-'+id).remove();
+                            alert('عملیات موفق');
+                        }else
+                        {
+                            alert('مشکلی در حذف وجود دارد');
+                        }
+                    }
+                });
+            }
+            $('#rldpg').val('true');
+        }
+
+        function upsubitem(id) {
+            
+            var confirm =  window.confirm("تایید می کنید این ایتم ویرایش شود ؟");
+            var title = $('#uptit-'+id).val();
+            if(confirm == true)
+            {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "patch",
+                    url: "{{route('sub_heading_up')}}",
+                    data: {id:id , title:title},
+                    success: function (response) {
+                        if(response == 0)
+                        {
+                            alert('عملیات موفق');
+                        }else
+                        {
+                            alert('مشکلی در ویرایش وجود دارد');
+                        }
+                    }
+                });
+            }
+            $('#rldpg').val('true');
+
+        }
+
+
+
+        $('.mdlsubheadupdt').on('hidden.bs.modal', function () {
+            if($('#rldpg').val() == 'true')
+            {
+                location.reload();
+            }
+        })
+
+
+    </script>
+
+
 
 
     @include('admin.partials.datatable_js')

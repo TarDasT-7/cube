@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Blogcontroller;
 use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\Coursecontroller;
 use App\Http\Controllers\Admin\CourseVideoController;
+use App\Http\Controllers\Admin\HeadingController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PadCastController;
@@ -187,7 +188,14 @@ Route::post('ckeditor/image_upload', [AboutUsController::class,'upload'])->name(
         Route::get('course-heading-{id}',[Coursecontroller::class , 'heading'])->name('courseHeading');
         Route::get('course-subcate',[Coursecontroller::class , 'subCateGET'])->name('subcateFind');
         Route::resource('coursevideo',CourseVideoController::class);
+        Route::get('cv-sub-heading',[CourseVideoController::class , 'subHeadingAjaax'])->name('cv_sda');
         Route::get('coursevideo-items-{id}',[CourseVideoController::class , 'items'])->name('cv_item');
+        Route::resource('heading',HeadingController::class);
+        Route::get('sub-heading-{id}',[HeadingController::class , 'subIndex'])->name('subHeading_index');
+        Route::post('sub-heading-store',[HeadingController::class , 'subStore'])->name('sub_heading_store');
+        Route::patch('sub-heading-up',[HeadingController::class , 'subUpdate'])->name('sub_heading_up');
+        Route::delete('sub-heading-rm',[HeadingController::class , 'subDestroy'])->name('sub_heading_rm');
+
 
 
 

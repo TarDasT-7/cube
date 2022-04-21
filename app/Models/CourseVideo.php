@@ -13,8 +13,9 @@ class CourseVideo extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function subHeading()
+    public function sub()
     {
-        return $this->hasOne(SubHeading::class);
+        return $this->belongsTo(SubHeading::class , 'heading_id');
     }
+
 }

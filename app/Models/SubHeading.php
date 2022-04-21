@@ -16,7 +16,7 @@ class SubHeading extends Model
 
     public function video()
     {
-        return $this->hasOne(CourseVideo::class , 'video_id');
+        return $this->hasOne(CourseVideo::class , 'heading_id');
     }
 
 }

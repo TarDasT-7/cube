@@ -271,66 +271,48 @@
                                         <div class="col-12 col-md-12 title_row2 pb-4">
                                             <h4 class="txt_dgray bold">سرفصل ها و مفاهیم دوره</h4>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12 crscnt_dtsecrowcol mb-2">
-                                                    <div class="row cnts_mrow">
-                                                        <div class="col-md-12 cntxt_mcol">
-                                                            <div class="row cntxt_mrow">
-                                                                <div class="col-md-12 info_title cursp txt_dgray collp_head2">
-                                                                    <h6 class="txt_dgray mb-0 bold" data-toggle="collapse" data-target="#how_to_buy"> <i class="fas fa-plus fa-fw txt_org font12"></i>  عنوان سرفصل در این مکان قرار می گیرد</h6>
-                                                                </div>
-                                                                <div class="col-md-12 collapse collp_cnts" id="how_to_buy" >
-                                                                    <ul class="txt_gray cnt_ul list-unstyled pr-0">
-                                                                        <li class="cnt_li">
-                                                                            <div class="row cnt_limrow">
-                                                                                <div class="col-md-6 cnt_limcol">
-                                                                                    <a href="#"><span class="txt_gray font15"><span class="txt_gray pr-4"> عنوان در این مکان قرار می گیرد</span></span></a>
-                                                                                </div>
-                                                                                <div class="col-md-6 cnt_limcol text-left">
-                                                                                    <span class="txt_gray font14"> 01:56 <i class="far fa-clock pr-2 font14"></i></span>
-                                                                                    <span><i class="fa fa-download pr-3"></i></span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="cnt_li">
-                                                                            <div class="row cnt_limrow">
-                                                                                <div class="col-md-6 cnt_limcol">
-                                                                                    <a href="#"><span class="txt_gray font15"><i class="li_ico fa fa-lock"></i><span class="txt_gray pr-4"> عنوان در این مکان قرار می گیرد</span></span></a>
-                                                                                </div>
-                                                                                <div class="col-md-6 cnt_limcol text-left">
-                                                                                    <span class="txt_gray font14"> 02:46 <i class=" far fa-clock pr-2 font14"></i></span>
-                                                                                    <span><i class="fa fa-download pr-3"></i></span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="cnt_li">
-                                                                            <div class="row cnt_limrow">
-                                                                                <div class="col-md-6 cnt_limcol">
-                                                                                    <a href="#"><span class="txt_gray font15"><i class="li_ico fa fa-lock"></i><span class="txt_gray pr-4"> عنوان در این مکان قرار می گیرد</span></span></a>
-                                                                                </div>
-                                                                                <div class="col-md-6 cnt_limcol text-left">
-                                                                                    <span class="txt_gray font14"> 04:06 <i class="far fa-clock pr-2 font14"></i></span>
-                                                                                    <span><i class="fa fa-download pr-3"></i></span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-																
-															</div>
-														
-
-															</div>
+										@foreach ($course->headings as $key=>$heading)
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-12 crscnt_dtsecrowcol mb-2">
+														<div class="row cnts_mrow">
+															<div class="col-md-12 cntxt_mcol">
+																<div class="row cntxt_mrow">
+																	<div class="col-md-12 info_title cursp txt_dgray collp_head2">
+																		<h6 class="txt_dgray mb-0 bold" data-toggle="collapse" data-target="#how_to_buy-{{$key}}"> <i class="fas fa-plus fa-fw txt_org font12"></i>{{$heading->title}}</h6>
+																	</div>
+																	<div class="col-md-12 collapse collp_cnts" id="how_to_buy-{{$key}}" >
+																		<ul class="txt_gray cnt_ul list-unstyled pr-0">
+																			@foreach ($heading->items as $item)
+																				<li class="cnt_li">
+																					<div class="row cnt_limrow">
+																						<div class="col-md-6 cnt_limcol">
+																							<a href="#"><span class="txt_gray font15"><i class="li_ico fa fa-lock"></i><span class="txt_gray pr-4">{{$item->title}}</span></span></a>
+																						</div>
+																						{{-- @if($item->video) --}}
+																							<div class="col-md-6 cnt_limcol text-left">
+																								<span class="txt_gray font14"> 04:06 <i class="far fa-clock pr-2 font14"></i></span>
+																								<span><i class="fa fa-download pr-3"></i></span>
+																							</div>
+																						{{-- @endif --}}
+																					</div>
+																				</li>
+																			@endforeach
+																			
+																		</ul>
+																	</div>
 																</div>
 															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										@endforeach
+										
 														
-																	
-														</div>
-														</div>
+																
+									</div>
+								</div>
 												</div>
 											  </div>
 									      

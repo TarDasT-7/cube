@@ -31,7 +31,9 @@ class IndexPagesController extends Controller
         $podcasts=Podcast::orderBy('id' , 'DESC')->take(8)->get();
         $blogs=Blog::orderBy('id' , 'DESC')->take(2)->get();
         $frees=FreeVideo::orderBy('id' , 'DESC')->take(7)->get();
-        return view('site.pages.index.index' , compact(['user','sliders','podcasts','blogs','frees']));
+        $categoryCourse=Category::where('related' , 'دوره')->orWhere('related' , 'آنلاین')->take(6)->get();
+        $courses=Course::orderBy('id' , 'DESC')->take(10)->get();
+        return view('site.pages.index.index' , compact(['user','sliders','podcasts','blogs','frees','categoryCourse' , 'courses']));
     }
 
     public function podList()

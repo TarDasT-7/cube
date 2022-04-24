@@ -1,3 +1,4 @@
+<?php if($user=Illuminate\Support\Facades\Auth::user()){} else{$user=null;}?>
 @extends('layouts.site')
 
 
@@ -7,6 +8,55 @@
 @endsection
 
 @section('content')
+    <style>
+        
+        .alert-success
+        {
+            background: #00ff0833;
+            width: 100%;
+            height: 50px;
+            margin-top: 40px;
+            text-align: center;
+            display: none;
+        }
+        .success_message{
+            font-size: 15px;
+            padding: 15px 0;
+            color: #007c3f;
+        }
+        .alert-warning
+        {
+            background: #ff00002b;
+            width: 100%;
+            height: 50px;
+            margin-top: 40px;
+            text-align: center;
+            display: none;
+        }
+        .warning_message{
+            font-size: 15px;
+            padding: 15px 0;
+            color: #790000;
+        }
+
+    </style>
+
+    <div  class="alert-success">
+
+        <h1 class="success_message">
+
+        </h1>
+
+    </div>
+
+
+    <div class="alert-warning">
+
+        <h1 class="warning_message">
+
+        </h1>
+
+    </div>
 
     <section class="main_sec main-content container-fluid" id="main-content">
         <div class="row article_txt_mrow  justify-content-center pb-5">
@@ -68,27 +118,31 @@
                                     <h6 class="txt_srmp bold pt-5 pb-4">ارسال پیام</h6>
                                     <div class="col-md-12 scm_ico p-0">
                                         <div class="row sc_row">
-                                            <form id="comment_form" action="{{url('comment')}}" method="post" role="form" class="w-100">
-                                                @csrf
+                                            <form id="comment_form"  role="form" class="w-100">
 
                                                 <input type="hidden" name="contact" value="contact">
+                                                <input type="hidden" name="user" value="{{$user}}">
 
                                                 <div class="form-group col-12 col-md-12">
-                                                    <div class="input-group input-group-sm">
+                                                    <div class="input-group input-group-sm mb-3">
 														  <span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
 														  <i class="fa fa-envelope txt_srmp"></i>
 															  </span>
-                                                        <input name="email" class="form-control srch_cus3 txt_dgray mr-0" type="email" placeholder="ایمیل">
+                                                              @if($user)
+                                                                  <input name="email" class="form-control srch_cus3 txt_dgray mr-0 " type="email" placeholder="ایمیل" value="{{$user->email}}">
+                                                              @else
+                                                                  <input name="email" class="form-control srch_cus3 txt_dgray mr-0 " type="email" placeholder="ایمیل">
+                                                              @endif
 
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-12 col-md-12 mg">
-                                                    <textarea name="desc" class="form-control cus_txtarea" placeholder="پیام" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                                    <textarea name="text" class="form-control cus_txtarea" placeholder="پیام" id="text" rows="5"></textarea>
 
                                                 </div>
                                                 <div class="col-md-5 offset-md-7 mg">
                                                     <div >
-                                                        <button type="submit" class="btn btn-raised btn_cusblgray btn-sm btn_full w-100">ارسال</button>
+                                                        <a id="sendMessage" class="btn btn-raised btn_cusblgray btn-sm btn_full w-100">ارسال</a>
                                                     </div>
                                                 </div>
                                             </form>
@@ -102,5 +156,98 @@
             </div>
         </div>
     </section>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+@endsection
+@section('add_script')
+
+
+    <script>
+
+        $('#sendMessage').click(function () {
+            
+            $('.rmAll').remove();
+            $('.alert-success').hide(200);
+            $('.alert-warning').hide(200);
+
+            function fadeAlert() {
+                setTimeout(() => {
+                    $('.alert-success').hide(200);
+                    $('.alert-warning').hide(200);
+                }, 5000);
+            }
+
+            let formData = new FormData(document.getElementById("comment_form"));
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "{{route('sendMessage')}}",
+                data:formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    window.scrollTo(0, 0);
+
+                    if(response == 0)
+                    {
+                        $('.alert-success').show(200);
+                        $('.alert-warning').hide(200);
+
+                        $('#text').val('');
+                        $('.success_message').text('پیام شما با موفقیت برای مدیر سایت ارسال شد');
+                        
+                    }else
+                    {
+                        $('.alert-warning').show(200);
+                        $('.alert-success').hide(200);
+
+                        $('.warning_message').text('خطایی وجود دارد . لطفا دوباره امتحان کنید.');
+
+                    }
+
+
+                    fadeAlert();
+                },
+                error: function (err) {
+                    // $('.loading').hide(50);
+
+                    if (err.status == 422) {
+
+
+                        $('.alert-warning').show(200);
+                        $('.alert-success').hide(200);
+
+                        $('.warning_message').text('خطایی وجود دارد . لطفا دوباره امتحان کنید.');
+
+
+                        $.each(err.responseJSON.errors, function (i, error) {
+
+                            console.log(i);
+                            var el = $(document).find('[name="'+i+'"]');
+                            let elParent=el;
+                            elParent=elParent.parent();
+                            // elParent=elParent.parent();
+
+                            elParent.after($('<p style="color: red;margin:-10px 15px 15px 0;" class="rmAll">'+error[0]+'</p>'));
+                            fadeAlert();
+                        });
+                    }
+                    window.scrollTo(0, 0);
+
+                }
+            });
+
+
+        })
+
+    </script>
+
 @endsection
 

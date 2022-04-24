@@ -15,7 +15,6 @@
 
 @section('content')
 
-
 <section class="main_sec container-fluid main-content">
 	<div class="row breadcrumb_row m-0">
 		  <nav aria-label="breadcrumb">
@@ -289,12 +288,14 @@
 																						<div class="col-md-6 cnt_limcol">
 																							<a href="#"><span class="txt_gray font15"><i class="li_ico fa fa-lock"></i><span class="txt_gray pr-4">{{$item->title}}</span></span></a>
 																						</div>
+																						
 																						{{-- @if($item->video) --}}
 																							<div class="col-md-6 cnt_limcol text-left">
 																								<span class="txt_gray font14"> 04:06 <i class="far fa-clock pr-2 font14"></i></span>
 																								<span><i class="fa fa-download pr-3"></i></span>
 																							</div>
 																						{{-- @endif --}}
+																						
 																					</div>
 																				</li>
 																			@endforeach
@@ -329,17 +330,22 @@
 															<div class="row dlfile_mrow">
 																<div class="col-md-12 dlfile_ulcol">
 																		<ul class="txt_gray dlfile_ul list-unstyled pr-0">
-																			<li class="cnt_li">
-																				<div class="row cnt_limrow">
-																					<div class="col-md-6 cnt_limcol">
-																						<a href="#"><span class="txt_gray font15"><i class="li_ico fa fa-lock"></i><span class="txt_gray pr-4"> عنوان فایل در این مکان قرار می گیرد</span></span></a>
+																			@foreach ($course->course_videos as $video)
+																				
+																				<li class="cnt_li">
+																					<div class="row cnt_limrow">
+																						<div class="col-md-6 cnt_limcol">
+																							<a href="#"><span class="txt_gray font15"><i class="li_ico fa fa-lock"></i><span class="txt_gray pr-4">{{$video->title}}</span></span></a>
+																						</div>
+																						<div class="col-md-6 cnt_limcol text-left">
+																							<span class="txt_gray font14">{{$video->size}} </span>
+																							<span><i class="fa fa-download pr-3"></i></span>
+																						</div>
 																					</div>
-																					<div class="col-md-6 cnt_limcol text-left">
-																						<span class="txt_gray font14">45mb </span>
-																						<span><i class="fa fa-download pr-3"></i></span>
-																					</div>
-																				</div>
-																			</li>
+																				</li>
+
+																			@endforeach
+
 																		</ul>
 																</div>
 																
@@ -367,23 +373,18 @@
 														<div class="col-md-2 artcl_wrtmcol">
 									<div class="row artcl_wrtmrow justify-content-center">
 									 <div class="col-md-8 tch_authimgcol text-center mb-3">
-										<img src="img/avtfm1.png" class="tch_authimg">
+										<img src="{{'/images/producers/'.$course->producer->image}}" class="tch_authimg">
 									 </div>
 										<div class="col-md-12 artcl_wrtnmcol text-center">
-											<h6 class="font15 txt_gray bold mb-1">نام استاد</h6>
-											<span class="txt_gray font12">حوزه  تخصص</span>
+											<h6 class="font15 txt_gray bold mb-1">{{$course->producer->first_name}} {{$course->producer->last_name}}</h6>
+											<span class="txt_gray font12">{{$course->producer->profession}}</span>
 										</div>
 									</div>
 								</div>
 														<div class="col-md-10 abt_tchmcol ">
 															<div class="row abt_tchrow">
 																<div class="col-md-12 abt_tchcol txt_gray font12">
-																	<p>متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیرددد
-																	متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیرددد</p>
-																	<p>متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیرددد
-																	متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیرددد
-																	متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیرددد</p>
-																	<p>متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد...متن مورد نظر شما در این مکان قرار می گیرد..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیر..متن مورد نظر شما در این مکان قرار می گیرددد</p>
+																	{!! $course->producer->description !!}
 																</div>
 															</div>
 														
@@ -395,76 +396,32 @@
 									   </div>
 										<div id="faq" class="tab-pane  container-fluid tab_cusprdft ">
 											<div class="row commentpr_row  p-3">
-													<div class="col-11 col-md-12 faq_clp_mcol ">
-																<div class="row faq_secrow ">
-																<div class="col-md-12 faq_seccrscol">
-																	<div class="row guide_row back_crm mb-3">
-																		 <div class="col-md-12 info_title_faq cursp txt_dgray collp_head2">
-																			 <h6 class="txt_dgray bold mb-0" data-toggle="collapse" data-target="#faq1"> <i class="fas fa-minus fa-fw txt_org font12"></i>  متن سوال در این مکان قرار می گیرد ؟</h6>
-																		</div>
-
-																		 <div class="col-md-12 collapse collp_count pb-4 show" id="faq1" >
-																			<h6 class="txt_dgray  pt-3">توضیحات مربوط به این سوال در این مکان قرار می گیرد :</h6>
-																			<ol class="txt_gray pr-2_5">
-																				<li>
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...							 		توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-
-																				</li>
-																				<li>
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...								 		توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-
-																				</li>
-																				<li>
-																		 توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-
-																				</li>
-
-																			</ol>
-																		</div>
-																	 </div>
-																	<div class="row guide_row back_crm mb-3">
-																		 <div class="col-md-12 info_title_faq cursp txt_dgray collp_head2">
-																			 <h6 class="txt_dgray bold mb-0" data-toggle="collapse" data-target="#faq2"> <i class="fas fa-plus fa-fw txt_org font12"></i>  متن سوال در این مکان قرار می گیرد ؟ </h6>
-																		</div>
-																		 <div class="col-md-12 collapse collp_count pb-4" id="faq2" >
-																			 <h6 class="txt_dgray  pt-3">توضیحات مربوط به این سوال در این مکان قرار می گیرد :</h6>
-																			<ol class="txt_gray pr-2_5">
-																				<li>
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...							 		توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-
-																				</li>
-																				<li>
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...								 		توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-
-																				</li>
-																				<li>
-																		 توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-																				توضیحات مربوط به این بخش در این مکان قرار می گیرد...
-
-																				</li>
-
-																			</ol>
-																		</div>
-																	</div>
-																
-																	</div>
+												<div class="col-11 col-md-12 faq_clp_mcol ">
+													<div class="row faq_secrow ">
+														<div class="col-md-12 faq_seccrscol">
+															@foreach ($questions as $key=>$question)
+															<div class="row guide_row back_crm mb-3">
+																	
+																<div class="col-md-12 info_title_faq cursp txt_dgray collp_head2">
+																	<h6 class="txt_dgray bold mb-0" data-toggle="collapse" data-target="#faq-{{$key}}">
+																		<i class="fas fa-minus fa-fw txt_org font12"></i>
+																		{!! $question->faq->category->title !!}
+																	</h6>
 																</div>
+
+																<div class="col-md-12 collapse collp_count pb-4 " id="faq-{{$key}}" >
+																	<h6 class="txt_dgray  pt-3">{{$question->faq->title}}</h6>
+																	{!! $question->faq->text !!}
+
+																</div>
+																	
 															</div>
+															@endforeach
+															
+														
+														</div>
+													</div>
+												</div>
 								            </div>
 								          
 									   </div>
@@ -656,209 +613,42 @@
 		</div>
 		<div class="col-md-12 columns crsmpl_slcont">
 			    <div class="owl-carousel sp_offers_crl owl-theme">
-					<div class="product_pr_col item">
-								<div class="row prd_pr_row  ">
-									<div class="col-12 col-md-12 prd_pr_img_col pb-2 text-center">
-										<a href="crs_dtpage.html" class="txt_dgray">
+
+					@foreach ($similars as $similar)
+						
+						<div class="product_pr_col item">
+							<div class="row prd_pr_row  ">
+								<div class="col-12 col-md-12 prd_pr_img_col pb-2 text-center">
+									<a href="crs_dtpage.html" class="txt_dgray">
 										<img class="prd_pr_img" src="img/crs01.jpg">
-										</a>
-									</div>
-									<div class="col-12 col-md-12 prd_pr_dt_col ">
-										<div class="row prpr_dts_row">
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<h6 class="font14 txt_dgray bold">عنوان دوره در این مکان قرار می گیرد</h6>
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
+									</a>
+								</div>
+								<div class="col-12 col-md-12 prd_pr_dt_col ">
+									<div class="row prpr_dts_row">
+										<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
+											<h6 class="font14 txt_dgray bold">{{$similar->title}}</h6>
+										</div>
+										<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
+											<ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
 												<li class=" list-inline-item tch_dtulli">
-												 <img src="img/avtfm1.png" class="post_itmsldateimg">
+													<img src="img/avtfm1.png" class="post_itmsldateimg">
 												</li>
 												<li class=" list-inline-item tch_dtulli">
-												 <span class="txt_gray font14">نام استاد</span>
+													<span class="txt_gray font14">{{$similar->producer->first_name}} {{$similar->producer->last_name}}</span>
 												</li>
 											</ul>
-												
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col text-left pb-2">
-												<h6 class="font14 txt_dgray bold">650,000 تومان</h6>
-												<span class="txt_gray font14"> 04:30:56 <i class="far fa-clock pr-2 font14"></i></span>
-											</div>
-											
+										</div>
+										<div class="col-12 col-md-12 prpr_dt_col feature_dt_col text-left pb-2">
+											<h6 class="font14 txt_dgray bold">{!! $similar->price - (($similar->price * $similar->off ) / 100) !!} تومان</h6>
+											<span class="txt_gray font14"> {{$similar->course_time}} <i class="far fa-clock pr-2 font14"></i></span>
 										</div>
 									</div>
 								</div>
-								
+							</div>
 						</div>
-				    <div class="product_pr_col item">
-								<div class="row prd_pr_row  ">
-									<div class="col-12 col-md-12 prd_pr_img_col pb-2 text-center">
-										<a href="crs_dtpage.html" class="txt_dgray">
-										<img class="prd_pr_img" src="img/crs05.jpg">
-										 
-										</a>
-									</div>
-									<div class="col-12 col-md-12 prd_pr_dt_col ">
-										<div class="row prpr_dts_row">
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<h6 class="font14 txt_dgray bold">عنوان دوره در این مکان قرار می گیرد</h6>
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-												<li class=" list-inline-item tch_dtulli">
-												 <img src="img/avtfm1.png" class="post_itmsldateimg">
-												</li>
-												<li class=" list-inline-item tch_dtulli">
-												 <span class="txt_gray font14">نام استاد</span>
-												</li>
-											</ul>
-												
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col text-left pb-2">
-												<h6 class="font14 txt_dgray bold">650,000 تومان</h6>
-												<span class="txt_gray font14"> 04:30:56 <i class="far fa-clock pr-2 font14"></i></span>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								
-						</div>
-					<div class="product_pr_col item">
-								<div class="row prd_pr_row  ">
-									<div class="col-12 col-md-12 prd_pr_img_col pb-2 text-center">
-										<a href="crs_dtpage.html" class="txt_dgray">
-										<img class="prd_pr_img" src="img/crs04.jpg">
-										 
-										</a>
-									</div>
-									<div class="col-12 col-md-12 prd_pr_dt_col ">
-										<div class="row prpr_dts_row">
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<h6 class="font14 txt_dgray bold">عنوان دوره در این مکان قرار می گیرد</h6>
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-												<li class=" list-inline-item tch_dtulli">
-												 <img src="img/avtfm1.png" class="post_itmsldateimg">
-												</li>
-												<li class=" list-inline-item tch_dtulli">
-												 <span class="txt_gray font14">نام استاد</span>
-												</li>
-											</ul>
-												
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col text-left pb-2">
-												<h6 class="font14 txt_dgray bold">650,000 تومان</h6>
-												<span class="txt_gray font14"> 04:30:56 <i class="far fa-clock pr-2 font14"></i></span>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								
-						</div>
-				    <div class="product_pr_col item">
-								<div class="row prd_pr_row  ">
-									<div class="col-12 col-md-12 prd_pr_img_col pb-2 text-center">
-										<a href="crs_dtpage.html" class="txt_dgray">
-										<img class="prd_pr_img" src="img/crs03.jpg">
-										 
-										</a>
-									</div>
-									<div class="col-12 col-md-12 prd_pr_dt_col ">
-										<div class="row prpr_dts_row">
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<h6 class="font14 txt_dgray bold">عنوان دوره در این مکان قرار می گیرد</h6>
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-												<li class=" list-inline-item tch_dtulli">
-												 <img src="img/avtfm1.png" class="post_itmsldateimg">
-												</li>
-												<li class=" list-inline-item tch_dtulli">
-												 <span class="txt_gray font14">نام استاد</span>
-												</li>
-											</ul>
-												
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col text-left pb-2">
-												<h6 class="font14 txt_dgray bold">650,000 تومان</h6>
-												<span class="txt_gray font14"> 04:30:56 <i class="far fa-clock pr-2 font14"></i></span>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								
-						</div>
-					<div class="product_pr_col item">
-								<div class="row prd_pr_row  ">
-									<div class="col-12 col-md-12 prd_pr_img_col pb-2 text-center">
-										<a href="crs_dtpage.html" class="txt_dgray">
-										<img class="prd_pr_img" src="img/crs02.jpg">
-										 
-										</a>
-									</div>
-									<div class="col-12 col-md-12 prd_pr_dt_col ">
-										<div class="row prpr_dts_row">
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<h6 class="font14 txt_dgray bold">عنوان دوره در این مکان قرار می گیرد</h6>
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-												<li class=" list-inline-item tch_dtulli">
-												 <img src="img/avtfm1.png" class="post_itmsldateimg">
-												</li>
-												<li class=" list-inline-item tch_dtulli">
-												 <span class="txt_gray font14">نام استاد</span>
-												</li>
-											</ul>
-												
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col text-left pb-2">
-												<h6 class="font14 txt_dgray bold">650,000 تومان</h6>
-												<span class="txt_gray font14"> 04:30:56 <i class="far fa-clock pr-2 font14"></i></span>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								
-						</div>
-				    <div class="product_pr_col item">
-								<div class="row prd_pr_row  ">
-									<div class="col-12 col-md-12 prd_pr_img_col pb-2 text-center">
-										<a href="crs_dtpage.html" class="txt_dgray">
-										<img class="prd_pr_img" src="img/crs03.jpg">
-										 
-										</a>
-									</div>
-									<div class="col-12 col-md-12 prd_pr_dt_col ">
-										<div class="row prpr_dts_row">
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<h6 class="font14 txt_dgray bold">عنوان دوره در این مکان قرار می گیرد</h6>
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col">
-												<ul class="list-unstyled list-inline  pr-0 tch_dtul mb-0">
-												<li class=" list-inline-item tch_dtulli">
-												 <img src="img/avtfm1.png" class="post_itmsldateimg">
-												</li>
-												<li class=" list-inline-item tch_dtulli">
-												 <span class="txt_gray font14">نام استاد</span>
-												</li>
-											</ul>
-												
-											</div>
-											<div class="col-12 col-md-12 prpr_dt_col feature_dt_col text-left pb-2">
-												<h6 class="font14 txt_dgray bold">650,000 تومان</h6>
-												<span class="txt_gray font14"> 04:30:56 <i class="far fa-clock pr-2 font14"></i></span>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								
-						</div>
+
+					@endforeach
+
                </div>
 			</div>
 			</div>

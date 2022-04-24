@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use App\Models\FreeVideo;
 use App\Models\FreevideoQuestion;
+use App\Models\CourseQuestion;
 use App\Models\Category;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,7 +66,15 @@ class QuestionController extends Controller
                     $vq=new FreevideoQuestion();
                     $vq->question_id=$faq->id;
                     $vq->video_id=$item;
-                    $vq->save();;
+                    $vq->save();
+                }
+                break;
+            case 'cou':
+                foreach ($request->items as $key => $item) {
+                    $vq=new CourseQuestion();
+                    $vq->question_id=$faq->id;
+                    $vq->course_id=$item;
+                    $vq->save();
                 }
                 break;
         
@@ -159,6 +169,12 @@ class QuestionController extends Controller
 
                 $items=FreeVideo::all();
 
+                break;
+            
+            case 'cou':
+                
+                $items=Course::all();
+                
                 break;
             
             default:

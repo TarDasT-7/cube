@@ -36,4 +36,8 @@ class Course extends Model
         return $this->hasMany(Heading::class);
     }
 
+    public function questions()
+    {
+        return $this->belongsToMany(Faq::class , 'course_questions' , 'faq_id');
+    }
 }

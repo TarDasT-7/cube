@@ -28,6 +28,8 @@ use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\CourseSubCategoryController;
 use App\Http\Controllers\Admin\AdminAccountingController;
 use App\Http\Controllers\Admin\SendPriceController;
+use App\Http\Controllers\Admin\MessageController;
+
 
 
 use App\Http\Controllers\Controller;
@@ -270,6 +272,9 @@ Route::get('contact-us',[IndexPagesController::class,'contact'])->name('contact'
 Route::get('faq-list',[IndexPagesController::class,'faq'])->name('faq_list');
 Route::get('course-list-filtered-subCategory-{id}',[IndexPagesController::class,'courseSubList'])->name('courseFilterSubCate');
 Route::get('course-show-{id}',[ShowController::class,'courseShow'])->name('courseShow');
+
+Route::resource('message',MessageController::class);
+Route::post('message-send',[MessageController::class , 'send'])->name('sendMessage');
 
 
 

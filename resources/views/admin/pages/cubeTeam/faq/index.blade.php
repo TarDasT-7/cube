@@ -80,7 +80,7 @@
                                 <thead>
                                 <tr id="add">
                                     <th scope="col" class="text-center">سوال</th>
-                                    <th scope="col" class="text-center">جواب</th>
+                                    <th scope="col" style="width: 100px;" class="text-center">جواب</th>
                                     <th scope="col" class="text-center">دسته بندی</th>
                                     <th scope="col" class="text-center">عملیات</th>
                                     <th></th>
@@ -90,7 +90,7 @@
                                 @foreach($questions as $question)
                                     <tr>
                                         <td class="text-center">{{$question->title}}</td>
-                                        <td class="text-center">{!! $question->text!!}</td>
+                                        <td class="text-center" style="width: 100px;">{!! $question->text!!}</td>
                                         <td class="text-center">{{$question->category->title}}</td>
 
                                         <td class="text-center">

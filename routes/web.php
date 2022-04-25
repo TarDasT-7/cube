@@ -277,6 +277,8 @@ Route::resource('message',MessageController::class);
 Route::post('message-send',[MessageController::class , 'send'])->name('sendMessage');
 Route::resource('comment',CommentController::class);
 
+Route::get('filter-n1-{location}',[ShowController::class,'filtering'])->name('filterN1');
+
 
 
 

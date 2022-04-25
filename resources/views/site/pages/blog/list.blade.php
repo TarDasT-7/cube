@@ -41,10 +41,10 @@
                   </div>
                <div class="col-12 col-md-3 flt_drpcol">
                                           <div class="form-group ">
-                                              <select class="selectpicker form-control " name="filter_range" id="range" 
+                                              <select class="selectpicker form-control " name="filter_range" id="categories" 
                                               data-style="btn btn-default dropdown-toggle btn_cuswhite btn-md 
                                               w-100 cursp txt_dgray filt_but drp_int">
-                                              <option class="disabled selected">دسته بندی</option>
+                                              <option value="all" class="disabled selected">دسته بندی</option>
 
                                                 @foreach ($categories as $category)
                                                     <option value="{{$category->id}}">{{$category->title}}</option>
@@ -55,14 +55,14 @@
                                           </div>
                <div class="col-12 col-md-3 flt_drpcol">
                                           <div class="form-group ">
-                                              <select class="selectpicker form-control " name="filter_range" id="range" 
+                                              <select class="selectpicker form-control " name="filter_range" id="populars" 
                                               data-style="btn btn-default dropdown-toggle btn_cuswhite btn-md 
                                               w-100 cursp txt_dgray filt_but drp_int">
-                                              <option class="disabled selected">همه</option>
-                                              <option class="" >پربازدیدترین</option>
-                                              <option class="" >پرفروش ترین</option>
-                                              <option class="" >محبوب ترین</option>
-                                              <option class="" >جدیدترین</option>
+                                              <option value="all" class="disabled selected">همه</option>
+                                              <option value="all" class="" >پربازدیدترین</option>
+                                              <option value="all" class="" >پرفروش ترین</option>
+                                              <option value="all" class="" >محبوب ترین</option>
+                                              <option value="all" class="" >جدیدترین</option>
                                               
                                               </select>
                                       </div>
@@ -72,7 +72,7 @@
                       <div class="input-group-prepend srchblg_cus">
                   <span class="input-group-text " id="basic-addon1"><i class="fas fa-search txt_org"></i></span>
                 </div>
-                <input type="text" class="form-control srchblg_cus font14" placeholder="جستجو" aria-label="search" aria-describedby="basic-addon1">
+                <input type="text" class="form-control srchblg_cus font14" placeholder="جستجو" id="searching" aria-label="search" aria-describedby="basic-addon1">
                        
               </div>
               </div>
@@ -82,9 +82,9 @@
       </div>
         <div class="row prjct_mrow">
             <div class="col-md-12 prjct_cont">
-                <div class="row prjcts_prv_mrow grid pb-5 m-0 pt-2">
+                <div class="row prjcts_prv_mrow grid pb-5 m-0 pt-2 itemAdding">
                     @foreach ($blogs as $blog)
-                    <div class="col-12 col-md-3 artcl_prv_mcol grid-item">
+                        <div class="col-12 col-md-3 artcl_prv_mcol grid-item hideItems">
 
                             <a href="{{route('blogShow' , $blog->id)}}" class="artcl_lnk">
                                 <div class="row post_rowind justify-content-center">
@@ -162,7 +162,7 @@
                             </a>
 
                         </div>				 	  
-                        @endforeach
+                    @endforeach
                     </div>                    
 
             </div>
@@ -176,6 +176,186 @@
 
 
 @section('add_script')
+
+
+
+<script>
+
+    function callAjax(category,popular,search)
+    {
+
+        $.ajax({
+            type: "GET",
+            url: "{{route('filterN1' , 'blog')}}",
+            data: {
+                category:category,
+                popular:popular,
+                search:search,
+            },
+            success: function (response) {
+
+                $('.removeItems').remove();
+                if(response.length > 0)
+                {
+                    $('.hideItems').fadeOut(400);
+                    $('.removeItems').remove();
+
+                    var items =``;
+                    for(var i = 0 ; i < response.length ; i++)
+                    {
+                        items +=
+                                `                                
+                                    <div class="col-12 col-md-3 artcl_prv_mcol grid-item removeItems">
+
+                                        <a href="/blog-show-`+ response[i]['item'].id +`" class="artcl_lnk">
+                                            <div class="row post_rowind justify-content-center">
+                                                <div class="col-md-12 post_colindimg">
+                                                    <img src="images/blogs/`+ response[i]['item'].image +`" class="postindimg">
+                                                    <div class="post_inddate date">
+                                                        <span class="day fa_nu">`+ response[i]['date'][2] +`</span>
+                                                        <span class="month">`+ response[i]['date'][1] +`</span>
+                                                        <span class="year fa_nu">`+ response[i]['date'][0] +`</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-11 post_colindtxts p-0">
+                                                    <div class="row post_rowindtxts pt-1">
+                                                        <div class="col-md-12 post_colindtxt">
+                                                            <span class="font12 txt_org">`+ response[i]['item'].category['title'] +`</span>
+                                                        </div>
+                                                        <div class="col-md-12 post_colindtxt  ">
+                                                            <h6 class="font15 txt_dgray mb-0 bold">{{$blog->title}}</h6>
+                                                        </div>
+                                                        <div class="col-md-12 post_colindtxt font14 txt_gray">
+                                                            `+ response[i]['item'].desc +`
+                                                        </div>
+                                                        <div class="col-12 col-md-7 but_coll pl-0">
+                                                            <button class="btn btn-raised btn_cuswhite btn-sm btn_full w-100 btn_more">
+                                                                <span class="d-inline-block ">جزییات بیشتر</span>
+
+                                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" class="sp_afsvg mr-4 hvr-icon d-inline-block">
+                                                                        <g>
+                                                                        <g>
+                                                                        <path d="M501.333,234.667H68.417l109.792-109.792c2-2,3.125-4.708,3.125-7.542V96c0-4.313-2.594-8.208-6.583-9.854
+                                                                            c-1.323-0.552-2.708-0.813-4.083-0.813c-2.771,0-5.5,1.083-7.542,3.125l-160,160c-4.167,4.167-4.167,10.917,0,15.083l160,160
+                                                                            c3.063,3.042,7.615,3.969,11.625,2.313c3.99-1.646,6.583-5.542,6.583-9.854v-21.333c0-2.833-1.125-5.542-3.125-7.542
+                                                                            L68.417,277.333h432.917c5.896,0,10.667-4.771,10.667-10.667v-21.333C512,239.438,507.229,234.667,501.333,234.667z"></path>
+                                                                        </g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                        <g>
+                                                                        </g>
+                                                                    </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </div>
+
+                                `;
+                    }
+                    $('.itemAdding').append(items);
+
+                }else if(response.length == 0)
+                {
+                    $('.removeItems').remove();
+
+                    items =
+                            `
+                                <div class="pdcst_lipr_col col-md-2 removeItems" style="text-align:center;background:#ffe0e0;">
+                                    <a class="txt_dgray">
+                                        <div class="row pdcstlist_pr_row  ">
+                                            <div class="col-12 col-md-12 pdcst_pr_dt_col p-0 pt-3">
+                                                <div class="row pdcst_dts_row m-0">
+                                                    <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col">
+                                                        <h6 class="font14 txt_dgray bold">موردی وجود ندارد</h6>
+                                                    </div>
+                                                    <div class="col-12 col-md-12 pdcst_dt_col feature_dt_col ">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            `;
+                    $('.itemAdding').append(items);
+
+
+                }
+
+
+            }
+        });
+
+    }
+
+    $('#categories').change(function () {
+        // if($(this).val() != 'دسته بندی')
+        // {
+            $('.hideItems').fadeOut(400);
+            var category =$('#categories').val();
+            var popular =$('#populars').val();
+            var search =$('#searching').val();
+            setTimeout(() => {
+                callAjax(category,popular,search);
+            }, 200)
+        // }
+    });
+
+    $('#populars').change(function () {
+        // if($(this).val() != 'همه')
+        // {
+            $('.hideItems').fadeOut(400);
+            var category =$('#categories').val();
+            var popular =$('#populars').val();
+            var search =$('#searching').val();
+            setTimeout(() => {
+                callAjax(category,popular,search);
+            }, 200)
+        // }
+    });
+
+    $('#searching').on('input',function () {
+        $('.hideItems').fadeOut(400);
+        var category =$('#categories').val();
+        var popular =$('#populars').val();
+        var search =$('#searching').val();
+        setTimeout(() => {
+            callAjax(category,popular,search);
+        }, 200)
+        
+    });
+
+</script>
 
 @endsection
 

@@ -23,4 +23,9 @@ class FreeVideo extends Model
     {
         return $this->hasMany(FreevideoFile::class , 'freevideo_id');
     }
+
+    public function comments()
+    {
+        return $this->belongsToMany(Comment::class , 'comment_freevideos' , 'freevideo_id');
+    }
 }

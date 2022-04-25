@@ -3,6 +3,8 @@
     function showDate($date){$date=Verta::instance($date)->format('Y/m/d');$exDate=explode('/',$date);switch ((int)$exDate[1]){case 1:$exDate[1] = 'فروردین';break;case 2:$exDate[1] = 'اردیبهشت';break;case 3:$exDate[1] = 'خرداد';break;case 4:$exDate[1] = 'تیر';break;case 5:$exDate[1] = 'مرداد';break;case 6:$exDate[1] = 'شهریور';break;case 7:$exDate[1] = 'مهر';break;case 8:$exDate[1] = 'ابان';break;case 9:$exDate[1] = 'آذر';break;case 10:$exDate[1] = 'دی';break;case 11:$exDate[1] = 'بهمن';break;case 12:$exDate[1] = 'اسفند';break;}return $exDate;}
 
     $date =  showDate($course->created_at);
+ 	if($user=Illuminate\Support\Facades\Auth::user()){$userId = $user->id;} else{$user=null;$userId=null;}
+
 ?>
 
 @extends('layouts.site')
@@ -14,6 +16,56 @@
 @endsection
 
 @section('content')
+
+<style>
+        
+	.alert-success
+	{
+		background: #00ff0833;
+		width: 100%;
+		height: 50px;
+		margin-top: 40px;
+		text-align: center;
+		display: none;
+	}
+	.success_message{
+		font-size: 15px;
+		padding: 15px 0;
+		color: #007c3f;
+	}
+	.alert-warning
+	{
+		background: #ff00002b;
+		width: 100%;
+		height: 50px;
+		margin-top: 40px;
+		text-align: center;
+		display: none;
+	}
+	.warning_message{
+		font-size: 15px;
+		padding: 15px 0;
+		color: #790000;
+	}
+
+</style>
+
+<div  class="alert-success">
+
+	<h1 class="success_message">
+
+	</h1>
+
+</div>
+
+
+<div class="alert-warning">
+
+	<h1 class="warning_message">
+
+	</h1>
+
+</div>
 
 <section class="main_sec container-fluid main-content">
 	<div class="row breadcrumb_row m-0">
@@ -498,113 +550,79 @@
 										  </div>
 											 <div class="col-md-12 scm_ico p-0">
 	 		 						<div class="row sc_row">
-										<form id="comment_form" action="" method="post" role="form" class="w-100">
-                                       <div class="form-group col-12 col-md-12 ">
-													      <div class="input-group input-group-sm">
-														  <span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
-														  <i class="fa fa-envelope txt_org"></i>
-															  </span>
-														  <input class="form-control srch_cus3 txt_dgray mr-0" type="email" placeholder="ایمیل">
 
-														   </div>
-														</div>
-												      <div class="form-group col-12 col-md-12 ">
-													      <div class="input-group input-group-sm">
-														  <span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
-														  <i class="fa fa-user txt_org"></i>
-															  </span>
-														  <input class="form-control srch_cus3  txt_dgray mr-0" type="email" placeholder="نام و نام خانوادگی">
+										<form id="comment_form" role="form" class="w-100">
+											<div class="form-group col-12 col-md-12 ">
+												<div class="input-group input-group-sm  mb-3">
+													<span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
+														<i class="fa fa-envelope txt_org"></i>
+													</span>
+													@if($user)
+														<input class="form-control srch_cus3 txt_dgray mr-0 " type="email" value="{{$user->email}}" placeholder="ایمیل" name="email">
+													@else
+														<input class="form-control srch_cus3 txt_dgray mr-0 " type="email" placeholder="ایمیل" name="email">
+													@endif
+												</div>
+											</div>
+											<div class="form-group col-12 col-md-12 ">
+												<div class="input-group input-group-sm  mb-3">
+													<span class="input-group-addon span_cus inpgr_addoncus_regmodal" id="sizing-addon8">
+														<i class="fa fa-user txt_org"></i>
+													</span>
+													@if($user)
+														<input class="form-control srch_cus3  txt_dgray mr-0" type="text" name="name" value="{{$user->first_name}} {{$user->last_name}}" placeholder="نام و نام خانوادگی">
+													@else
+														<input class="form-control srch_cus3  txt_dgray mr-0" type="text" name="name" placeholder="نام و نام خانوادگی">
+													@endif
 
-														   </div>
-														</div>
-														  <div class="form-group col-12 col-md-12 mg">
-													      <textarea class="form-control cus_txtarea" placeholder="پیام" id="exampleFormControlTextarea1" rows="5"></textarea>
-						
-														</div>
-														<div class="col-md-5 offset-md-7 mg">
-																	<div>
-																	<a type="sumbit" href="user_profile.html" class="btn btn-raised btn_cusblgray btn-sm btn_full w-100">ارسال</a>
-																	</div>
-																</div>
-								</form>
+												</div>
+											</div>
+											<div class="form-group col-12 col-md-12 mg mb-2">
+												<textarea class="form-control cus_txtarea " placeholder="پیام" name="text" id="text" rows="5"></textarea>
+											</div>
+											<div class="col-md-5 offset-md-7 mg">
+												<div>
+													<a id="subForm" class="btn btn-raised btn_cusblgray btn-sm btn_full w-100">ارسال</a>
+												</div>
+											</div>
+										</form>
+
 									</div>
 	 		 					</div>
-								   </div>
+							</div>
 									
 
 							</div>
 							<div class="col-12 col-md-6 prdt_col prdt_cmm_col">
-								    <div class="row userscomm_row m-0">
-											<div class="col-12 col-md-12  title_row2 pb-5 ">
-											<h4 class="txt_dgray bold">نظرات کاربران</h4>
-										  </div>
-										  <div class="col-12 col-md-12 users_cmm_col mCustomScrollbar"
-										 data-mcs-theme="minimal-dark">
-														 <div class="row">
-														<div class="col-12 col-md-12">
-												<h6 class="blackgray">نام کاربری </h6>
-										  </div>
-										  
-															 <div class="col-12 col-md-12">
-																<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>	 	
-															 </div> 
+								<div class="row userscomm_row m-0">
+									<div class="col-12 col-md-12  title_row2 pb-5 ">
+										<h4 class="txt_dgray bold">نظرات کاربران</h4>
+									</div>
+									<div class="col-12 col-md-12 users_cmm_col mCustomScrollbar"
+										data-mcs-theme="minimal-dark">
+										
+										@foreach ($course->comments as $comment)
+											
+											<div class="row">
+												<div class="col-12 col-md-12">
+													<h6 class="blackgray">{{$comment->name}}</h6>
+												</div>
+												<div class="col-12 col-md-12">
+													<p class="txt_gray">{!! $comment->text !!}</p>	 	
+												</div> 
+											</div>
+
+										@endforeach	
 															
-														 </div>
-											   <div class="row">
-														<div class="col-12 col-md-12">
-												<h6 class="blackgray">نام کاربری </h6>
-										  </div>
-										  
-															 <div class="col-12 col-md-12">
-																
-																	<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>		 	
-															 </div> 
-															
-														 </div>	
-											   <div class="row">
-														<div class="col-12 col-md-12">
-												<h6 class="blackgray">نام کاربری </h6>
-										  </div>
-										  
-															 <div class="col-12 col-md-12">
-																
-																	<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>		 	
-															 </div> 
-															
-														 </div>	 
-											   <div class="row">
-														<div class="col-12 col-md-12">
-												<h6 class="blackgray">نام کاربری </h6>
-										  </div>
-										  
-															 <div class="col-12 col-md-12">
-																
-																	<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>		 	
-															 </div> 
-															
-														 </div>	 
-											   <div class="row">
-														<div class="col-12 col-md-12">
-												<h6 class="blackgray">نام کاربری </h6>
-										  </div>
-										  
-															 <div class="col-12 col-md-12">
-																
-																	<p class="txt_gray">متن نظر کاربر در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد .. در این مکان قرار می گیرد ..</p>	 	
-															 </div> 
-															
-														 </div>	 
-														
-															
-											 </div>
-								   </div>
+									</div>
+								</div>
 							</div>
-								            </div>
-								          
-									   </div>
-									  </div>
 						</div>
-	</div>
+										
+					</div>
+				</div>
+			</div>
+		</div>
 	<div class="sims_prdctsssec row pt-3">
 		<div class="col-md-12 sims_prdctscol">
 			<div class="row sims_prdctsrow">
@@ -656,6 +674,7 @@
 	
 	</div>
 </section>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 
 @endsection
@@ -666,5 +685,105 @@
             $(this).find('i').toggleClass('fa-plus fa-minus')
         });
     </script>
+
+
+
+	<script>
+
+
+		$('#subForm').click(function () {
+			
+
+			$('.rmAll').remove();
+            $('.alert-success').hide(200);
+            $('.alert-warning').hide(200);
+
+            function fadeAlert() {
+                setTimeout(() => {
+                    $('.alert-success').hide(200);
+                    $('.alert-warning').hide(200);
+                }, 5000);
+            }
+
+			let user = "{{$userId}}";
+			let id = "{{$course->id}}";
+            let formData = new FormData(document.getElementById("comment_form"));
+			formData.append('user', user);
+			formData.append('location', 'course');
+			formData.append('rel_id', id);
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "{{route('comment.store')}}",
+                data:formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    window.scrollTo(0, 0);
+
+                    if(response == 0)
+                    {
+                        $('.alert-success').show(200);
+                        $('.alert-warning').hide(200);
+
+                        $('#text').val('');
+                        $('.success_message').text('نظر شما با موفقیت ثبت شد و در انتظار تایید مدیران سایت قرار گرفت');
+                        
+                    }else
+                    {
+                        $('.alert-warning').show(200);
+                        $('.alert-success').hide(200);
+
+                        $('.warning_message').text('خطایی وجود دارد . لطفا دوباره امتحان کنید.');
+
+                    }
+
+
+                    fadeAlert();
+                },
+                error: function (err) {
+                    // $('.loading').hide(50);
+
+                    if (err.status == 422) {
+
+
+                        $('.alert-warning').show(200);
+                        $('.alert-success').hide(200);
+
+                        $('.warning_message').text('خطایی وجود دارد . لطفا دوباره امتحان کنید.');
+
+
+                        $.each(err.responseJSON.errors, function (i, error) {
+
+                            var el = $(document).find('[name="'+i+'"]');
+                            let elParent=el;
+                            elParent=elParent.parent();
+                            // elParent=elParent.parent();
+
+                            elParent.after($('<p style="color: red;margin:-10px 15px 15px 0;" class="rmAll">'+error[0]+'</p>'));
+                            fadeAlert();
+                        });
+                    }
+                    window.scrollTo(0, 0);
+
+                }
+            });
+
+
+
+
+		});
+
+
+	</script>
+
+
 @endsection
 

@@ -248,14 +248,14 @@
                     </li>
 
                     <li>
-                        <a href="{{route('product_teacher.index')}}">
+                        <a href="{{route('comment.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">کامنت ها</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{route('product_teacher.index')}}">
+                        <a href="{{route('message.index')}}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="Register">پیام ها</span>
                         </a>

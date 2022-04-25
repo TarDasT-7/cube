@@ -19,6 +19,11 @@ class PodAudio extends Model
         return $this->belongsTo(Producer::class);
     }
 
+    public function comments()
+    {
+        return $this->belongsToMany(Comment::class , 'comment_podcasts' , 'part_id');
+    }
+
 }
 
 

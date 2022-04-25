@@ -40,4 +40,9 @@ class Course extends Model
     {
         return $this->belongsToMany(Faq::class , 'course_questions' , 'faq_id');
     }
+
+    public function comments()
+    {
+        return $this->belongsToMany(Comment::class , 'comment_courses');
+    }
 }

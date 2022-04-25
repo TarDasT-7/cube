@@ -38,7 +38,6 @@ use App\Http\Controllers\JquaryController;
 use App\Http\Controllers\QcategoryController;
 
 
-use App\Http\Controllers\Site\CommentController;
 use App\Http\Controllers\Site\ForgetPasswordController;
 use App\Http\Controllers\Site\SiteAdvertisementController;
 use App\Http\Controllers\Site\SiteBlogController;
@@ -95,6 +94,7 @@ use App\Http\Controllers\Admin\FreeVideoController;
 use App\Http\Controllers\Admin\FreeVideoFileController;
 use App\Http\Controllers\Admin\PodcastController;
 use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\CommentController;
 
 
 
@@ -275,6 +275,8 @@ Route::get('course-show-{id}',[ShowController::class,'courseShow'])->name('cours
 
 Route::resource('message',MessageController::class);
 Route::post('message-send',[MessageController::class , 'send'])->name('sendMessage');
+Route::resource('comment',CommentController::class);
+
 
 
 
@@ -285,7 +287,6 @@ Route::get('delete_account/{id}',[AccountingController::class,'delete']);
 Route::get('load',[AccountingController::class,'load']);
 Route::post('calculation',[AccountingController::class,'calculation'])->name('calculations');
 Route::post('address',[AccountingController::class,'address']);
-Route::post('comment',[CommentController::class,'store']);
 Route::get('download/{name}',[Downloadcontroller::class,'download']);
 Route::get('enter',[Controller::class,'enter']);
 Route::get('about_us',[\App\Http\Controllers\Site\AboutUsController::class,'index']);

@@ -16,7 +16,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::all();
+        return view('admin.pages.cubeTeam.messages.index')->with('messages',$messages);
     }
 
     /**
@@ -82,7 +83,10 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $message=Message::find($id)->delete();
+        session()->flash('add','پیام حذف شد');
+        return redirect()->back();
+
     }
 
     public function send(Request $request)

@@ -13,7 +13,6 @@
 
 @section('content')
 
-
 <section class="container-fluid prtfil_mainsec pb-5 mb-5">
     @if($href == 'blog')
         <div class="row blgmntit_row justify-content-center">
@@ -171,6 +170,7 @@
 </div>
 </section>
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 @endsection
 
@@ -180,13 +180,16 @@
 
 
 <script>
-
     function callAjax(category,popular,search)
     {
-
+        var url = "{{route('filterN1' , 'blog')}}";
+        if("{{$href}}" == "psychology")
+        {
+            url = "{{route('filterN1' , 'psy')}}";
+        }
         $.ajax({
             type: "GET",
-            url: "{{route('filterN1' , 'blog')}}",
+            url: url,
             data: {
                 category:category,
                 popular:popular,
@@ -223,7 +226,7 @@
                                                             <span class="font12 txt_org">`+ response[i]['item'].category['title'] +`</span>
                                                         </div>
                                                         <div class="col-md-12 post_colindtxt  ">
-                                                            <h6 class="font15 txt_dgray mb-0 bold">{{$blog->title}}</h6>
+                                                            <h6 class="font15 txt_dgray mb-0 bold">`+response[i]['item'].title+`</h6>
                                                         </div>
                                                         <div class="col-md-12 post_colindtxt font14 txt_gray">
                                                             `+ response[i]['item'].desc +`

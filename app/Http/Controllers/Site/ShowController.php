@@ -190,6 +190,97 @@ class ShowController extends Controller
                     break;
     
 
+                case 'psy':
+
+                    if($category == 'all' && $popular == 'all' && $search != null)
+                    {
+                        $itemsww=Blog::where('title' , 'LIKE' , '%' . $search . '%')->orWhere('desc' , 'LIKE' , '%' . $search . '%')->get();
+                        foreach ($itemsww as $key=>$item) {
+                            if($item->related != 'بلاگ')
+                            {
+                                $items[$index]['item']=$item->load('category');
+                                $items[$index]['date']=showDate($item->created_at);
+                                $index++;
+                            }
+
+                        }
+
+                    }else
+                    {
+                        if($category != 'all' && $popular == 'all' && $search != null)
+                        {
+                            $itemsww=Blog::where('title' , 'LIKE' , '%' . $search . '%')->orWhere('desc' , 'LIKE' , '%' . $search . '%');
+                            $itemsww=$items->where('category_id' , $category)->get();
+
+                            foreach ($itemsww as $key=>$item) {
+                                if($item->related != 'بلاگ')
+                                {
+                                    $items[$index]['item']=$item->load('category');
+                                    $items[$index]['date']=showDate($item->created_at);
+                                    $index++;
+                                }
+
+                            }
+                        }
+                        elseif($category != 'all' && $popular == 'all' && $search == null)
+                        {
+                            $itemsww=Blog::where('category_id' , $category)->get();
+
+                            foreach ($itemsww as $key=>$item) {
+                                if($item->related != 'بلاگ')
+                                {
+                                    $items[$index]['item']=$item->load('category');
+                                    $items[$index]['date']=showDate($item->created_at);
+                                    $index++;
+                                }
+
+                            }
+                        }
+                        elseif($category == 'all' && $popular == 'all' && $search == null)
+                        {
+                            $itemsww=Blog::all();
+
+                            foreach ($itemsww as $key=>$item) {
+                                if($item->related != 'بلاگ')
+                                {
+                                    $items[$index]['item']=$item->load('category');
+                                    $items[$index]['date']=showDate($item->created_at);
+                                    $index++;
+                                }
+
+                            }
+                        }
+                    }
+
+                    return $items;
+                    break;
+
+                case 'free':
+
+                    if($category == 'all' && $popular == 'all' && $search != null)
+                    {
+                        $items=FreeVideo::where('title' , 'LIKE' , '%' . $search . '%')->orWhere('small_description' , 'LIKE' , '%' . $search . '%')->get()->load('producer');
+
+                    }else
+                    {
+                        if($category != 'all' && $popular == 'all' && $search != null)
+                        {
+                            $items=FreeVideo::where('title' , 'LIKE' , '%' . $search . '%')->orWhere('small_description' , 'LIKE' , '%' . $search . '%');
+                            $items=$items->where('category_id' , $category)->get()->load('producer');
+                        }
+                        elseif($category != 'all' && $popular == 'all' && $search == null)
+                        {
+                            $items=FreeVideo::where('category_id' , $category)->get()->load('producer');
+                        }
+                        elseif($category == 'all' && $popular == 'all' && $search == null)
+                        {
+                            $items=FreeVideo::all()->load('producer');
+                        }
+                    }
+
+                    return $items;
+                    break;
+
                 default:
                     # code...
                     break;
